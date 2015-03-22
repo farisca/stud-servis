@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'employers/new'
   get 'students/new'
   get 'users/new'
   
   get 'users' => 'user#show'
   get 'students' => 'student#show'
+  get 'employers' => 'employer#show'
 
   resources :jobs
 
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :students
+
+  resources :employers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
