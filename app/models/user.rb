@@ -1,3 +1,4 @@
+
 class User < ActiveRecord::Base
 
   def get(id_user)
