@@ -1,6 +1,8 @@
 class Student < ActiveRecord::Base
   belongs_to :location
   belongs_to :user
+  
+  has_many :registrations
 
   def get(id_student)
   	student = Student.find_by(id: id_student)
