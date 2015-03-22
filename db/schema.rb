@@ -11,7 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321192420) do
+ActiveRecord::Schema.define(version: 20150322163624) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "location_id"
+    t.string   "description"
+    t.string   "web"
+    t.string   "phone"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "companies", ["location_id"], name: "index_companies_on_location_id"
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "company_id"
+    t.string   "description"
+    t.integer  "location_id"
+    t.integer  "published"
+    t.integer  "duration"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "jobs", ["category_id"], name: "index_jobs_on_category_id"
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id"
+  add_index "jobs", ["location_id"], name: "index_jobs_on_location_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "student_id"
+    t.datetime "time"
+    t.integer  "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "registrations", ["job_id"], name: "index_registrations_on_job_id"
+  add_index "registrations", ["student_id"], name: "index_registrations_on_student_id"
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
