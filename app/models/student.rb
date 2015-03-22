@@ -14,7 +14,7 @@ class Student < ActiveRecord::Base
   	self.save
   end
 
-  def put (id_student, name, surname, university, faculty) 
+  def put (id_student, name, surname, location, university, faculty, cv, user) 
   	student = Student.find_by(id: id_student)
   	if !name.nil?
   		student.name = name
@@ -28,12 +28,20 @@ class Student < ActiveRecord::Base
   	if !faculty.nil?
   		student.faculty = faculty
   	end
-  	student.save
+  	if student.save
+      return true
+    end
+
+    false
   end
 
   def delete (id_student) #brisanje po user id
   	student = Student.find_by(id: id_student)
-  	student.destroy
+  	if student.destroy
+      return true
+    end
+
+    false
   end
   
 end

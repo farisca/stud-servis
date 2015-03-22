@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'students/new'
+  get 'users/new'
+  
+  get 'users' => 'user#show'
+  get 'students' => 'student#show'
+
   resources :jobs
 
   resources :companies
@@ -8,6 +14,10 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :registrations
+
+  resources :users
+
+  resources :students
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

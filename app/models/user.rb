@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   	self.save
   end
 
-  def put (id_user, username, email, active) 
+  def put (id_user, username, email, role, active) 
   	user = User.find_by(id: id_user)
   	if !username.nil?
   		user.username = username
@@ -22,12 +22,20 @@ class User < ActiveRecord::Base
   	if !active.nil?
   		user.active = active
   	end
-  	user.save
+  	if user.save
+      return true
+    end
+
+    false
   end
 
   def delete (id_user) #brisanje po user id
   	user = User.find_by(id: id_user)
-  	user.destroy
+  	if user.destroy
+      return true
+    end
+
+    false
   end
 
 end
