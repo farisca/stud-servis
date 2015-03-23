@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  	
+  before_action :set_student, only: [:show, :edit, :update, :destroy]
+
   def new
     @student = Student.new
   end
@@ -21,18 +22,28 @@ class StudentsController < ApplicationController
   end
 
   def update
-      is_updated = @student.put(student_params)
-      render json: { error: is_updated }
+    respond_to do |format|
+      if @student.update(student_params)
+        format.json { render :show, status: :ok, location: @student }
+      else
+        format.json { render json: @student.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-      is_deleted = @student.delete(@student.id)
-      render json: { error: is_deleted } 
+    @student.destroy
+    respond_to do |format|
+      format.json { head :no_content, status: :deleted }
+    end
   end
 
   private
     def student_params
-      params.require(:student).permit(:name, :surname, :location, :university, :faculty, :cv, :user)
+      params.require(:student).permit(:name, :surname, :location_id, :university, :faculty, :cv, :user_id)
     end
 
+    def set_student
+    @student = Student.find(params[:id])
+  end 
 end
