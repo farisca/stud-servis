@@ -10,6 +10,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @job = Job.find(params[:id])
   end
 
   # GET /jobs/new
@@ -28,7 +29,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to @job, notice: 'Oglas uspjesno kreiran.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
