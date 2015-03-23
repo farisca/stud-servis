@@ -5,8 +5,7 @@ class CreateJobs < ActiveRecord::Migration
       t.references :company, index: true
       t.string :description
       t.references :location, index: true
-      t.integer :published
-      t.integer :duration
+      t.datetime :duration
 
       t.timestamps null: false
     end

@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
   end
 
   def update
-      is_updated = @student.put(user_params)
+      is_updated = @student.put(student_params)
       render json: { error: is_updated }
   end
 

@@ -10,7 +10,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
-    @job = Job.find(params[:id])
+    render json: @job
   end
 
   # GET /jobs/new
@@ -65,6 +65,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:category_id, :company_id, :description, :location_id, :published, :duration)
+      params.require(:job).permit(:category_id, :company_id, :description, :location_id, :duration)
     end
 end

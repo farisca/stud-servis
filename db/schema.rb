@@ -52,8 +52,7 @@ ActiveRecord::Schema.define(version: 20150322214137) do
     t.integer  "company_id"
     t.string   "description"
     t.integer  "location_id"
-    t.integer  "published"
-    t.integer  "duration"
+    t.datetime "duration"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

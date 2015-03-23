@@ -1,24 +1,10 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
-  # GET /companies
-  # GET /companies.json
-  def index
-    @companies = Company.all
-  end
-
   # GET /companies/1
   # GET /companies/1.json
   def show
-  end
-
-  # GET /companies/new
-  def new
-    @company = Company.new
-  end
-
-  # GET /companies/1/edit
-  def edit
+    render json: @company
   end
 
   # POST /companies
