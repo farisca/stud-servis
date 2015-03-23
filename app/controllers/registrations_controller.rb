@@ -10,6 +10,8 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1
   # GET /registrations/1.json
   def show
+    @registration = Registration.find(params[:id])
+    render json: @registration
   end
 
   # GET /registrations/new
@@ -28,10 +30,8 @@ class RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @registration.save
-        format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
         format.json { render :show, status: :created, location: @registration }
       else
-        format.html { render :new }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +42,8 @@ class RegistrationsController < ApplicationController
   def update
     respond_to do |format|
       if @registration.update(registration_params)
-        format.html { redirect_to @registration, notice: 'Registration was successfully updated.' }
         format.json { render :show, status: :ok, location: @registration }
       else
-        format.html { render :edit }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end
     end
@@ -56,8 +54,7 @@ class RegistrationsController < ApplicationController
   def destroy
     @registration.destroy
     respond_to do |format|
-      format.html { redirect_to registrations_url, notice: 'Registration was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { head :no_content, status: :deleted }
     end
   end
 
