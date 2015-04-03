@@ -1,2 +1,116 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<html>
+	<head>
+		<title>Register</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+	    <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js" %>
+
+	</head>
+
+	<div ng-app="myApp">
+	    <div ng-controller="TestCtrl">
+	      <button ng-click="clicked()">Click me!</button>
+	    </div>
+	</div>
+
+	<body>
+	<div ng-app="RegisterForm">
+		<div ng-controller="AddingStudent">
+			<button ng-click="clicked()">Dodaj me!</button>
+		</div>
+	</div>
+
+		<h2>Registracija studenta </h2>
+		<div class="row">
+  			<div class="col-md-6 col-md-offset-3">
+  				
+		  			<form name="form" ng-submit="save()">
+						<p>Ime</p>
+						<input type="text" class="form-control name" ng-model="student.name">
+						<p>Prezime</p>
+						<input type="text" class="form-control surname" ng-model="student.surname">
+						<p>Korisnčko ime</p>
+						<input type="text" class="form-control username" ng-model="student.username">
+						<p>Email</p>
+						<input type="email" class="form-control email" ng-model="student.email">
+						<p>Lokacija</p>
+						<input type="text" class="form-control location" ng-model="student.location">
+						<p>Univerzitet</p>
+						<input type="text" class="form-control university" ng-model="student.university">
+						<p>Fakultet	</p>
+						<input type="text" class="form-control faculty" ng-model="student.faculty"><br>
+						<button ng-click="addStudent()" value="Registruj se" class="btn btn-primary create_student">Registruj se </button>
+						
+					</form>
+				</div>
+			</div>
+			<br><br>
+		</div>
+    </div>
+    </div>
+    </body>
+	
+	
+</html>
+
+
+<script>
+
+   var register = angular.module('RegisterForm',[]);
+   register.controller('AddingStudent', ['$scope',function($scope) {
+   	
+   		$scope.clicked = function(){
+        alert("dodan");
+    }
+    }]);
+var VLogin = angular.module('myApp',[]);
+   VLogin.controller('TestCtrl', ['$scope',function($scope) {
+
+   $scope.clicked = function(){
+        alert("Clicked");
+    }
+}]);
+
+
+
+
+	/*var app = angular.module('myApp',[]);
+
+	app.controller('AddingStudent', function($scope, $http) {
+	$scope.addStudent = function() {
+		
+		$scope.student = {
+		  'student': {
+		    'name'  : $scope.student.name,
+		    'surname'   : $scope.student.surname,
+		    'username' : $scope.student.username,
+		  }
+		};
+
+	// Why can't I use Article.save() method from $resource?
+	    $http({
+	        method: 'POST',
+	        url: 'http://localhost:3000/students/create',
+	    data: $scope.student
+	    });
+		};
+	});*/
+
+
+  /*angular.module('formExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.master = {};
+
+      $scope.update = function(user) {
+        $scope.master = angular.copy(user);
+        alert(name);
+      };
+
+      $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+      };
+
+      $scope.reset();
+    }]);*/
+</script>
+
