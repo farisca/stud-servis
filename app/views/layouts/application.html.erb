@@ -1,15 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="aplikacija">
 <head>
   <title>StudServis</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
 </head>
-<body>
 
+<body ng-controller="glavniController as glavni">
+
+	 <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Studentski servis</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ng-class="{active: glavni.isTrenutna('home')}"><a ng-click="glavni.setTrenutna('home')">Početna</a></li>
+            <li ng-class="{active: glavni.isTrenutna('oglasi')}"><a ng-click="glavni.setTrenutna('oglasi')">Oglasi</a></li>
+            <li ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" >Kompanije</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-class="{active: glavni.isTrenutna('regKom')}"><a ng-click="glavni.setTrenutna('regKom')">Registracija kompanije</a></li>
+            <li ng-class="{active: glavni.isTrenutna('regStud')}"><a ng-click="glavni.setTrenutna('regStud')">Registracija studenta</a></li>
+            <li ng-class="{active: glavni.isTrenutna('prijava')}"><a ng-click="glavni.setTrenutna('prijava')">Prijava</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div ng-show="glavni.isTrenutna('home')"> 
+
+    </div>
+
+    <div ng-show="glavni.isTrenutna('oglasi')"> 
+
+    </div>
+
+    <div ng-show="glavni.isTrenutna('kompanije')"> 
+
+    </div>
+
+    <div ng-show="glavni.isTrenutna('regKom')"> 
+
+    </div>
+
+    <div ng-show="glavni.isTrenutna('regStud')"> 
+  
+    </div>
+
+    <div ng-show="glavni.isTrenutna('prijava')"> 
+
+    </div>
+
+<script>
+/*
+  	 <div class="container theme-showcase" role="main">
+
+	<div ng-app="myApp">
+	    <div ng-controller="TestCtrl">
+	      <button ng-click="clicked()">Click me!</button>
+	    </div>
+	</div>
+
+
+	
+*/
+	
+	/*var app = angular.module('myApp',[]);
+
+	app.controller('AddingStudent', function($scope, $http) {
+	$scope.addStudent = function() {
+		
+		$scope.student = {
+		  'student': {
+		    'name'  : $scope.student.name,
+		    'surname'   : $scope.student.surname,
+		    'username' : $scope.student.username,
+		  }
+		};
+
+	// Why can't I use Article.save() method from $resource?
+	    $http({
+	        method: 'POST',
+	        url: 'http://localhost:3000/students/create',
+	    data: $scope.student
+	    });
+		};
+	});*/
+
+
+  /*angular.module('formExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.master = {};
+
+      $scope.update = function(user) {
+        $scope.master = angular.copy(user);
+        alert(name);
+      };
+
+      $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+      };
+
+      $scope.reset();
+    }]);*/
+</script>
 <%= yield %>
+<div ng-controller="AddingStudent">
+		<button ng-click="clicked()">Dodaj me!</button>
+	</div>
+    </body>
 
-</body>
+
 </html>
