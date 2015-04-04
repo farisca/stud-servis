@@ -20,6 +20,12 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+#production:
+  #<<: *default
+  #database: db/production.sqlite3
+
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: servis_production
+  username: servis
+  password: <%= ENV['CPRR_DATABASE_PASSWORD'] %>
