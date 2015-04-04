@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
     super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
   end
 
+  def login
+  end
+
+  def index
+  end
+
   def hello
     render text: "hello, world!"
   end

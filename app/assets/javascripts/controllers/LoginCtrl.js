@@ -1,4 +1,4 @@
-   app.controller('TestCtrl', ['$scope',function($scope) {
+app.controller('LoginCtrl', ['$scope',function($scope) {
 
    $scope.clicked = function(){
         alert("Clicked");
