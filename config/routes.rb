@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :students
+  resources :students do
+    post "create", on: :collection
+  end
 
   
   # The priority is based upon order of creation: first created -> highest priority.
