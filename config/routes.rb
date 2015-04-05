@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :students do
-    post "create", on: :collection
+    post "add_student", on: :collection
   end
 
   

@@ -4,6 +4,23 @@ class Student < ActiveRecord::Base
   
   has_many :registrations
 
+  def create_students (name, surname, email, password, password_confirmation)
+      
+    student = Student.new
+    student.name = name
+    student.surname = surname
+    student.user.email = email
+    student.user.password = password
+    student.user.password_confirmation = password_confirmation
+
+    if student.save
+      return true
+    end
+
+    false
+  end
+
+
   def get(id_student)
   	student = Student.find_by(id: id_student)
 

@@ -17,6 +17,18 @@ class StudentsController < ApplicationController
     end
   end
 
+  def add_student 
+    @student = Student.new
+    is_added = @student.create_student(params[:name], params[:surname], params[:email], params[:password], params[:password_confirmation]
+    if is_added==false
+      return render json: { error: is_added }
+  end
+
+  def send_to_payment
+    redirect_to home_path
+  end
+
+
   def show
     @student = Student.find(params[:id])
     render json: @student
