@@ -28,7 +28,7 @@ gem 'bootstrap-sass',       '3.2.0.0'
 
 gem 'bcrypt',               '3.1.7'
 gem 'bower-rails'
-gem 'angularjs-rails'
+gem 'angular-rails-templates'
 
 
 
@@ -57,7 +57,7 @@ group :development, :test do
 end
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+	#gem 'pg'
+	#gem 'rails_12factor'
 end
 

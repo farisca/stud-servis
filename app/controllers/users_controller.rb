@@ -35,6 +35,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+  end
+
+  def registracija
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :role, :active)

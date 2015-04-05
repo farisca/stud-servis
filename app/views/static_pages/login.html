@@ -1,0 +1,17 @@
+<div class="container" style="position:relative; top:200px; width:400px;">
+
+            <form class="form-signin" ng-controller="loginController as login" ng-submit="login.logiraj(glavni)">
+              
+              <label for="inputEmail" class="sr-only">E-mail adresa</label>
+              <input type="email" ng-model="login.podaci.email" id="inputEmail" class="form-control" placeholder="E-mail adresa" required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" ng-model="login.podaci.password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-model="login.podaci.zapamti"> Zapamti prijavu
+                </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Prijava</button>
+            </form>
+
+       </div>
