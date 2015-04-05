@@ -16,7 +16,7 @@ angular.module('aplikacija')
     		else if (this.podaci.password != this.podaci.password_confirmation) this.errorMsg ="Password i potvrda passworda se razlikuju!";
     		
     		if (!(this.isError())) {
-    			res = $http.post('/students/create', this.podaci);
+    			res = $http.post('/students/add_student', this.podaci);
 				res.success(function(data, status, headers, config) {
 					if (data=="OK") this.successMsg = data;
 					else this.errorMsg=data;

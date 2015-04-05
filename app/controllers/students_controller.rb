@@ -19,7 +19,7 @@ class StudentsController < ApplicationController
 
   def add_student 
     @student = Student.new
-    is_added = @student.create_student(params[:name], params[:surname], params[:email], params[:password], params[:password_confirmation]
+    is_added = @student.create_student(params[:name], params[:surname], params[:email], params[:password], params[:password_confirmation])
     if is_added==false
       return render json: { error: is_added }
     end
