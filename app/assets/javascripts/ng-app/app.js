@@ -19,7 +19,7 @@ angular
         $routeProvider
             .when('/registracija', {
                 templateUrl: 'registracija.html',
-                controller: 'register'
+                controller: 'registerController'
             }).when('/login', {
                 templateUrl: 'login.html',
                 controller: 'loginController'
