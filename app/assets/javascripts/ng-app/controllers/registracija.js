@@ -12,8 +12,8 @@ angular.module('aplikacija')
     	}
     	this.posalji= function() {
     		this.errorMsg="";
-    		if (this.password.length < 5) this.errorMsg = "Password mora biti barem 5 karaktera dug!"
-    		else if (this.podaci.password != this.podaci.password2) this.errorMsg ="Password i potvrda passworda se razlikuju!";
+    		if (this.podaci.password.length < 5) this.errorMsg = "Password mora biti barem 5 karaktera dug!"
+    		else if (this.podaci.password != this.podaci.password_confirmation) this.errorMsg ="Password i potvrda passworda se razlikuju!";
     		
     		if (!(this.isError())) {
     			res = $http.post('/students/create', this.podaci);
