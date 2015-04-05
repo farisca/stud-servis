@@ -24,6 +24,14 @@
         <input type="password" ng-model="register.podaci.password2" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Registracija</button>
+        <br>
+
+        <div ng-show="register.isError()" class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  {{register.errorMsg}}
+</div>
+
     </form>
     <br><br><br><br>
 </div>
