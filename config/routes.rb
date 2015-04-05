@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :jobs
 
-  resources :companies
+  resources :companies do
+    post "add_company", on: :collection
+  end
 
   resources :categories
 

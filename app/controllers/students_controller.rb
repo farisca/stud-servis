@@ -25,7 +25,9 @@ class StudentsController < ApplicationController
     
     if is_added==false
       return render json: { error: is_added }
-      raise
+    else 
+      return render json: { error: "OK" }
+      SignUpNotifier.registrated(@st).deliver
     end
   end
 

@@ -22,6 +22,19 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def add_company
+    @comp = Company.new
+    
+    is_added = @comp.create_company(params["name"], params["street"], params["location"], params["password"], params["password_confirmation"])
+    
+    if is_added==false
+      return render json: { error: is_added }
+    else 
+      return render json: { error: "OK" }
+      SignUpNotifier.registrated(@comp).deliver
+    end
+  end
+
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
