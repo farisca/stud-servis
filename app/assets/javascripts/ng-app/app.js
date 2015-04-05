@@ -23,6 +23,9 @@ angular
             }).when('/login', {
                 templateUrl: 'login.html',
                 controller: 'login'
+            }).when('/kompanija', {
+                templateUrl: 'registracijaKompanije.html',
+                controller: 'registerCompany'
             });
         $locationProvider.html5Mode(true);
     });

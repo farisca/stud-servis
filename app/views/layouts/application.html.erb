@@ -29,7 +29,7 @@
             <li ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" >Kompanije</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-class="{active: glavni.isTrenutna('regKom')}"><a ng-click="glavni.setTrenutna('regKom')">Registracija kompanije</a></li>
+            <li ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')">Registracija kompanije</a></li>
             <li ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')">Registracija studenta</a></li>
             <li ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.setTrenutna('prijava')">Prijava</a></li>
           </ul>

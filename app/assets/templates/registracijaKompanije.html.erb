@@ -1,0 +1,45 @@
+<h2> Registracija kompanije </h2>
+<div class="container" style="position:relative; top:50px; width:400px;">
+        
+    <form class="form-register" ng-controller="registerCompanyController as registerCompany">
+            
+        <p> Naziv </p>
+        <label for="inputName" class="sr-only">Naziv</label>
+        <input type="text" ng-model="register.podaci.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Lokacija </p>
+        <label for="inputLocation" class="sr-only">Lokacija</label>
+        <input type="text" ng-model="register.podaci.loaction" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Opis </p>
+        <label for="inputDescription" class="sr-only">Opis</label>
+        <input type="text" ng-model="register.podaci.description" id="inputDescription" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Web adresa </p>
+        <label for="inputWeb" class="sr-only">Web adresa</label>
+        <input type="text" ng-model="register.podaci.web" id="inputWeb" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Telefon </p>
+        <label for="inputPhone" class="sr-only">Telefon</label>
+        <input type="text" ng-model="register.podaci.phone" id="inputPhone" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Email </p>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" ng-model="register.podaci.email" id="inputEmail" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Username </p>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="text" ng-model="register.podaci.username" id="inputUsername" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Password </p>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" ng-model="register.podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
+
+        <p> Potvrda passworda </p>
+        <label for="inputPasswordConfirmation" class="sr-only">Potvrda passworda</label>
+        <input type="password" ng-model="register.podaci.name" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Registracija kompanije</button>
+    </form>
+    <br><br><br><br>
+</div>
