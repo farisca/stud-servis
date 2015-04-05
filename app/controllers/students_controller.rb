@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   def new
     @student = Student.new
@@ -17,11 +18,14 @@ class StudentsController < ApplicationController
     end
   end
 
-  def add_student 
-    @student = Student.new
-    is_added = @student.create_student(params[:name], params[:surname], params[:email], params[:password], params[:password_confirmation])
+  def add_student
+    @st = Student.new
+    
+    is_added = @st.create_student(params["name"], params["surname"], params["email"], params["password"], params["password_confirmation"])
+    
     if is_added==false
       return render json: { error: is_added }
+      raise
     end
   end
 

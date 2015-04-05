@@ -33,12 +33,27 @@ ActiveRecord::Schema.define(version: 20150403081759) do
   add_index "companies", ["location_id"], name: "index_companies_on_location_id"
   add_index "companies", ["user_id"], name: "index_companies_on_user_id"
 
+  create_table "employers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "location_id"
+    t.string   "description"
+    t.string   "web"
+    t.string   "phone"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "employers", ["location_id"], name: "index_employers_on_location_id"
+  add_index "employers", ["user_id"], name: "index_employers_on_user_id"
+
   create_table "jobs", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "company_id"
     t.string   "description"
     t.integer  "location_id"
-    t.datetime "duration"
+    t.integer  "published"
+    t.integer  "duration"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

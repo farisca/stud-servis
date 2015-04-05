@@ -4,20 +4,23 @@ class Student < ActiveRecord::Base
   
   has_many :registrations
 
-  def create_students (name, surname, email, password, password_confirmation)
-      
-    student = Student.new
-    student.name = name
-    student.surname = surname
-    student.user.email = email
-    student.user.password = password
-    student.user.password_confirmation = password_confirmation
-
-    if student.save
-      return true
+  def create_student(name, surname, email, password, password_confirmation)
+    
+    user = User.new
+    user.email = email
+    user.password = password
+    user.password_confirmation = password_confirmation
+    if user.save
+      student = Student.new
+      student.name = name
+      student.surname = surname
+      student.user_id = user.id
+      if student.save
+        return true
+      else 
+        return false
+      end
     end
-
-    false
   end
 
 
