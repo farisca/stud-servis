@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 
   # GET /jobs
   # GET /jobs.json
-  def index
+  def getAllJobs
     @jobs = Job.all
   end
 
@@ -24,7 +24,7 @@ class JobsController < ApplicationController
 
   # POST /jobs
   # POST /jobs.json
-  def create
+  def add_job
     @job = Job.new(job_params)
 
     respond_to do |format|
