@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="aplikacija">
 <head>
 <base href="/">
   <title>StudServis</title>
@@ -9,7 +9,7 @@
 
 </head>
 
-<body ng-app="aplikacija">
+<body>
 
 	 <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -30,8 +30,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-class="{active: glavni.isTrenutna('regKom')}"><a ng-click="glavni.setTrenutna('regKom')">Registracija kompanije</a></li>
-            <li ng-class="{active: glavni.isTrenutna('regStud')}"><a ng-click="glavni.setTrenutna('regStud')">Registracija studenta</a></li>
-            <li ng-class="{active: glavni.isTrenutna('prijava')}"><a ng-click="glavni.setTrenutna('prijava')">Prijava</a></li>
+            <li ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')">Registracija studenta</a></li>
+            <li ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.setTrenutna('prijava')">Prijava</a></li>
           </ul>
         </div>
       </div>
@@ -53,8 +53,7 @@
 
     </div>
 
-    <div ng-show="glavni.isTrenutna('regStud')"> 
-  
+    <div ng-show="glavni.isTrenutna('regStud')">  
     </div>
 
     <div ng-show="glavni.isTrenutna('prijava')"> 
