@@ -19,10 +19,10 @@ angular$this.val()
         $routeProvider
             .when('/registracija', {
                 templateUrl: 'registracija.html',
-                controller: 'register'
+                controller: 'registerController'
             }).when('/login', {
                 templateUrl: 'login.html',
-                controller: 'login'
+                controller: 'loginController'
             }).when('/kompanija', {
                 templateUrl: 'registracijaKompanije.html',
                 controller: 'registerCompany'

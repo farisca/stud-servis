@@ -1,4 +1,15 @@
+
 angular.module('aplikacija')
-    .controller('login', function ($scope) {
-        $scope.things = ['Angular', 'Rails 4.1', 'Working', 'Together!!'];
-    });
+    .controller("loginController", function() {
+		this.podaci={};
+
+		this.logiraj = function(glavni) {
+			alert(this.podaci.password);
+			glavni.setPrijavljen(this.podaci.email);
+
+		}
+
+		this.podaci={};
+
+	});
+
