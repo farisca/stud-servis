@@ -22,7 +22,7 @@ angular
                 controller: 'register'
             }).when('/login', {
                 templateUrl: 'login.html',
-                controller: 'login'
+                controller: 'loginController'
             }).when('/kompanija', {
                 templateUrl: 'registracijaKompanije.html',
                 controller: 'registerCompany'

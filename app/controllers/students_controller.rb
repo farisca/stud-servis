@@ -38,6 +38,12 @@ class StudentsController < ApplicationController
     end
   end
 
+  def proba
+    student = Student.new
+    student.name="ajdin"
+    student.post
+  end
+
   private
     def student_params
       params.require(:student).permit(:name, :surname, :location_id, :university, :faculty, :cv, :user_id)

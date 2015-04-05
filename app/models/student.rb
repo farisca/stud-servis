@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
   def get(id_student)
   	student = Student.find_by(id: id_student)
 
-  	student
+  	self
   end
 
   def post
