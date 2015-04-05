@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.save
         format.json { render :show, status: :created, location: @company }
+        SignUpNotifier.registrated(@company).deliver
       else
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end

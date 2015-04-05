@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.json { render json: @user, status: :created, location: @user }
-        SignUpNotifier.registrated(@user).deliver
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

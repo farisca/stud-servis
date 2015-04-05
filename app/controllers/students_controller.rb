@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @student.save
         format.json { render json: @student, status: :created, location: @student }
+        SignUpNotifier.registrated(@student).deliver
       else
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end

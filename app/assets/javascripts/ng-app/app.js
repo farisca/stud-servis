@@ -11,7 +11,7 @@
         $locationProvider.html5Mode(true);
     });*/
 
-angular$this.val()
+angular
     .module('aplikacija', [
         'ngRoute',
         'templates'
