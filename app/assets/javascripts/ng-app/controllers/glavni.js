@@ -12,8 +12,14 @@ angular.module('aplikacija')
 		}
 
 		this.isVidljiv = function(stranica) {
-			if((stranica == "prijava" || stranica == "registracijaStudenta" || stranica == "registracijaKompanije") && AuthToken.get() == "") return true;
-			if((stranica == "odjava") && AuthToken.get() != "") return true;
+			console.log("mijenjam vidljivost" + stranica);
+			if(stranica == "prijava" && AuthToken.get() == "") return true;
+			if(stranica == "registracijaStudenta" && AuthToken.get() == "") return true;
+			if(stranica == "registracijaKompanije" && AuthToken.get() == "") return true;
+			if(stranica == "odjava" && AuthToken.get() != "") return true;
+			if(stranica == "oglasi" && AuthToken.get() != "") return true;
+			if(stranica == "kompanija" && AuthToken.get() != "") return true;
+			if(stranica == "pocetna" && AuthToken.get() != "") return true;
 			return false;
 			
 		}
