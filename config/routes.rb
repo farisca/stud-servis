@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
 
+
+
   resources :jobs
 
   resources :companies do
     post "add_company", on: :collection
   end
+
+
+  resources :sessions do
+    post "add_session", on: :collection
+    get "delete_session", on: :collection
+  end
+
 
   resources :categories
 
@@ -16,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :students do
     post "add_student", on: :collection
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

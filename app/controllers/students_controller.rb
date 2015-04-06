@@ -24,6 +24,7 @@ class StudentsController < ApplicationController
     is_added = @st.create_student(params["name"], params["surname"], params["email"], params["password"], params["password_confirmation"])
     
     if is_added==false
+      log_in @user
       return render json: { error: is_added }
     else 
       return render json: { error: "OK" }

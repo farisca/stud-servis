@@ -1,7 +1,7 @@
 
 
 angular.module('aplikacija')
-    .controller("glavniController", function() {
+    .controller("glavniController", ['$http', '$location', '$window', function($http, $location, $window) {
 		this.trenutnaStranica="home";
 		this.prijavljen={};
 
@@ -27,5 +27,18 @@ angular.module('aplikacija')
 			this.prijavljen.ime=naziv;
 		}
 
+		this.logout = function() {
+			
+			$http.get("/sessions/delete_session");
+			//alert("logoutam");
+			$window.location.reload();
+    				$location.path('login');
+		}
 
-	});
+		this.prijava = function() {
+			//alert("logiram se");
+			$location.path('/login');
+		}
+
+
+	}]);
