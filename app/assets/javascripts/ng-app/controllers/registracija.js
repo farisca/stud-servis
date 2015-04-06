@@ -1,5 +1,5 @@
 angular.module('aplikacija')
-    .controller('registerController', ['$http', function ($http) {
+    .controller('registerController', ['$http', '$location', '$window', function ($http, $location, $window) {
     	this.podaci={};
     	this.errorMsg="";
     	this.successMsg="";
@@ -17,8 +17,13 @@ angular.module('aplikacija')
     		
     		if (!(this.isError())) {
     			res = $http.post('/students/add_student', this.podaci);
+
 				res.success(function(data, status, headers, config) {
-					if (data=="OK") this.successMsg = data;
+					if (data.error=="OK") {
+                        this.successMsg = data;
+                        $window.location.reload();
+                        $location.path('potvrdaORegistraciji');
+                    }
 					else this.errorMsg=data;
 				});
     		}

@@ -20,6 +20,9 @@ angular
             .when('/registracija', {
                 templateUrl: 'registracija.html',
                 controller: 'registerController'
+            }).when('/potvrdaORegistraciji', {
+                templateUrl: 'potvrdaORegistraciji.html',
+                
             }).when('/oglasi', {
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'

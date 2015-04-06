@@ -27,8 +27,11 @@ class StudentsController < ApplicationController
       log_in @user
       return render json: { error: is_added }
     else 
+      
+      @student = User.find_by(email: params["email"])
+      SignUpNotifier.registrated(@student).deliver
+
       return render json: { error: "OK" }
-      SignUpNotifier.registrated(@st).deliver
     end
   end
 

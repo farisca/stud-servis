@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+  
   belongs_to :location
   belongs_to :user
   
@@ -16,6 +17,7 @@ class Student < ActiveRecord::Base
       student.surname = surname
       student.user_id = user.id
       if student.save
+        
         return true
       else 
         return false
