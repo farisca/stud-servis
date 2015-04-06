@@ -12,7 +12,7 @@ angular.module('aplikacija')
 		}
 
 		this.isVidljiv = function(stranica) {
-			console.log("mijenjam vidljivost" + stranica);
+			//console.log("mijenjam vidljivost" + stranica);
 			if(stranica == "prijava" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaStudenta" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaKompanije" && AuthToken.get() == "") return true;
