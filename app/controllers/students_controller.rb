@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
+  
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+
   skip_before_action :verify_authenticity_token
 
   def new

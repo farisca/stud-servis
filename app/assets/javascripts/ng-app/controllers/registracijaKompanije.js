@@ -1,5 +1,5 @@
 angular.module('aplikacija')
-    .controller('registerCompanyController', ['$http', function ($http) {
+    .controller('registerCompanyController', ['$http', '$location', function ($http, $location) {
     	this.podaci={};
     	this.errorMsg="";
     	this.successMsg="";
@@ -16,9 +16,9 @@ angular.module('aplikacija')
     		else if (this.podaci.password != this.podaci.password_confirmation) this.errorMsg ="Password i potvrda passworda se razlikuju!";
     		
     		if (!(this.isError())) {
-    			res = $http.post('/students/add_company', this.podaci);
+    			res = $http.post('/companies/add_company', this.podaci);
 				res.success(function(data, status, headers, config) {
-					if (data=="OK") this.successMsg = data;
+					if (status==200) $location.path('/potvrdaORegistraciji')
 					else this.errorMsg=data;
 				});
     		}

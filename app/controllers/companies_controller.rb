@@ -10,28 +10,24 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
-
-    respond_to do |format|
-      if @company.save
-        format.json { render :show, status: :created, location: @company }
-        SignUpNotifier.registrated(@company).deliver
-      else
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
-    end
+    add_company
   end
 
+
   def add_company
-    @comp = Company.new
+    @co = Company.new
     
-    is_added = @comp.create_company(params["name"], params["street"], params["location"], params["password"], params["password_confirmation"])
+    is_added = @co.create_company(params["name"], params["street"], params["email"], params["city"], params["password"], params["password_confirmation"])
     
-    if is_added==false
+    if is_added == nil
       return render json: { error: is_added }
     else 
+      
+      
+    
+      SignUpNotifier.registrated(is_added).deliver
+
       return render json: { error: "OK" }
-      SignUpNotifier.registrated(@comp).deliver
     end
   end
 

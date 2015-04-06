@@ -23,24 +23,23 @@
           <a class="navbar-brand">Studentski servis</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <% if logged_in? %>
+          
           <ul class="nav navbar-nav">
             <li ng-class="{active: glavni.isTrenutna('home')}"><a ng-click="glavni.setTrenutna('home')">Početna</a></li>
             <li ng-class="{active: glavni.isTrenutna('oglasi')}"><a ng-click="glavni.setTrenutna('oglasi')">Oglasi</a></li>
             <li ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" >Kompanije</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-            <li ng-class="{active: glavni.isTrenutna('odjava')}"><a href="/" ng-click="glavni.logout()">Odjava</a></li>
-            </ul>
+            
           
-        <% else %>
+        
           <ul class="nav navbar-nav navbar-right">
-            <li ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')">Registracija kompanije</a></li>
-            <li ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')">Registracija studenta</a></li>
+            <li g-show="glavni.isVidljiv('registracijaKompanije')" ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')">Registracija kompanije</a></li>
+            <li g-show="glavni.isVidljiv('registracijaStudenta')" ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')">Registracija studenta</a></li>
           
-           <li ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.prijava()">Prijava</a></li>
+           <li ng-show="glavni.isVidljiv('prijava')" ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.prijava()">Prijava</a></li>
+            <li ng-show="glavni.isVidljiv('odjava')" ng-class="{active: glavni.isTrenutna('odjava')}"><a href="/" ng-click="glavni.logout()">Odjava</a></li>
            </ul>
-        <% end %>
+        
 
            
           

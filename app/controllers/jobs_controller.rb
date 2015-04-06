@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  before_action :set_current_user, :authenticate_request
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs

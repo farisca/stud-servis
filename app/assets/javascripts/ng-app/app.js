@@ -31,7 +31,7 @@ angular
                 controller: 'loginController'
             }).when('/kompanija', {
                 templateUrl: 'registracijaKompanije.html',
-                controller: 'registerCompany'
+                controller: 'registerCompanyController'
             });
         $locationProvider.html5Mode(true);
     });

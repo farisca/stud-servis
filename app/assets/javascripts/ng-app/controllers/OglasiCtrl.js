@@ -1,27 +1,19 @@
 
 angular.module('aplikacija')
-    .controller("OglasiCtrl", ['$http', '$window', '$location', function($http, $window, $location) {
+    .controller("OglasiCtrl", ['$http', '$window', '$location', 'AuthToken', function($http, $window, $location, AuthToken) {
 		this.podaci={};
-
+    console.log("token: " + AuthToken.get());
+    $http.get('/jobs.json').success(function(data, status, headers, config) {
+         console.log(data);
+        });
 		this.logiraj = function() {
-			alert(this.podaci.password);
-			$http.post('/sessions/add_session', this.podaci).
-  			success(function(data, status, headers, config) {
-    			if(data.error == "OK") {
-    				
-    				$window.location.reload();
-    				$location.path('oglasi');
-    			}
-    			else {
-    				alert(data.error);
-    			}
-  			}).
-  			error(function(data, status, headers, config) {
-				
-			});
+			console.log(this.podaci.password);
+			
 		}
 
 		this.podaci={};
 
 	}]);
+
+
 
