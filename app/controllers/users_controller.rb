@@ -36,6 +36,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def check_user
+    raise 
+    @email = params["email"]
+    @user = User.find_by(email: @email)
+    if @user.nil?
+      return false
+    else
+      SignUpNotifier.registrated(@user).deliver
+      return true
+    end
+  end
+
   def login
   end
 

@@ -22,7 +22,6 @@ angular
                 controller: 'registerController'
             }).when('/potvrdaORegistraciji', {
                 templateUrl: 'potvrdaORegistraciji.html',
-                
             }).when('/oglasi', {
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'
@@ -32,6 +31,11 @@ angular
             }).when('/kompanija', {
                 templateUrl: 'registracijaKompanije.html',
                 controller: 'registerCompanyController'
+            }).when('/promjenaSifre', {
+                templateUrl: 'promjenaSifre.html'
+            }).when('/unosEmail', {
+                templateUrl: 'unosEmail.html',
+                controller: 'emailController'
             });
         $locationProvider.html5Mode(true);
     });

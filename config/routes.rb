@@ -8,12 +8,10 @@ Rails.application.routes.draw do
     post "add_company", on: :collection
   end
 
-
   resources :sessions do
     post "add_session", on: :collection
     get "delete_session", on: :collection
   end
-
 
   resources :categories
 
@@ -21,7 +19,9 @@ Rails.application.routes.draw do
 
   resources :registrations
 
-  resources :users
+  resources :users do
+    post "check_user", on: :collection
+  end
 
   resources :students do
     post "add_student", on: :collection

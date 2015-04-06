@@ -1,0 +1,16 @@
+<h2> Promjena šifre </h2>
+<div class="container" style="position:relative; top:50px; width:400px;">
+  <form class="form-changePassword" ng-controller="passwordController">
+
+    <p> Password </p>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" ng-model="register.podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
+
+    <p> Potvrda passworda </p>
+    <label for="inputPasswordConfirmation" class="sr-only">Potvrda passworda</label>
+    <input type="password" ng-model="register.podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Promjena šifre</button>
+  </form>
+
+</div>
