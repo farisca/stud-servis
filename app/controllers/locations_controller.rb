@@ -7,6 +7,9 @@ class LocationsController < ApplicationController
     render json: Location.find(params[:id])
   end
 
+  def getAllLocations
+    render json: Location.all
+  end
   # POST /locations
   # POST /locations.json
   def create
