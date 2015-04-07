@@ -1,6 +1,7 @@
 angular.module('aplikacija')
     .controller('emailController', ['$http', '$location', '$window', function ($http, $location, $window) {
-    	this.podaci={};
+    	
+        this.podaci={};
     	this.errorMsg="";
     	this.successMsg="";
 
@@ -12,6 +13,7 @@ angular.module('aplikacija')
     	}
     	this.posalji= function() {
     		this.errorMsg="";
+
     		    		
     		if (!(this.isError())) {
     			res = $http.post('/users/check_user', this.podaci);

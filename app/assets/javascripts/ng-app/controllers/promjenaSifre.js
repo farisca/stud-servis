@@ -10,7 +10,7 @@ angular.module('aplikacija')
     			if(data.error == "OK") {
 
     				$window.location.reload();
-    				$location.path('oglasi');
+    				$location.path('login');
     			}
     			else {
     				alert(data.error);

@@ -37,15 +37,20 @@ class UsersController < ApplicationController
   end
 
   def check_user
-    raise 
+
     @email = params["email"]
     @user = User.find_by(email: @email)
     if @user.nil?
-      return false
+      return render json: { error: "NOT OK" }
     else
-      SignUpNotifier.registrated(@user).deliver
-      return true
+      SignUpNotifier.password_change(@user).deliver
+      return render json: { error: "OK" }
     end
+  end
+
+  def password_change 
+    @password1 = params["password"]
+    @password2 = params["password_confirmation"]
   end
 
   def login
