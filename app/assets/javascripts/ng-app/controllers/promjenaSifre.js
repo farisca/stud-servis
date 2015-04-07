@@ -2,8 +2,26 @@
 angular.module('aplikacija')
     .controller("passwordController", ['$http', '$window', '$location', function($http, $window, $location) {
 		this.podaci={};
+    alert("Ovdje");
+    this.promjeni = function() {
+      
+      $http.put('/users/password_change', this.podaci).
+        success(function(data, status, headers, config) {
+          if(data.error == "OK") {
 
-		this.logiraj = function() {
+            $window.location.reload();
+            $location.path('oglasi');
+          }
+          else {
+            alert(data.error);
+          }
+        }).
+        error(function(data, status, headers, config) {
+        
+      });
+    }
+
+		/*this.logiraj = function() {
 			
 			$http.post('/sessions/add_session', this.podaci).
   			success(function(data, status, headers, config) {
@@ -19,7 +37,7 @@ angular.module('aplikacija')
   			error(function(data, status, headers, config) {
 				
 			});
-		}
+		}*/
 
 		this.podaci={};
 

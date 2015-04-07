@@ -23,16 +23,14 @@ class StudentsController < ApplicationController
   def add_student
     @st = Student.new
     
-    is_added = @st.create_student(params["name"], params["surname"], params["email"], params["password"], params["password_confirmation"])
+    is_added, status = @st.create_student(params["name"], params["surname"], params["email"], params["password"], params["password_confirmation"])
     
-    if is_added==false
-      log_in @user
-      return render json: { error: is_added }
+    if is_added == false
+      #log_in @user
+      render json: { error: status } 
     else 
-      
       @student = User.find_by(email: params["email"])
       SignUpNotifier.registrated(@student).deliver
-
       return render json: { error: "OK" }
     end
   end

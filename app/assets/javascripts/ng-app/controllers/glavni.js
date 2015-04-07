@@ -20,6 +20,7 @@ angular.module('aplikacija')
 			if(stranica == "oglasi" && AuthToken.get() != "") return true;
 			if(stranica == "kompanija" && AuthToken.get() != "") return true;
 			if(stranica == "pocetna" && AuthToken.get() != "") return true;
+			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
 			return false;
 			
 		}

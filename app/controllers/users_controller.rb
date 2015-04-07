@@ -43,14 +43,29 @@ class UsersController < ApplicationController
     if @user.nil?
       return render json: { error: "NOT OK" }
     else
-      SignUpNotifier.password_change(@user).deliver
+      sifra = (0...8).map { (65 + rand(26)).chr }.join
+      @user.password = sifra
+      @user.password_confirmation = sifra
+      @user.save()
+      SignUpNotifier.password_change(@user, sifra).deliver
       return render json: { error: "OK" }
     end
   end
 
   def password_change 
-    @password1 = params["password"]
-    @password2 = params["password_confirmation"]
+    @email = params["email"]
+    @stari = params["stari_password"]
+    @novi = params["novi_password"]
+    raise
+    user = User.find_by(email: @email)
+    user.password = @novi
+    user.password_confirmation = @novi
+    if user.save()
+      return render json: { error: "OK" }
+    else
+      return render json: { error: "NOT OK" }
+    end
+
   end
 
   def login

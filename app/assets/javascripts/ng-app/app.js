@@ -32,7 +32,8 @@ angular
                 templateUrl: 'registracijaKompanije.html',
                 controller: 'registerCompanyController'
             }).when('/promjenaSifre', {
-                templateUrl: 'promjenaSifre.html'
+                templateUrl: 'promjenaSifre.html',
+                controller: 'passwordController'
             }).when('/unosEmail', {
                 templateUrl: 'unosEmail.html',
                 controller: 'emailController'
