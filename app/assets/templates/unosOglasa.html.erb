@@ -1,0 +1,48 @@
+<h2> Registracija studenta </h2>
+<div class="container" style="position:relative; top:50px; width:400px;">
+        
+    <form class="form-register" ng-controller="JobsController as job" ng-submit="job.createNewJob()">
+            
+        <p>Odaberite kategoriju:</p>
+        <label for="inputCategory" class="sr-only">Kategorija</label>
+        <input type="text" ng-model="job.podaci.category_id" id="inputCategory" class="form-control" placeholder="" required autofocus><br>
+
+        <p>Odaberite kompaniju:</p>
+        <label for="inputCompany" class="sr-only">Kompanija</label>
+        <input type="text" ng-model="job.podaci.company_id" id="inputCompany" class="form-control" placeholder="" required autofocus><br>
+
+        <p>Opis:</p>
+        <label for="inputDescription" class="sr-only">Opis</label>
+        <input type="text" ng-model="job.podaci.description" id="inputDescription" class="form-control" placeholder="" required autofocus><br>
+
+        <p>Odaberite lokaciju:</p>
+        <label for="inputLocation" class="sr-only">Lokacija</label>
+        <input type="text" ng-model="job.podaci.location_id" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
+
+        <p>Trajanje oglasa:</p>
+        <label for="inputDuration" class="sr-only">Trajanje:</label>
+        <input type="text" ng-model="job.podaci.duration" id="inputDuration" class="form-control" placeholder="" required autofocus><br><br>
+        
+        <p>Pocetak trajanja oglasa:</p>        
+        <input type="datetime-local" id="inputCreationDateTime"  ng-model="job.podaci.created_at" placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2020-12-31T00:00:00" required />
+        
+        <p>Istek trajanja oglasa:</p>        
+        <input type="datetime-local" id="inputUpdatedDateTime"  ng-model="job.podaci.updated_at" placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2020-12-31T00:00:00" required />
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Unesi novi oglas</button>
+        <br>
+
+        <div ng-show="job.isError()" class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Greška:</span>
+  {{job.errorMsg}}
+</div>
+
+        <div ng-show="job.isSuccess()" class="alert alert-success" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  {{job.successMsg}}
+</div>
+
+    </form>
+    <br><br><br><br>
+</div>
