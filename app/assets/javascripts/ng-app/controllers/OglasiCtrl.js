@@ -1,7 +1,8 @@
 
 angular.module('aplikacija')
     .controller("OglasiCtrl", ['$http', '$window', '$location', 'AuthToken', function($http, $window, $location, AuthToken) {
-		this.podaci={};
+	
+	this.podaci={};
     console.log("token: " + AuthToken.get());
     $http.get('/jobs.json').success(function(data, status, headers, config) {
          console.log(data);
