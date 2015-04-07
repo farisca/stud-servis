@@ -25,6 +25,9 @@ angular
             }).when('/oglasi', {
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'
+            }).when('/unosOglasa', {
+                templateUrl: 'unosOglasa.html',
+                controller: 'JobsController'
             }).when('/login', {
                 templateUrl: 'login.html',
                 controller: 'loginController'
