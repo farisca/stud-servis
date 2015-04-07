@@ -4,7 +4,7 @@ angular.module('aplikacija')
     .controller("glavniController", ['$http', '$location', '$window', 'AuthToken', function($http, $location, $window, AuthToken) {
 		this.trenutnaStranica="home";
 		this.prijavljen={};
-
+        var obj;
 		console.log("token" + AuthToken.get());
 
 		this.isTrenutna = function(stranica) {
