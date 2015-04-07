@@ -18,9 +18,11 @@
         <div ng-controller="LocationController">
         <p>Odaberite lokaciju:</p>
         <label for="inputLocation" class="sr-only">Lokacija</label>
-        <ul ng-repeat="location in podaci">
-        <li>{{location.city}}</li>
-        </ul>
+        <select id='lista' style="width:100%">
+        <option ng-repeat="location in podaci">
+        {{location.city}}</option>
+        </select>
+        <br/><br/>
         <input type="text" ng-model="job.podaci.location_id" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
         </div>
         <p>Trajanje oglasa:</p>
