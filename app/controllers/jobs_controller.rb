@@ -5,7 +5,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def getAllJobs
-    @jobs = Job.all
+   render json: Job.all
   end
 
   # GET /jobs/1
