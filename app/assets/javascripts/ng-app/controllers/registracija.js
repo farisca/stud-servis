@@ -3,7 +3,8 @@ angular.module('aplikacija')
     	this.podaci={};
     	this.errorMsg="";
     	this.successMsg="";
-
+        var res;
+        
     	this.isError=function() {
     		return (!(this.errorMsg===""));
     	}
