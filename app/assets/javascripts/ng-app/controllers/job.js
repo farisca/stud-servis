@@ -1,10 +1,12 @@
 
-angular.module('aplikacija')
-    .controller('getAllJobs', ['$http', function ($http) {
+var app=angular.module('aplikacija');
+
+app.controller('JobsController', ['$http', function ($http) {
     	this.podaci={};
     	this.errorMsg="";
     	this.successMsg="";
-
+	    var res;
+	    
     	this.isError=function() {
     		return (!(this.errorMsg===""));
     	}
@@ -16,7 +18,9 @@ angular.module('aplikacija')
     		this.errorMsg="";
     		
     		if (!(this.isError())) {
+    		
     			res = $http.get('/jobs/getAllJobs', this.podaci);
+    			
 				res.success(function(data, status, headers, config) {
 					if (data=="OK") this.successMsg = data;
 					else this.errorMsg=data;

@@ -52,19 +52,27 @@ class UsersController < ApplicationController
     end
   end
 
+  before_action :set_current_user, :authenticate_request, only: [:password_change]
+
   def password_change 
     @email = params["email"]
     @stari = params["stari_password"]
     @novi = params["novi_password"]
     @potvrda = params["password_confirmation"]
-    
-    user = User.find_by(email: @email)
-    user.password = @novi
-    user.password_confirmation = @potvrda
-    if user.save()
-      return render json: { error: "OK" }
+
+    user = @current_user
+    trenutni = user.authenticate(@stari)
+
+    if trenutni != false
+      user.password = @novi
+      user.password_confirmation = @potvrda
+      if user.save()
+        return render json: { error: "OK" }
+      else
+        return render json: { error: "NOT OK" }
+      end
     else
-      return render json: { error: "NOT OK" }
+      return render json: { error: "Pogresna stara sifra" }
     end
 
   end

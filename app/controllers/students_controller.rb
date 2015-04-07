@@ -27,7 +27,7 @@ class StudentsController < ApplicationController
     
     if is_added == false
       #log_in @user
-      render json: { error: status } 
+      return render json: { error: "Već postoji korisnik sa istim email-om." } 
     else 
       @student = User.find_by(email: params["email"])
       SignUpNotifier.registrated(@student).deliver

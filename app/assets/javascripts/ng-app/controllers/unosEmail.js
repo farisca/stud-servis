@@ -22,7 +22,7 @@ angular.module('aplikacija')
 				res.success(function(data, status, headers, config) {
 					if (data.error=="OK") {
                         this.successMsg = data;
-                        $window.location.reload();
+                        //$window.location.reload();
                         $location.path('potvrdaORegistraciji');
                     }
 					else this.errorMsg=data;

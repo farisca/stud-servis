@@ -17,6 +17,18 @@
     <input type="password" ng-model="passwordC.podaci.password_confirmation" id="inputPassword3" class="form-control" placeholder="" required autofocus><br><br>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Promjena šifre</button>
+
+    <div ng-show="passwordC.isError()" class="alert alert-danger" role="alert">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  <span class="sr-only">Greška:</span>
+	  {{passwordC.errorMsg}}
+	</div>
+
+	        <div ng-show="passwordC.isSuccess()" class="alert alert-success" role="alert">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  {{passwordC.successMsg}}
+	</div>
+
   </form>
 
 </div>
