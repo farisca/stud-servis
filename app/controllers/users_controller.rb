@@ -56,10 +56,11 @@ class UsersController < ApplicationController
     @email = params["email"]
     @stari = params["stari_password"]
     @novi = params["novi_password"]
-    raise
+    @potvrda = params["password_confirmation"]
+    
     user = User.find_by(email: @email)
     user.password = @novi
-    user.password_confirmation = @novi
+    user.password_confirmation = @potvrda
     if user.save()
       return render json: { error: "OK" }
     else
