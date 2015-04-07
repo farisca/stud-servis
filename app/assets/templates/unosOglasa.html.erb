@@ -2,11 +2,16 @@
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-controller="JobsController as job" ng-submit="job.createNewJob()">
-            
+        
+        <div ng-controller="CategoryController">
         <p>Odaberite kategoriju:</p>
         <label for="inputCategory" class="sr-only">Kategorija</label>
-        <input type="text" ng-model="job.podaci.category_id" id="inputCategory" class="form-control" placeholder="" required autofocus><br>
-
+        <select id='lista' style="width:100%">
+        <option ng-repeat="category in podaci">
+        {{category.name}}</option>
+        </select>
+        <br/><br/>
+        </div>
         <p>Odaberite kompaniju:</p>
         <label for="inputCompany" class="sr-only">Kompanija</label>
         <input type="text" ng-model="job.podaci.company_id" id="inputCompany" class="form-control" placeholder="" required autofocus><br>
@@ -23,7 +28,6 @@
         {{location.city}}</option>
         </select>
         <br/><br/>
-        <input type="text" ng-model="job.podaci.location_id" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
         </div>
         <p>Trajanje oglasa:</p>
         <label for="inputDuration" class="sr-only">Trajanje:</label>
