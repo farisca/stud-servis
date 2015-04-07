@@ -14,11 +14,15 @@
         <p>Opis:</p>
         <label for="inputDescription" class="sr-only">Opis</label>
         <input type="text" ng-model="job.podaci.description" id="inputDescription" class="form-control" placeholder="" required autofocus><br>
-
+         
+        <div ng-controller="LocationController">
         <p>Odaberite lokaciju:</p>
         <label for="inputLocation" class="sr-only">Lokacija</label>
+        <ul ng-repeat="location in podaci">
+        <li>{{location.city}}</li>
+        </ul>
         <input type="text" ng-model="job.podaci.location_id" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
-
+        </div>
         <p>Trajanje oglasa:</p>
         <label for="inputDuration" class="sr-only">Trajanje:</label>
         <input type="text" ng-model="job.podaci.duration" id="inputDuration" class="form-control" placeholder="" required autofocus><br><br>

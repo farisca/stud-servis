@@ -3,9 +3,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   # GET /locations/1.json
-  def show
-    render json: Location.find(params[:id])
-  end
+
 
   def getAllLocations
     render json: Location.all

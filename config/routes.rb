@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
 
 
-  resources :jobs
+  resources :jobs do
+    get "getAllJobs", on: :collection
+    post "add_job"
+  end
 
   resources :companies do
     post "add_company", on: :collection
@@ -15,7 +18,9 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :locations
+  resources :locations do
+    get "getAllLocations", on: :collection
+  end
 
   resources :registrations
 
