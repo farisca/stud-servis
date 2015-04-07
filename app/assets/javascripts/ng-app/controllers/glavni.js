@@ -4,7 +4,7 @@ angular.module('aplikacija')
     .controller("glavniController", ['$http', '$location', '$window', 'AuthToken', function($http, $location, $window, AuthToken) {
 		this.trenutnaStranica="home";
 		this.prijavljen={};
-
+        var obj;
 		console.log("token" + AuthToken.get());
 
 		this.isTrenutna = function(stranica) {
@@ -20,6 +20,7 @@ angular.module('aplikacija')
 			if(stranica == "oglasi" && AuthToken.get() != "") return true;
 			if(stranica == "kompanija" && AuthToken.get() != "") return true;
 			if(stranica == "pocetna" && AuthToken.get() != "") return true;
+			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
 			return false;
 			
 		}

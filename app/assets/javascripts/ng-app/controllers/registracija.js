@@ -23,7 +23,10 @@ angular.module('aplikacija')
                         this.successMsg = data;
                         $location.path('potvrdaORegistraciji');
                     }
-					else this.errorMsg=data;
+                    else if(data.error=="Korisnik već postoji")
+                        this.errorMsg = "Korisnik već postoji!";
+                    
+					else this.errorMsg=data.error;
 				});
     		}
     	}

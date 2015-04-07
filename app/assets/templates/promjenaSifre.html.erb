@@ -1,14 +1,20 @@
 <h2> Promjena šifre </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
-  <form class="form-changePassword" ng-controller="passwordController">
+  <form class="form-passwordC" ng-controller="passwordController as passwordC" ng-submit="passwordC.promjeni()">
 
-    <p> Password </p>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" ng-model="register.podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
+  	<input type="hidden" ng-model="passwordC.podaci.email" id="email" class="form-control" placeholder="" required autofocus><br>
 
-    <p> Potvrda passworda </p>
-    <label for="inputPasswordConfirmation" class="sr-only">Potvrda passworda</label>
-    <input type="password" ng-model="register.podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
+    <p> Stari password </p>
+    <label for="inputPassword1" class="sr-only">Stari password</label>
+    <input type="password" ng-model="passwordC.podaci.stari_password" id="inputPassword1" class="form-control" placeholder="" required autofocus><br>
+
+    <p> Novi password </p>
+    <label for="inputPassword2" class="sr-only">Novi password</label>
+    <input type="password" ng-model="passwordC.podaci.novi_password" id="inputPassword2" class="form-control" placeholder="" required autofocus><br>
+
+    <p> Potvrda novog passworda </p>
+    <label for="inputPassword3" class="sr-only">Potvrda passworda</label>
+    <input type="password" ng-model="passwordC.podaci.password_confirmation" id="inputPassword3" class="form-control" placeholder="" required autofocus><br><br>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Promjena šifre</button>
   </form>

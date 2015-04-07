@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :users do
     post "check_user", on: :collection
+    post "password_change", on: :collection
   end
 
   resources :students do

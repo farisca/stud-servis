@@ -37,15 +37,36 @@ class UsersController < ApplicationController
   end
 
   def check_user
-    raise 
+
     @email = params["email"]
     @user = User.find_by(email: @email)
     if @user.nil?
-      return false
+      return render json: { error: "NOT OK" }
     else
-      SignUpNotifier.registrated(@user).deliver
-      return true
+      sifra = (0...8).map { (65 + rand(26)).chr }.join
+      @user.password = sifra
+      @user.password_confirmation = sifra
+      @user.save()
+      SignUpNotifier.password_change(@user, sifra).deliver
+      return render json: { error: "OK" }
     end
+  end
+
+  def password_change 
+    @email = params["email"]
+    @stari = params["stari_password"]
+    @novi = params["novi_password"]
+    @potvrda = params["password_confirmation"]
+    
+    user = User.find_by(email: @email)
+    user.password = @novi
+    user.password_confirmation = @potvrda
+    if user.save()
+      return render json: { error: "OK" }
+    else
+      return render json: { error: "NOT OK" }
+    end
+
   end
 
   def login

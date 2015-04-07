@@ -7,8 +7,9 @@ class SignUpNotifier < ActionMailer::Base
     mail(:to => @student.email)
   end
 
-  def password_change(korisnik)
+  def password_change(korisnik, sifra)
   	@user = korisnik
+  	@sifra = sifra
     mail(:to => @user.email)
   end
 end

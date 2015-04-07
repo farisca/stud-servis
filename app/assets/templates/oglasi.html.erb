@@ -1,2 +1,14 @@
 <br><br><br>
 <h1>oglasi</h1>
+<div ng-controller ="getAllJobs">
+    <ul>
+    <li ng-repeat="p in podaci">
+      Name: <input ng-model="p.name">
+      <input type="checkbox" ng-model="color.notAnOption"> Disabled?
+      [<a href ng-click="podaci.splice($index, 1)">X</a>]
+    </li>
+    <li>
+      [<a href ng-click="podaci.push({})">add</a>]
+    </li>
+  </ul>
+</div>
