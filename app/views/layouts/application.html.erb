@@ -27,6 +27,7 @@
           <ul class="nav navbar-nav">
             <li ng-show="glavni.isVidljiv('pocetna')" ng-class="{active: glavni.isTrenutna('home')}"><a ng-click="glavni.setTrenutna('home')">Početna</a></li>
             <li ng-show="glavni.isVidljiv('oglasi')" ng-class="{active: glavni.isTrenutna('oglasi')}"><a ng-click="glavni.setTrenutna('oglasi')">Oglasi</a></li>
+            <li ng-show="glavni.isVidljiv('unosOglasa')" ng-class="{active: glavni.isTrenutna('unosOglasa')}"><a ng-click="glavni.setTrenutna('unosOglasa')">Unos oglasa</a></li>
             <li ng-show="glavni.isVidljiv('promjenaSifre')" ng-class="{active: glavni.isTrenutna('promjenaSifre')}"><a href= "/promjenaSifre" ng-click="glavni.setTrenutna('promjenaSifre')" >Promjena šifre</a></li>
             <li ng-show="glavni.isVidljiv('kompanije')" ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" >Kompanije</a></li>
             </ul>
