@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get "delete_session", on: :collection
   end
 
-  resources :categories
+  resources :categories do
+    get "getAllCategories", on: :collection
+  end
 
   resources :locations do
     get "getAllLocations", on: :collection
