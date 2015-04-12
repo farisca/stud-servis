@@ -18,4 +18,10 @@ class AuthController < ApplicationController
 		  	#render json: { error: 'Invalid username or password' }, status: :unauthorized
 		end
 	end
+
+	def confirm_registration
+		request.headers['Authorization'] = 'Bearer ' + params[:tk]
+		authenticate_request
+
+	end
 end

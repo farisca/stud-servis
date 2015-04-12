@@ -4,7 +4,7 @@ angular.module('aplikacija')
 	
 	this.podaci={};
     console.log("token: " + AuthToken.get());
-    $http.get('/jobs.json').success(function(data, status, headers, config) {
+    $http.get('/jobs/1.json').success(function(data, status, headers, config) {
          console.log(data);
         });
 		this.logiraj = function() {

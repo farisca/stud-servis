@@ -37,6 +37,9 @@ angular
             }).when('/promjenaSifre', {
                 templateUrl: 'promjenaSifre.html',
                 controller: 'passwordController'
+            }).when('/confirm', {
+                templateUrl: 'confirm.html',
+                controller: 'confirmCtrl'
             }).when('/unosEmail', {
                 templateUrl: 'unosEmail.html',
                 controller: 'emailController'

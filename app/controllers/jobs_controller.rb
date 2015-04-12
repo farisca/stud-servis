@@ -8,6 +8,10 @@ class JobsController < ApplicationController
    render json: Job.all
   end
 
+  def index
+   return render json: Job.all
+  end
+
   # GET /jobs/1
   # GET /jobs/1.json
   def show

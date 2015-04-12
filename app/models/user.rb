@@ -1,7 +1,7 @@
 class AuthToken
   def self.encode(payload, exp=24.hours.from_now)
   payload[:exp] = exp.to_i
-  JWT.encode(payload, Rails.application.secrets.secret_key_base)
+  return JWT.encode(payload, Rails.application.secrets.secret_key_base)
 end
   def self.decode(token)
     payload = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
@@ -27,6 +27,6 @@ class User < ActiveRecord::Base
 
 def generate_auth_token
   payload = { user_id: self.id }
-  AuthToken.encode(payload)
+  return AuthToken.encode(payload)
 end
 end

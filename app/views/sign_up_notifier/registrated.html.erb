@@ -1,3 +1,4 @@
 <br><br><br><br>
 
 Uspješno ste registrirani. Registrirali ste sa e-mailom: <a href="http://localhost:3000/login"><%= @student.email %></a>.
+Za potvrdu registracije posjetite sljedeci link: <a href="http://localhost:3000/confirm?token=<%= @student.generate_auth_token %>"><%= @student.email %></a>.

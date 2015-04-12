@@ -32,7 +32,7 @@ gem 'angular-rails-templates'
 gem 'jwt'
 
 group :production do
-  gem "pg"
+#  gem "pg"
 end
 
 
