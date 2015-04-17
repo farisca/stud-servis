@@ -20,7 +20,7 @@ angular.module('aplikacija').factory("AuthService", function($http, $q, $rootSco
     }
     confirm: function(tk, $scope) {
       var d = $q.defer();
-      $http.post('/confirm', {
+      $http.post('/confirm_reg', {
         tk: tk
       }).success(function(resp) {
         AuthToken.set(resp.auth_token, resp.type);

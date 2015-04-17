@@ -20,8 +20,9 @@ class AuthController < ApplicationController
 	end
 
 	def confirm_registration
+		
 		request.headers['Authorization'] = 'Bearer ' + params[:tk]
 		authenticate_request
-
+		#return json: { status: 'OK'}
 	end
 end

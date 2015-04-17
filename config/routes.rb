@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   post 'auth' => 'auth#authenticate'
-  get 'confirm' => 'auth#confirm_registration'
+#  get 'confirm' => 'auth#confirm_registration'
   root 'application#index'
   get '*path' => 'application#index'
   # Example of regular route:

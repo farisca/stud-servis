@@ -14,10 +14,12 @@ angular.module('aplikacija').factory("AuthInterceptor", function($q, $injector, 
     // ako je odgovor sa error statusom, preusmjeri na login
     responseError: function(response) {
       var matchesAuthenticatePath = response.config && response.config.url.match(new RegExp('/auth'));
+      console.log("ne valja");
       if (!matchesAuthenticatePath) {
         console.log("nemate pravo pristupa");
         $location.path('/login');
       }
+      $location.path('/login');
       return $q.reject(response);
     }
   };
