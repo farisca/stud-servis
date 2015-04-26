@@ -6,7 +6,7 @@
         <div ng-controller="CategoryController">
         <p>Odaberite kategoriju:</p>
         <label for="inputCategory" class="sr-only">Kategorija</label>
-        <select id='lista' style="width:100%">
+        <select class="form-control" id="select">
         <option ng-repeat="category in podaci">
         {{category.name}}</option>
         </select>
@@ -23,7 +23,7 @@
         <div ng-controller="LocationController">
         <p>Odaberite lokaciju:</p>
         <label for="inputLocation" class="sr-only">Lokacija</label>
-        <select id='lista' style="width:100%">
+        <select class="form-control" id="select">
         <option ng-repeat="location in podaci">
         {{location.city}}</option>
         </select>
