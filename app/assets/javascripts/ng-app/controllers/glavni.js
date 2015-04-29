@@ -22,6 +22,7 @@ angular.module('aplikacija')
 			if(stranica == "kompanija" && AuthToken.get() != "") return true;
 			if(stranica == "pocetna" && AuthToken.get() != "") return true;
 			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
+			if(stranica == "change_locale" && AuthToken.get() != "") return true;
 			return false;
 			
 		}

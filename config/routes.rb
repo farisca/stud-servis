@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get '/change_locale/:locale', to: 'languages#change_locale', as: :change_locale
 
   resources :jobs do
     get "getAllJobs", on: :collection
