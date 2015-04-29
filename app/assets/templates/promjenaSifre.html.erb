@@ -1,22 +1,23 @@
-<h2> Promjena šifre </h2>
+<br><br>
+<h2> <%= I18n.t('change_p')%> </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
   <form class="form-passwordC" ng-controller="passwordController as passwordC" ng-submit="passwordC.promjeni()">
 
   	<input type="hidden" ng-model="passwordC.podaci.email" id="email" class="form-control" placeholder="" required autofocus><br>
 
-    <p> Stari password </p>
+    <p> <%= I18n.t('old_password')%> </p>
     <label for="inputPassword1" class="sr-only">Stari password</label>
     <input type="password" ng-model="passwordC.podaci.stari_password" id="inputPassword1" class="form-control" placeholder="" required autofocus><br>
 
-    <p> Novi password </p>
+    <p> <%= I18n.t('new_password')%> </p>
     <label for="inputPassword2" class="sr-only">Novi password</label>
     <input type="password" ng-model="passwordC.podaci.novi_password" id="inputPassword2" class="form-control" placeholder="" required autofocus><br>
 
-    <p> Potvrda novog passworda </p>
+    <p> <%= I18n.t('confirmation_new')%> </p>
     <label for="inputPassword3" class="sr-only">Potvrda passworda</label>
     <input type="password" ng-model="passwordC.podaci.password_confirmation" id="inputPassword3" class="form-control" placeholder="" required autofocus><br><br>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Promjena šifre</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('change_password_button')%></button>
 
     <div ng-show="passwordC.isError()" class="alert alert-danger" role="alert">
 	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
