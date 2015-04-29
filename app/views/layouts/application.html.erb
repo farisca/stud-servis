@@ -25,22 +25,22 @@
         <div id="navbar" class="navbar-collapse collapse">
           
           <ul class="nav navbar-nav">
-            <li ng-show="glavni.isVidljiv('pocetna')" ng-class="{active: glavni.isTrenutna('home')}"><a ng-click="glavni.setTrenutna('home')">Početna</a></li>
-            <li ng-show="glavni.isVidljiv('oglasi')" ng-class="{active: glavni.isTrenutna('oglasi')}"><a ng-click="glavni.setTrenutna('oglasi')">Oglasi</a></li>
-            <li ng-show="glavni.isVidljiv('unosOglasa')" ng-class="{active: glavni.isTrenutna('unosOglasa')}"><a href= "/unosOglasa" ng-click="glavni.setTrenutna('unosOglasa')">Unos oglasa</a></li>
-            <li ng-show="glavni.isVidljiv('promjenaSifre')" ng-class="{active: glavni.isTrenutna('promjenaSifre')}"><a href= "/promjenaSifre" ng-click="glavni.setTrenutna('promjenaSifre')" >Promjena šifre</a></li>
-            <li ng-show="glavni.isVidljiv('kompanije')" ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" >Kompanije</a></li>
+            <li ng-show="glavni.isVidljiv('pocetna')" ng-class="{active: glavni.isTrenutna('home')}"><a ng-click="glavni.setTrenutna('home')"><%= I18n.t('home')%></a></li>
+            <li ng-show="glavni.isVidljiv('oglasi')" ng-class="{active: glavni.isTrenutna('oglasi')}"><a ng-click="glavni.setTrenutna('oglasi')"><%= I18n.t('ad')%></a></li>
+            <li ng-show="glavni.isVidljiv('unosOglasa')" ng-class="{active: glavni.isTrenutna('unosOglasa')}"><a href= "/unosOglasa" ng-click="glavni.setTrenutna('unosOglasa')"><%= I18n.t('new_ad')%></a></li>
+            <li ng-show="glavni.isVidljiv('promjenaSifre')" ng-class="{active: glavni.isTrenutna('promjenaSifre')}"><a href= "/promjenaSifre" ng-click="glavni.setTrenutna('promjenaSifre')" ><%= I18n.t('change_password')%></a></li>
+            <li ng-show="glavni.isVidljiv('kompanije')" ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" ><%= I18n.t('companies')%></a></li>
             </ul>
             
           
         
           <ul class="nav navbar-nav navbar-right">
 
-            <li ng-show="glavni.isVidljiv('registracijaKompanije')" ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')">Registracija kompanije</a></li>
-            <li ng-show="glavni.isVidljiv('registracijaStudenta')" ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')">Registracija studenta</a></li>
+            <li ng-show="glavni.isVidljiv('registracijaKompanije')" ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')"><%= I18n.t('register_company')%></a></li>
+            <li ng-show="glavni.isVidljiv('registracijaStudenta')" ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')"><%= I18n.t('register_student')%></a></li>
           
-           <li ng-show="glavni.isVidljiv('prijava')" ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.prijava()">Prijava</a></li>
-            <li ng-show="glavni.isVidljiv('odjava')" ng-class="{active: glavni.isTrenutna('odjava')}"><a href="/" ng-click="glavni.logout()">Odjava</a></li>
+           <li ng-show="glavni.isVidljiv('prijava')" ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.prijava()"><%= I18n.t('login')%></a></li>
+            <li ng-show="glavni.isVidljiv('odjava')" ng-class="{active: glavni.isTrenutna('odjava')}"><a href="/" ng-click="glavni.logout()"><%= I18n.t('logout')%></a></li>
            </ul>
         
 

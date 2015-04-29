@@ -1,29 +1,30 @@
-<h2> Registracija studenta </h2>
+<br><br>
+<h2> <%= I18n.t('register_student') %> </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-controller="registerController as register" ng-submit="register.posalji()">
             
-        <p> Ime </p>
+        <p> <%= I18n.t('student_name') %> </p>
         <label for="inputName" class="sr-only">Ime</label>
         <input type="text" ng-model="register.podaci.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
 
-        <p> Prezime </p>
-        <label for="inputSurname" class="sr-only">Prezime</label>
+        <p> <%= I18n.t('student_surname') %> </p>
+        <label for="inputSurname" class="sr-only"><%= I18n.t('student_surname') %></label>
         <input type="text" ng-model="register.podaci.surname" id="inputSurname" class="form-control" placeholder="" required autofocus><br>
 
-        <p> Email </p>
+        <p> <%= I18n.t('email') %> </p>
         <label for="inputEmail" class="sr-only">Email</label>
         <input type="email" ng-model="register.podaci.email" id="inputEmail" class="form-control" placeholder="" required autofocus><br>
 
-        <p> Password </p>
+        <p> <%= I18n.t('password') %> </p>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" ng-model="register.podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
 
-        <p> Potvrda passworda </p>
+        <p> <%= I18n.t('confirmation') %> </p>
         <label for="inputPasswordConfirmation" class="sr-only">Potvrda passworda</label>
         <input type="password" ng-model="register.podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Registracija</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_student_button') %></button>
         <br>
 
         <div ng-show="register.isError()" class="alert alert-danger" role="alert">

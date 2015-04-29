@@ -1,6 +1,5 @@
-
-
-<h2> Prijava </h2>
+<br><br>
+<h2> <%= I18n.t('login') %> </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
   <form class="form-signin" ng-controller="loginController as login" ng-submit="login.logiraj(glavni)">
       
@@ -10,10 +9,10 @@
     <input type="password" ng-model="login.podaci.password" id="inputPassword" class="form-control" placeholder="Password" required><br>
     <div class="checkbox">
         <label>
-          <input type="checkbox" ng-model="login.podaci.zapamti"> Zapamti prijavu
+          <input type="checkbox" ng-model="login.podaci.zapamti"> <%= I18n.t('save_login') %>
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Prijava</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('login_button') %></button>
       <div ng-show="login.isError()" class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   <span class="sr-only">Greška:</span>
@@ -23,6 +22,6 @@
     </form>
 
     <br>
-    <a href="/unosEmail">Zaboravili ste šifru?</a>
+    <a href="/unosEmail"><%= I18n.t('forgot_password') %></a>
 
 </div>
