@@ -1,8 +1,8 @@
 
 var app=angular.module('aplikacija');
 
-app.controller('JobsController', ['$http', function ($http) {
-    	this.podaci={};
+app.controller('JobsController', ['$http','$scope', function ($http, $scope) {
+    	$scope.podaci={};
     	this.errorMsg="";
     	this.successMsg="";
 	    var res;
@@ -14,31 +14,32 @@ app.controller('JobsController', ['$http', function ($http) {
     		return (!(this.successMsg===""));
     	}
     	
-    	this.getAllJobs= function() {
-    		this.errorMsg="";
-    		
-    		if (!(this.isError())) {
-    		
-    			res = $http.get('/jobs/getAllJobs', this.podaci);
-    			
-				res.success(function(data, status, headers, config) {
-					if (data=="OK") this.successMsg = data;
-					else this.errorMsg=data;
-				});
-    		}
-    	}
     	
-    	this.createNewJob= function() {
-    		this.errorMsg="";
-    		
-    		if (!(this.isError())) {
-    			res = $http.post('/jobs/add_job', this.podaci);
-				res.success(function(data, status, headers, config) {
-					if (data=="OK") this.successMsg = data;
-					else this.errorMsg=data;
+    	$http.get('jobs/getAllJobs').success(function(data, status, headers, config) {
+					this.successMsg="Success while geting all jobs!";
+					$scope.podaci=data;
+				
+				}).error(function(){
+					this.errorMsg="Error while geting all jobs!";
 				});
-    		}
-    	}
+		
+		this.createNewJob= function() {		
+		console.log(this.podaci);
+		
+        res= $http.post('/jobs/add_job',this.podaci);
         
+        res.success(function(data, status, headers, config) {
+					this.successMsg="Success while saving a new job!";
+					console.log(this.successMsg);
+				//	$scope.podaci=data;
+				
+				}).error(function(){
+					
+					this.errorMsg="Error while saving a new job!";
+					console.log(this.errorMsg);
+				});
+				
+		}
+    	
         
     }]);

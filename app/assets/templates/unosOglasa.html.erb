@@ -1,5 +1,5 @@
 <br><br>
-<h2> <%= I18n.t('create_ad')%> </h2>
+<!--<h2> <%= I18n.t('create_ad')%> </h2>-->
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-controller="JobsController as job" ng-submit="job.createNewJob()">
@@ -7,16 +7,23 @@
         <div ng-controller="CategoryController">
         <p><%= I18n.t('ad_category')%></p>
         <label for="inputCategory" class="sr-only">Kategorija</label>
-        <select class="form-control" id="select">
-        <option ng-repeat="category in podaci">
+        <select class="form-control" id="select" ng-model="job.podaci.category_name"   ng-init="job.podaci.category_name='Racunarstvo i informatika'">
+        <option ng-repeat="category in podaci" ng-selected="{{category.id==1}}" value={{category.name}} >
         {{category.name}}</option>
         </select>
         <br/><br/>
         </div>
+        
+        <div ng-controller="CompanyController">
         <p><%= I18n.t('ad_company')%></p>
         <label for="inputCompany" class="sr-only">Kompanija</label>
-        <input type="text" ng-model="job.podaci.company_id" id="inputCompany" class="form-control" placeholder="" required autofocus><br>
-
+        <select class="form-control" id="select" ng-model="job.podaci.company_name"  ng-init="job.podaci.company_name='Authority Partners'">
+        <option ng-repeat="company in podaci" ng-selected="{{company.id==1}}" value={{company.name}}>
+        {{company.name}}</option>
+        </select>
+        <br/><br/>
+        </div>
+        
         <p><%= I18n.t('ad_description')%></p>
         <label for="inputDescription" class="sr-only">Opis</label>
         <input type="text" ng-model="job.podaci.description" id="inputDescription" class="form-control" placeholder="" required autofocus><br>
@@ -24,8 +31,8 @@
         <div ng-controller="LocationController">
         <p><%= I18n.t('ad_location')%></p>
         <label for="inputLocation" class="sr-only">Lokacija</label>
-        <select class="form-control" id="select">
-        <option ng-repeat="location in podaci">
+        <select class="form-control" id="select" ng-model="job.podaci.city" ng-init="job.podaci.city='Sarajevo'">
+        <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value={{location.city}}>
         {{location.city}}</option>
         </select>
         <br/><br/>
@@ -33,15 +40,8 @@
         <p><%= I18n.t('ad_duration')%></p>
         <label for="inputDuration" class="sr-only">Trajanje:</label>
         <input type="text" ng-model="job.podaci.duration" id="inputDuration" class="form-control" placeholder="" required autofocus><br><br>
-        
-        <p><%= I18n.t('ad_start')%></p>        
-        <input type="datetime-local" id="inputCreationDateTime"  ng-model="job.podaci.created_at" placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2020-12-31T00:00:00" required />
-        <br><br>
-        <p><%= I18n.t('ad_end')%></p>        
-        <input type="datetime-local" id="inputUpdatedDateTime"  ng-model="job.podaci.updated_at" placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2020-12-31T00:00:00" required />
-        <br>
-        <br><br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('ad_button')%></button>
+
+ <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('ad_button') %></button>
         <br>
 
         <div ng-show="job.isError()" class="alert alert-danger" role="alert">

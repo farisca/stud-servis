@@ -5,7 +5,7 @@ angular.module('aplikacija')
 			this.podaci={};
       this.errorMsg="";
       this.isError=function() {
-        console.log("provjeravam da li ima poruka " + this.errorMsg);
+       // console.log("provjeravam da li ima poruka " + this.errorMsg);
         return (!(this.errorMsg===""));
       }
       this.isSuccess=function() {

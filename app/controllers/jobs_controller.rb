@@ -8,37 +8,19 @@ class JobsController < ApplicationController
    render json: Job.all
   end
 
-  def index
-   return render json: Job.all
-  end
-
   # GET /jobs/1
   # GET /jobs/1.json
   def show
     render json: @job
   end
 
-  # GET /jobs/new
-  def new
-    @job = Job.new
-  end
-
-  # GET /jobs/1/edit
-  def edit
-  end
-
   # POST /jobs
   # POST /jobs.json
   def add_job
-    @job = Job.new(job_params)
+    @job = Job.new
 
-    respond_to do |format|
-      if @job.save
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
-    end
+    is_added, status = @job.create_job(params["category_name"], params["company_name"], params["description"], params["city"], params["duration"]);
+
   end
 
   # PATCH/PUT /jobs/1

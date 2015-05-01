@@ -26,10 +26,8 @@ class StudentsController < ApplicationController
     is_added, status = @st.create_student(params["name"], params["surname"], params["email"], params["password"], params["password_confirmation"])
     
     if is_added == false
-      #log_in @user
-      return render json: { error: "Već postoji korisnik sa istim email-om." } 
+      return render json: { error: "Greska pri kreiranju studenta!" } 
     else 
-      @student = User.find_by(email: params["email"])
       SignUpNotifier.registrated(@student).deliver
       return render json: { error: "OK" }
     end

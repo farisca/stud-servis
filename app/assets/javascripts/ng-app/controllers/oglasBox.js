@@ -7,5 +7,5 @@ app.directive('oglasBox', function () {
 		link: function(scope, element, attrs) {
 
 		}
-	
+	}
 });

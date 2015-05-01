@@ -6,13 +6,12 @@ class CompaniesController < ApplicationController
   def show
     render json: @company
   end
-
+  
+  def getAllCompanies
+   render json: Company.all
+  end
   # POST /companies
   # POST /companies.json
-  def create
-    add_company
-  end
-
 
   def add_company
     @co = Company.new
@@ -22,9 +21,6 @@ class CompaniesController < ApplicationController
     if is_added == nil
       return render json: { error: is_added }
     else 
-      
-      
-    
       SignUpNotifier.registrated(is_added).deliver
 
       return render json: { error: "OK" }

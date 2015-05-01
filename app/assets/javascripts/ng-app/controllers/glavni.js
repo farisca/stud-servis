@@ -16,12 +16,20 @@ angular.module('aplikacija')
 			if(stranica == "prijava" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaStudenta" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaKompanije" && AuthToken.get() == "") return true;
+			
+			//Za sve logirane usere
 			if(stranica == "odjava" && AuthToken.get() != "") return true;
-			if(stranica == "oglasi" && AuthToken.get() != "") return true;
+			
+			//Za sve logirane studente
+			if(stranica == "oglasi" && AuthToken.get() != "" ) return true;
+			
+			//Za logirane kompanije
 			if(stranica == "unosOglasa" && AuthToken.get() != "") return true;
 			if(stranica == "kompanija" && AuthToken.get() != "") return true;
 			if(stranica == "pocetna" && AuthToken.get() != "") return true;
 			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
+			if(stranica == "listaOglasa" && AuthToken.get() != "") return true;
+			
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
 			return false;
 			

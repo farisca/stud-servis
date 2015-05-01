@@ -7,9 +7,10 @@ angular.module('aplikacija').factory("AuthService", function($http, $q, $rootSco
         username: username,
         password: password
       }).success(function(resp) {
+        
         AuthToken.set(resp.auth_token, resp.type);
-        console.log("Uspjesno logiran. Dobiven token: " + resp.auth_token);
-        $location.path('/oglasi');
+        console.log("Uspjesno logiran."+resp.type+" Dobiven token: " + resp.auth_token);
+        $location.path('/listaOglasa');
         d.resolve(resp.user);
       }).error(function(resp) {
         console.log($rootScope);
