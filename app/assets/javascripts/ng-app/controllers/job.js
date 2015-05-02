@@ -1,7 +1,7 @@
 
 var app=angular.module('aplikacija');
 
-app.controller('JobsController', ['$http','$scope', function ($http, $scope) {
+app.controller('JobsController', ['$http','$scope','$location', function ($http, $scope,$location ) {
     	$scope.podaci={};
     	this.errorMsg="";
     	this.successMsg="";
@@ -29,9 +29,12 @@ app.controller('JobsController', ['$http','$scope', function ($http, $scope) {
         res= $http.post('/jobs/add_job',this.podaci);
         
         res.success(function(data, status, headers, config) {
+        	       if (data.error=="OK") {
 					this.successMsg="Success while saving a new job!";
 					console.log(this.successMsg);
+					$location.path('potvrdaOUnesenomOglasu');
 				//	$scope.podaci=data;
+        	       }
 				
 				}).error(function(){
 					

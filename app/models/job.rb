@@ -20,6 +20,9 @@ class Job < ActiveRecord::Base
     if job.save
        status = "Oglas je uspjesno spasen!"
       return true, status
+    else
+       status = "Oglas nije spasen!"
+      return false, status
     end
     
   end

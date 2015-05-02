@@ -8,7 +8,7 @@
         <p><%= I18n.t('ad_category')%></p>
         <label for="inputCategory" class="sr-only">Kategorija</label>
         <select class="form-control" id="select" ng-model="job.podaci.category_name"   ng-init="job.podaci.category_name='Racunarstvo i informatika'">
-        <option ng-repeat="category in podaci" ng-selected="{{category.id==1}}" value={{category.name}} >
+        <option ng-repeat="category in podaci" ng-selected="{{category.id==1}}" value="{{category.name}}" >
         {{category.name}}</option>
         </select>
         <br/><br/>
@@ -18,7 +18,7 @@
         <p><%= I18n.t('ad_company')%></p>
         <label for="inputCompany" class="sr-only">Kompanija</label>
         <select class="form-control" id="select" ng-model="job.podaci.company_name"  ng-init="job.podaci.company_name='Authority Partners'">
-        <option ng-repeat="company in podaci" ng-selected="{{company.id==1}}" value={{company.name}}>
+        <option ng-repeat="company in podaci" ng-selected="{{company.id==1}}" value="{{company.name}}">
         {{company.name}}</option>
         </select>
         <br/><br/>
@@ -32,7 +32,7 @@
         <p><%= I18n.t('ad_location')%></p>
         <label for="inputLocation" class="sr-only">Lokacija</label>
         <select class="form-control" id="select" ng-model="job.podaci.city" ng-init="job.podaci.city='Sarajevo'">
-        <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value={{location.city}}>
+        <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
         {{location.city}}</option>
         </select>
         <br/><br/>
