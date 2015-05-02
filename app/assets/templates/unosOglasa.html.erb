@@ -41,19 +41,19 @@
         <label for="inputDuration" class="sr-only">Trajanje:</label>
         <input type="text" ng-model="job.podaci.duration" id="inputDuration" class="form-control" placeholder="" required autofocus><br><br>
 
- <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('ad_button') %></button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('ad_button') %></button>
         <br>
-
-        <div ng-show="job.isError()" class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Greška:</span>
-  {{job.errorMsg}}
-</div>
-
         <div ng-show="job.isSuccess()" class="alert alert-success" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  {{job.successMsg}}
-</div>
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          {{job.successMsg}}
+        </div>
+        <div ng-show="job.isError()" class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Greška:</span>
+              {{job.errorMsg}}
+        </div>
+
+        
 
     </form>
     <br><br><br><br>

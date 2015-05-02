@@ -29,7 +29,8 @@ angular.module('aplikacija')
 			if(stranica == "pocetna" && AuthToken.get() != "") return true;
 			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
 			if(stranica == "listaOglasa" && AuthToken.get() != "") return true;
-			
+			if(stranica == "potvrdaOUnesenomOglasu" && AuthToken.get() != "") return true;
+			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
 			return false;
 			

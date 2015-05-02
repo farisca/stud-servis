@@ -8,19 +8,25 @@ app.controller('JobsController', ['$http','$scope','$location', function ($http,
 	    var res;
 	    
     	this.isError=function() {
-    		return (!(this.errorMsg===""));
+    		if($scope.errorMsg!="")
+    		return true;
+    		else 
+    		return false
     	}
     	this.isSuccess=function() {
-    		return (!(this.successMsg===""));
+    		if($scope.successMsg)
+    		return true;
+    		else 
+    		return false;
     	}
     	
     	
     	$http.get('jobs/getAllJobs').success(function(data, status, headers, config) {
-					this.successMsg="Success while geting all jobs!";
+					$scope.successMsg="Success while geting all jobs!";
 					$scope.podaci=data;
 				
 				}).error(function(){
-					this.errorMsg="Error while geting all jobs!";
+					$scope.errorMsg="Error while geting all jobs!";
 				});
 		
 		this.createNewJob= function() {		
@@ -30,15 +36,15 @@ app.controller('JobsController', ['$http','$scope','$location', function ($http,
         
         res.success(function(data, status, headers, config) {
         	       if (data.error=="OK") {
-					this.successMsg="Success while saving a new job!";
+					$scope.successMsg="Success while saving a new job!";
 					console.log(this.successMsg);
-					$location.path('potvrdaOUnesenomOglasu');
+				//$location.path('potvrdaOUnesenomOglasu');
 				//	$scope.podaci=data;
         	       }
 				
 				}).error(function(){
 					
-					this.errorMsg="Error while saving a new job!";
+					$scope.errorMsg="Error while saving a new job!";
 					console.log(this.errorMsg);
 				});
 				
