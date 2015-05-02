@@ -12,10 +12,16 @@
         <label for="inputLocation" class="sr-only"><%= I18n.t('street') %></label>
         <input type="text" ng-model="registerCompany.podaci.street" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
 
-        <p> <%= I18n.t('city') %> </p>
+        <div ng-controller="LocationController">
+        <p><%= I18n.t('city')%></p>
         <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
-        <input type="text" ng-model="registerCompany.podaci.location" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
-
+        <select class="form-control" id="select" ng-model="registerCompany.podaci.location" ng-init="registerCompany.podaci.location='Sarajevo'">
+        <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
+        {{location.city}}</option>
+        </select>
+        <br/><br/>
+        </div>
+        
         <p> <%= I18n.t('email') %> </p>
         <label for="inputEmail" class="sr-only"><%= I18n.t('email') %></label>
         <input type="email" ng-model="registerCompany.podaci.email" id="inputEmail" class="form-control" placeholder="" required autofocus><br>
