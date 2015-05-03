@@ -55,6 +55,8 @@ class StudentsController < ApplicationController
   end
 
   before_action :set_current_user, :authenticate_request, only: [:show]
+  
+  
   def show
     @student = Student.find_by(user_id: current_user.id)
     render json: @student

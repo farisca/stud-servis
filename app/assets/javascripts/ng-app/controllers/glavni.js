@@ -1,11 +1,15 @@
-
-
 angular.module('aplikacija')
-    .controller("glavniController", ['$http', '$location', '$window', 'AuthToken', function($http, $location, $window, AuthToken) {
+    .controller("glavniController", ['$http', '$location', '$window', 'AuthToken','$scope', function($http, $location, $window, AuthToken, $scope) {
 		this.trenutnaStranica="home";
 		this.prijavljen={};
         var obj;
 		console.log("token" + AuthToken.get());
+		
+		 $http.get('/users/find_user_role').success(function(data, status, headers, config) {
+		 	
+    	 $scope.data.role = data.role;
+    	 
+         });
 
 		this.isTrenutna = function(stranica) {
 			return (stranica===this.trenutnaStranica);

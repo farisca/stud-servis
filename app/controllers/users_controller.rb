@@ -2,6 +2,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
 
+before_action :set_current_user, :authenticate_request, only: [:show]
+
+def find_user_role
+  u = User.find_by(id: current_user.id);
+  return u.id;
+end
+
   def show
     render json: @user
   end
