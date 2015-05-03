@@ -1,3 +1,4 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <br><br><br><br>
 <h2 align="center"> <%= I18n.t('register_company') %> </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
@@ -33,6 +34,9 @@
         <p> <%= I18n.t('confirmation') %> </p>
         <label for="inputPasswordConfirmation" class="sr-only"><%= I18n.t('confirmation') %></label>
         <input type="password" ng-model="registerCompany.podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
+
+        <div ng-model="register.grecaptcha" class="g-recaptcha" data-sitekey="6LdCOgYTAAAAAPYxkwGNL9UKIIj9dwP2VvsaL43t"></div>
+        <br>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_company_button') %></button>
 
