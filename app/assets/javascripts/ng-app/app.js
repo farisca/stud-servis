@@ -22,7 +22,8 @@ angular
                 controller: 'registerController'
             }).when('/potvrdaORegistraciji', {
                 templateUrl: 'potvrdaORegistraciji.html',
-            }).when('/oglasi', {
+            })
+            .when('/oglasi', {
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'
             }).when('/unosOglasa', {
