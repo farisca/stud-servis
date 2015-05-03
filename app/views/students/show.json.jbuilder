@@ -1,1 +1,0 @@
-json.extract! @student, :id, :name, :surname, :location_id, :university, :faculty, :cv, :user_id, :created_at, :updated_at
