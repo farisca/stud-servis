@@ -21,16 +21,33 @@ class StudentsController < ApplicationController
   end
 
   def add_student
-    @st = Student.new
     
-    is_added, status = @st.create_student(params["name"], params["surname"], params["email"], params["password"], params["password_confirmation"])
-    
-    if is_added == false
-      return render json: { error: "Greska pri kreiranju studenta!" } 
-    else 
-      SignUpNotifier.registrated(@student).deliver
-      return render json: { error: "OK" }
+    u = User.find_by(email: params["email"])
+    if !u.nil?
+      return render json: { error: "Korisnik već postoji!" } 
+    else
+
+      user = User.new
+      user.email = params["email"]
+      user.password = params["password"]
+      user.password_confirmation = params["password_confirmation"]
+      
+      if user.save
+
+        student = Student.new
+        student.name = params["name"]
+        student.surname = params["surname"]
+        student.user_id = user.id
+
+        if student.save
+          
+          SignUpNotifier.registrated(user).deliver
+          return render json: { error: student }
+        end
+
+      end
     end
+
   end
 
   def send_to_payment
