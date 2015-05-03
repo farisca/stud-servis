@@ -1,14 +1,15 @@
 <br><br>
 <h2> Oglas </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
-  <form class="form-choosen-ad" ng-controller="ChoosenAd as ad">
+  <form class="form-choosen-ad" ng-controller="ChoosenAd as ad" ng-submit="ad.prijavi()">
     <span> Kategorija: </span> <span class="kategorija"> </span> <br>
     <span> Kompanija: </span> <span class="kompanija"> </span> <br>
     <span> Opis: </span> <span class="opis"> </span> <br>
     <span> Lokacija: </span> <span class="lokacija"> </span> <br>
     <span> Trajanje oglasa: </span> <span class="trajanje"> </span> <br>
     <br>
-    <input type="button" class="btn btn-default" stxle="width: 120px;" value="Prijavi se"> 
+    
+    <input type="submit" class="btn btn-default" stxle="width: 300px;" value="Prijavi se na ovaj oglas"> 
 
   </form>
 

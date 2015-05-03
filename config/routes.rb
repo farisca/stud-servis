@@ -26,11 +26,14 @@ Rails.application.routes.draw do
     get "getAllLocations", on: :collection
   end
 
-  resources :registrations
+  resources :registrations do
+    get "make_registration", on: :collection
+  end
 
   resources :users do
     post "check_user", on: :collection
     post "password_change", on: :collection
+
   end
 
   resources :students do
