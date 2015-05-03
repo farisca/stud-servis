@@ -13,9 +13,11 @@ angular.module('aplikacija')
     	}
     	this.posalji= function() {
     		this.errorMsg="";
+
     		if (this.podaci.password.length < 5) this.errorMsg = "Password mora biti barem 5 karaktera dug!"
     		else if (this.podaci.password != this.podaci.password_confirmation) this.errorMsg ="Password i potvrda passworda se razlikuju!";
-    		
+            else if (grecaptcha.getResponse() == "") this.errorMsg = "Morate potvrditi da niste robot!";
+
     		if (!(this.isError())) {
     			res = $http.post('/students/add_student', this.podaci);
 

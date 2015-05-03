@@ -23,7 +23,7 @@ class Student < ActiveRecord::Base
         student.user_id = user.id
         if student.save
           status = "ok"
-          return true, status
+          return user, status
         end
       end
     end
