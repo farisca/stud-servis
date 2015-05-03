@@ -3,4 +3,5 @@ angular.module('aplikacija').service('AuthToken', function() {
 	this.set = function(token, tip) { localStorage.setItem("token", token); localStorage.setItem("tip", tip);};
 	this.get = function() { return localStorage.getItem("token"); };
 	this.tipKorisnika = function() { return localStorage.getItem("tip"); };
+	this.setTipKorisnika = function(tip) {  localStorage.setItem("tip", tip); };
 });
