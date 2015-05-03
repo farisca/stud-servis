@@ -19,10 +19,8 @@ class AuthController < ApplicationController
 		end
 	end
 
+	before_action :set_current_user, :authenticate_request, only: [:confirm_registration]
 	def confirm_registration
-		
-		request.headers['Authorization'] = 'Bearer ' + params[:tk]
-		authenticate_request
-		#return json: { status: 'OK'}
+		return render json: { status: 'OK'}
 	end
 end
