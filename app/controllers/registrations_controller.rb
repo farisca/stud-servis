@@ -1,5 +1,6 @@
 class RegistrationsController < ApplicationController
   #before_action :set_registration, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user, :authenticate_request, only: [:make_registration]
 
   # GET /registrations
   # GET /registrations.json
@@ -66,7 +67,7 @@ class RegistrationsController < ApplicationController
     
     @registration = Registration.new
     @registration.job_id = job
-    #@registration.student_id = student.id
+    @registration.student_id = student.id
     @registration.active = active
     if @registration.save!
       status = "0K"
