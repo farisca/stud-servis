@@ -46,6 +46,12 @@ angular
             }).when('/oglas/:id', {
                 templateUrl: 'odabraniOglas.html',
                 controller: 'ChoosenAd'
+            }).when('/home', {
+                templateUrl: 'home.html',
+                controller: 'oglasBoxController'
+            }).when('/oglasBox', {
+                templateUrl: 'oglasBox.html',
+                controller: 'oglasBoxController'
             });
         $locationProvider.html5Mode(true);
     });
