@@ -54,13 +54,8 @@ class StudentsController < ApplicationController
     redirect_to home_path
   end
 
-<<<<<<< HEAD
-  before_action :set_current_user, :authenticate_request, only: [:show]
-  
-  
-=======
   before_action :set_current_user, :authenticate_request, only: [:show, :update]
->>>>>>> 40df7084d28a6bef4eaae7d56096abc9a1235d84
+
   def show
     @student = Student.find_by(user_id: current_user.id)
     render json: @student
