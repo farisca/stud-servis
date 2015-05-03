@@ -16,6 +16,7 @@ class Student < ActiveRecord::Base
       user.email = email
       user.password = password
       user.password_confirmation = password_confirmation
+      user.role=0;  #Student role is zero
       if user.save
         student = Student.new
         student.name = name

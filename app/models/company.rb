@@ -9,6 +9,7 @@ class Company < ActiveRecord::Base
     user.email = email
     user.password = password
     user.password_confirmation = password_confirmation
+    user.role=1; #Company role is one
     if user.save
       
     	location = Location.new
