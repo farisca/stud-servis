@@ -58,5 +58,11 @@ bs:
   new_password: "Nova šifra"
   confirmation_new: "Potvrda nove šifre"
   change_password_button: "Promjena šifre"
-
+  profil: "Profil"
+  student_name: "Ime"
+  student_surname: "Prezime"
+  student_location: "Location"
+  student_university: "Univerzitet"
+  student_faculty: "Fakultet"
+  student_cv: "CV"
 

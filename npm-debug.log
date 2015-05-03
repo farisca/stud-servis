@@ -1,0 +1,690 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', 'ng-file-upload' ]
+2 info using npm@1.4.21
+3 info using node@v0.10.25
+4 verbose cache add [ 'ng-file-upload', null ]
+5 verbose cache add name=undefined spec="ng-file-upload" args=["ng-file-upload",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'ng-file-upload',
+6 verbose parsed url   path: 'ng-file-upload',
+6 verbose parsed url   href: 'ng-file-upload' }
+7 silly lockFile 0cca3cfe-ng-file-upload ng-file-upload
+8 verbose lock ng-file-upload /home/faris/.npm/0cca3cfe-ng-file-upload.lock
+9 silly lockFile 0cca3cfe-ng-file-upload ng-file-upload
+10 silly lockFile 0cca3cfe-ng-file-upload ng-file-upload
+11 verbose addNamed [ 'ng-file-upload', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 9cd988fe-ng-file-upload ng-file-upload@
+14 verbose lock ng-file-upload@ /home/faris/.npm/9cd988fe-ng-file-upload.lock
+15 silly addNameRange { name: 'ng-file-upload', range: '*', hasData: false }
+16 verbose request where is /ng-file-upload
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id b49c36cb06a03cf3
+19 verbose url raw /ng-file-upload
+20 verbose url resolving [ 'https://registry.npmjs.org/', './ng-file-upload' ]
+21 verbose url resolved https://registry.npmjs.org/ng-file-upload
+22 verbose request where is https://registry.npmjs.org/ng-file-upload
+23 info trying registry request attempt 1 at 14:02:15
+24 http GET https://registry.npmjs.org/ng-file-upload
+25 http 200 https://registry.npmjs.org/ng-file-upload
+26 silly registry.get cb [ 200,
+26 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"2VH2860C6RL8XJ1UOE1Y5CB49"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '59142',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     date: 'Sun, 03 May 2015 12:02:16 GMT',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     connection: 'keep-alive',
+26 silly registry.get     'x-served-by': 'cache-fra1228-FRA',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1430654535.836888,VS0,VE520',
+26 silly registry.get     vary: 'Accept' } ]
+27 silly addNameRange number 2 { name: 'ng-file-upload', range: '*', hasData: true }
+28 silly addNameRange versions [ 'ng-file-upload',
+28 silly addNameRange   [ '2.2.2',
+28 silly addNameRange     '3.0.1',
+28 silly addNameRange     '3.0.2',
+28 silly addNameRange     '3.0.3',
+28 silly addNameRange     '3.0.4',
+28 silly addNameRange     '3.0.5',
+28 silly addNameRange     '3.0.6',
+28 silly addNameRange     '3.0.7',
+28 silly addNameRange     '3.1.0',
+28 silly addNameRange     '3.1.1',
+28 silly addNameRange     '3.1.2',
+28 silly addNameRange     '3.2.0',
+28 silly addNameRange     '3.2.1',
+28 silly addNameRange     '3.2.2',
+28 silly addNameRange     '3.2.3',
+28 silly addNameRange     '3.2.4',
+28 silly addNameRange     '3.2.5',
+28 silly addNameRange     '3.3.0',
+28 silly addNameRange     '3.3.1',
+28 silly addNameRange     '3.3.2',
+28 silly addNameRange     '3.3.3',
+28 silly addNameRange     '3.3.4',
+28 silly addNameRange     '4.0.0',
+28 silly addNameRange     '4.0.1',
+28 silly addNameRange     '4.0.2',
+28 silly addNameRange     '4.0.3',
+28 silly addNameRange     '4.0.4',
+28 silly addNameRange     '4.1.0' ] ]
+29 verbose addNamed [ 'ng-file-upload', '4.1.0' ]
+30 verbose addNamed [ '4.1.0', '4.1.0' ]
+31 silly lockFile 82393e15-ng-file-upload-4-1-0 ng-file-upload@4.1.0
+32 verbose lock ng-file-upload@4.1.0 /home/faris/.npm/82393e15-ng-file-upload-4-1-0.lock
+33 silly lockFile 8ceff826--upload-ng-file-upload-4-1-0-tgz https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz
+34 verbose lock https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz /home/faris/.npm/8ceff826--upload-ng-file-upload-4-1-0-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz',
+35 verbose addRemoteTarball   '990e752895c78381a96820eebfd4f3f05879ff7d' ]
+36 info retry fetch attempt 1 at 14:02:16
+37 verbose fetch to= /tmp/npm-7775-nZ1rg7ZM/registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz
+38 http GET https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz
+39 http 200 https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz
+40 silly lockFile 8ceff826--upload-ng-file-upload-4-1-0-tgz https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz
+41 silly lockFile 8ceff826--upload-ng-file-upload-4-1-0-tgz https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz
+42 silly lockFile 82393e15-ng-file-upload-4-1-0 ng-file-upload@4.1.0
+43 silly lockFile 82393e15-ng-file-upload-4-1-0 ng-file-upload@4.1.0
+44 silly lockFile 9cd988fe-ng-file-upload ng-file-upload@
+45 silly lockFile 9cd988fe-ng-file-upload ng-file-upload@
+46 silly resolved [ { name: 'ng-file-upload',
+46 silly resolved     version: '4.1.0',
+46 silly resolved     devDependencies:
+46 silly resolved      { grunt: '~0.4.1',
+46 silly resolved        'grunt-contrib-uglify': '~0.2.7',
+46 silly resolved        'grunt-contrib-copy': '~0.4.1',
+46 silly resolved        'grunt-text-replace': '~0.3.12',
+46 silly resolved        'grunt-git': '~0.2.14' },
+46 silly resolved     dependencies: { 'grunt-contrib-concat': '~0.5.0' },
+46 silly resolved     description: 'ng-file-upload ===================',
+46 silly resolved     main: 'dist/ng-file-upload-all.js',
+46 silly resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+46 silly resolved     repository:
+46 silly resolved      { type: 'git',
+46 silly resolved        url: 'https://github.com/danialfarid/ng-file-upload.git' },
+46 silly resolved     keywords:
+46 silly resolved      [ 'angularjs',
+46 silly resolved        'angular-file-upload',
+46 silly resolved        'file-upload',
+46 silly resolved        'javascript' ],
+46 silly resolved     author: { name: 'danial.farid@gmail.com' },
+46 silly resolved     license: 'MIT',
+46 silly resolved     bugs: { url: 'https://github.com/danialfarid/ng-file-upload/issues' },
+46 silly resolved     homepage: 'https://github.com/danialfarid/ng-file-upload',
+46 silly resolved     gitHead: '00b4febfd98b964314ad8cc07dee2229b2e4fcc6',
+46 silly resolved     _id: 'ng-file-upload@4.1.0',
+46 silly resolved     _shasum: '990e752895c78381a96820eebfd4f3f05879ff7d',
+46 silly resolved     _from: 'ng-file-upload@',
+46 silly resolved     _npmVersion: '2.5.1',
+46 silly resolved     _nodeVersion: '0.12.0',
+46 silly resolved     _npmUser: { name: 'danial.farid', email: 'danial.farid@gmail.com' },
+46 silly resolved     maintainers: [ [Object] ],
+46 silly resolved     dist:
+46 silly resolved      { shasum: '990e752895c78381a96820eebfd4f3f05879ff7d',
+46 silly resolved        tarball: 'http://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz' },
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/ng-file-upload/-/ng-file-upload-4.1.0.tgz' } ]
+47 info install ng-file-upload@4.1.0 into /home/faris/Desktop/novi
+48 info installOne ng-file-upload@4.1.0
+49 verbose node_modules/ng-file-upload unbuild
+50 verbose tar unpack /home/faris/.npm/ng-file-upload/4.1.0/package.tgz
+51 silly lockFile d77e7d9a-novi-node-modules-ng-file-upload tar:///home/faris/Desktop/novi/node_modules/ng-file-upload
+52 verbose lock tar:///home/faris/Desktop/novi/node_modules/ng-file-upload /home/faris/.npm/d77e7d9a-novi-node-modules-ng-file-upload.lock
+53 silly lockFile 412f8845-ng-file-upload-4-1-0-package-tgz tar:///home/faris/.npm/ng-file-upload/4.1.0/package.tgz
+54 verbose lock tar:///home/faris/.npm/ng-file-upload/4.1.0/package.tgz /home/faris/.npm/412f8845-ng-file-upload-4-1-0-package-tgz.lock
+55 silly gunzTarPerm modes [ '775', '664' ]
+56 silly gunzTarPerm extractEntry package.json
+57 silly gunzTarPerm modified mode [ 'package.json', 420, 436 ]
+58 silly gunzTarPerm extractEntry .npmignore
+59 silly gunzTarPerm modified mode [ '.npmignore', 420, 436 ]
+60 silly gunzTarPerm extractEntry README.md
+61 silly gunzTarPerm modified mode [ 'README.md', 420, 436 ]
+62 silly gunzTarPerm extractEntry LICENSE
+63 silly gunzTarPerm modified mode [ 'LICENSE', 420, 436 ]
+64 silly gunzTarPerm extractEntry Gruntfile.js
+65 silly gunzTarPerm modified mode [ 'Gruntfile.js', 420, 436 ]
+66 silly gunzTarPerm extractEntry demo/.buildpath
+67 silly gunzTarPerm modified mode [ 'demo/.buildpath', 420, 436 ]
+68 silly gunzTarPerm extractEntry demo/.classpath
+69 silly gunzTarPerm modified mode [ 'demo/.classpath', 420, 436 ]
+70 silly gunzTarPerm extractEntry demo/.project
+71 silly gunzTarPerm modified mode [ 'demo/.project', 420, 436 ]
+72 silly gunzTarPerm extractEntry demo/C#/UploadController.js
+73 silly gunzTarPerm modified mode [ 'demo/C#/UploadController.js', 420, 436 ]
+74 silly gunzTarPerm extractEntry demo/C#/UploadHandler.ashx
+75 silly gunzTarPerm modified mode [ 'demo/C#/UploadHandler.ashx', 420, 436 ]
+76 silly gunzTarPerm extractEntry demo/C#/UploadHandler.ashx.cs
+77 silly gunzTarPerm modified mode [ 'demo/C#/UploadHandler.ashx.cs', 420, 436 ]
+78 silly gunzTarPerm extractEntry demo/src/META-INF/jdoconfig.xml
+79 silly gunzTarPerm modified mode [ 'demo/src/META-INF/jdoconfig.xml', 420, 436 ]
+80 silly gunzTarPerm extractEntry demo/src/META-INF/persistence.xml
+81 silly gunzTarPerm modified mode [ 'demo/src/META-INF/persistence.xml', 420, 436 ]
+82 silly gunzTarPerm extractEntry demo/src/com/df/angularfileupload/CORSFilter.java
+83 silly gunzTarPerm modified mode [ 'demo/src/com/df/angularfileupload/CORSFilter.java', 420, 436 ]
+84 silly gunzTarPerm extractEntry demo/src/com/df/angularfileupload/FileUpload.java
+85 silly gunzTarPerm modified mode [ 'demo/src/com/df/angularfileupload/FileUpload.java', 420, 436 ]
+86 silly gunzTarPerm extractEntry demo/src/com/df/angularfileupload/S3Signature.java
+87 silly gunzTarPerm modified mode [ 'demo/src/com/df/angularfileupload/S3Signature.java',
+87 silly gunzTarPerm   420,
+87 silly gunzTarPerm   436 ]
+88 silly gunzTarPerm extractEntry demo/src/log4j.properties
+89 silly gunzTarPerm modified mode [ 'demo/src/log4j.properties', 420, 436 ]
+90 silly gunzTarPerm extractEntry demo/war/.idea/.name
+91 silly gunzTarPerm modified mode [ 'demo/war/.idea/.name', 420, 436 ]
+92 silly gunzTarPerm extractEntry demo/war/.idea/misc.xml
+93 silly gunzTarPerm modified mode [ 'demo/war/.idea/misc.xml', 420, 436 ]
+94 silly gunzTarPerm extractEntry demo/war/.idea/modules.xml
+95 silly gunzTarPerm modified mode [ 'demo/war/.idea/modules.xml', 420, 436 ]
+96 silly gunzTarPerm extractEntry demo/war/.idea/vcs.xml
+97 silly gunzTarPerm modified mode [ 'demo/war/.idea/vcs.xml', 420, 436 ]
+98 silly gunzTarPerm extractEntry demo/war/.idea/war.iml
+99 silly gunzTarPerm modified mode [ 'demo/war/.idea/war.iml', 420, 436 ]
+100 silly gunzTarPerm extractEntry demo/war/.idea/workspace.xml
+101 silly gunzTarPerm modified mode [ 'demo/war/.idea/workspace.xml', 420, 436 ]
+102 silly gunzTarPerm extractEntry demo/war/WEB-INF/appengine-web.xml
+103 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/appengine-web.xml', 420, 436 ]
+104 silly gunzTarPerm extractEntry demo/war/WEB-INF/classes/META-INF/jdoconfig.xml
+105 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/classes/META-INF/jdoconfig.xml', 420, 436 ]
+106 silly gunzTarPerm extractEntry demo/war/WEB-INF/classes/META-INF/persistence.xml
+107 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/classes/META-INF/persistence.xml', 420, 436 ]
+108 silly gunzTarPerm extractEntry demo/war/WEB-INF/classes/com/df/angularfileupload/CORSFilter.class
+109 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/classes/com/df/angularfileupload/CORSFilter.class',
+109 silly gunzTarPerm   420,
+109 silly gunzTarPerm   436 ]
+110 silly gunzTarPerm extractEntry demo/war/WEB-INF/classes/com/df/angularfileupload/FileUpload.class
+111 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/classes/com/df/angularfileupload/FileUpload.class',
+111 silly gunzTarPerm   420,
+111 silly gunzTarPerm   436 ]
+112 silly gunzTarPerm extractEntry demo/war/WEB-INF/classes/com/df/angularfileupload/S3Signature.class
+113 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/classes/com/df/angularfileupload/S3Signature.class',
+113 silly gunzTarPerm   420,
+113 silly gunzTarPerm   436 ]
+114 silly gunzTarPerm extractEntry demo/war/WEB-INF/classes/log4j.properties
+115 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/classes/log4j.properties', 420, 436 ]
+116 silly gunzTarPerm extractEntry demo/war/WEB-INF/logging.properties
+117 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/logging.properties', 420, 436 ]
+118 silly gunzTarPerm extractEntry demo/war/WEB-INF/web.xml
+119 silly gunzTarPerm modified mode [ 'demo/war/WEB-INF/web.xml', 420, 436 ]
+120 silly gunzTarPerm extractEntry demo/war/common.css
+121 silly gunzTarPerm modified mode [ 'demo/war/common.css', 420, 436 ]
+122 silly gunzTarPerm extractEntry demo/war/crossdomain.xml
+123 silly gunzTarPerm modified mode [ 'demo/war/crossdomain.xml', 420, 436 ]
+124 silly gunzTarPerm extractEntry demo/war/donate.html
+125 silly gunzTarPerm modified mode [ 'demo/war/donate.html', 420, 436 ]
+126 silly gunzTarPerm extractEntry demo/war/favicon.ico
+127 silly gunzTarPerm modified mode [ 'demo/war/favicon.ico', 420, 436 ]
+128 silly gunzTarPerm extractEntry demo/war/img/tea.jpg
+129 silly gunzTarPerm modified mode [ 'demo/war/img/tea.jpg', 420, 436 ]
+130 silly gunzTarPerm extractEntry demo/war/img/tea.png
+131 silly gunzTarPerm modified mode [ 'demo/war/img/tea.png', 420, 436 ]
+132 silly gunzTarPerm extractEntry demo/war/index.html
+133 silly gunzTarPerm modified mode [ 'demo/war/index.html', 420, 436 ]
+134 silly gunzTarPerm extractEntry demo/war/js/FileAPI.js
+135 silly gunzTarPerm modified mode [ 'demo/war/js/FileAPI.js', 420, 436 ]
+136 silly gunzTarPerm extractEntry demo/war/js/FileAPI.min.js
+137 silly gunzTarPerm modified mode [ 'demo/war/js/FileAPI.min.js', 420, 436 ]
+138 silly gunzTarPerm extractEntry demo/war/js/ng-file-upload-all.js
+139 silly gunzTarPerm modified mode [ 'demo/war/js/ng-file-upload-all.js', 420, 436 ]
+140 silly gunzTarPerm extractEntry demo/war/js/ng-file-upload-shim.js
+141 silly gunzTarPerm modified mode [ 'demo/war/js/ng-file-upload-shim.js', 420, 436 ]
+142 silly gunzTarPerm extractEntry demo/war/js/ng-file-upload.js
+143 silly gunzTarPerm modified mode [ 'demo/war/js/ng-file-upload.js', 420, 436 ]
+144 silly gunzTarPerm extractEntry demo/war/js/upload.js
+145 silly gunzTarPerm modified mode [ 'demo/war/js/upload.js', 420, 436 ]
+146 silly gunzTarPerm extractEntry demo/war/js/FileAPI.flash.swf
+147 silly gunzTarPerm modified mode [ 'demo/war/js/FileAPI.flash.swf', 420, 436 ]
+148 silly gunzTarPerm extractEntry dist/FileAPI.js
+149 silly gunzTarPerm modified mode [ 'dist/FileAPI.js', 420, 436 ]
+150 silly gunzTarPerm extractEntry dist/FileAPI.min.js
+151 silly gunzTarPerm modified mode [ 'dist/FileAPI.min.js', 420, 436 ]
+152 silly gunzTarPerm extractEntry dist/ng-file-upload-all.js
+153 silly gunzTarPerm modified mode [ 'dist/ng-file-upload-all.js', 420, 436 ]
+154 silly gunzTarPerm extractEntry dist/ng-file-upload-all.min.js
+155 silly gunzTarPerm modified mode [ 'dist/ng-file-upload-all.min.js', 420, 436 ]
+156 silly gunzTarPerm extractEntry dist/ng-file-upload-shim.js
+157 silly gunzTarPerm modified mode [ 'dist/ng-file-upload-shim.js', 420, 436 ]
+158 silly gunzTarPerm extractEntry dist/ng-file-upload-shim.min.js
+159 silly gunzTarPerm modified mode [ 'dist/ng-file-upload-shim.min.js', 420, 436 ]
+160 silly gunzTarPerm extractEntry dist/ng-file-upload.js
+161 silly gunzTarPerm modified mode [ 'dist/ng-file-upload.js', 420, 436 ]
+162 silly gunzTarPerm extractEntry dist/ng-file-upload.min.js
+163 silly gunzTarPerm modified mode [ 'dist/ng-file-upload.min.js', 420, 436 ]
+164 silly gunzTarPerm extractEntry dist/FileAPI.flash.swf
+165 silly gunzTarPerm modified mode [ 'dist/FileAPI.flash.swf', 420, 436 ]
+166 silly gunzTarPerm extractEntry nuget/NuGet.exe
+167 silly gunzTarPerm modified mode [ 'nuget/NuGet.exe', 420, 436 ]
+168 silly gunzTarPerm extractEntry nuget/Package.nuspec
+169 silly gunzTarPerm modified mode [ 'nuget/Package.nuspec', 420, 436 ]
+170 silly gunzTarPerm extractEntry nuget/build.bat
+171 silly gunzTarPerm modified mode [ 'nuget/build.bat', 420, 436 ]
+172 silly gunzTarPerm extractEntry release.sh
+173 silly gunzTarPerm modified mode [ 'release.sh', 493, 509 ]
+174 silly lockFile d77e7d9a-novi-node-modules-ng-file-upload tar:///home/faris/Desktop/novi/node_modules/ng-file-upload
+175 silly lockFile d77e7d9a-novi-node-modules-ng-file-upload tar:///home/faris/Desktop/novi/node_modules/ng-file-upload
+176 silly lockFile 412f8845-ng-file-upload-4-1-0-package-tgz tar:///home/faris/.npm/ng-file-upload/4.1.0/package.tgz
+177 silly lockFile 412f8845-ng-file-upload-4-1-0-package-tgz tar:///home/faris/.npm/ng-file-upload/4.1.0/package.tgz
+178 info preinstall ng-file-upload@4.1.0
+179 verbose readDependencies using package.json deps
+180 verbose readDependencies using package.json deps
+181 verbose cache add [ 'grunt-contrib-concat@~0.5.0', null ]
+182 verbose cache add name=undefined spec="grunt-contrib-concat@~0.5.0" args=["grunt-contrib-concat@~0.5.0",null]
+183 verbose parsed url { protocol: null,
+183 verbose parsed url   slashes: null,
+183 verbose parsed url   auth: null,
+183 verbose parsed url   host: null,
+183 verbose parsed url   port: null,
+183 verbose parsed url   hostname: null,
+183 verbose parsed url   hash: null,
+183 verbose parsed url   search: null,
+183 verbose parsed url   query: null,
+183 verbose parsed url   pathname: 'grunt-contrib-concat@~0.5.0',
+183 verbose parsed url   path: 'grunt-contrib-concat@~0.5.0',
+183 verbose parsed url   href: 'grunt-contrib-concat@~0.5.0' }
+184 verbose cache add name="grunt-contrib-concat" spec="~0.5.0" args=["grunt-contrib-concat","~0.5.0"]
+185 verbose parsed url { protocol: null,
+185 verbose parsed url   slashes: null,
+185 verbose parsed url   auth: null,
+185 verbose parsed url   host: null,
+185 verbose parsed url   port: null,
+185 verbose parsed url   hostname: null,
+185 verbose parsed url   hash: null,
+185 verbose parsed url   search: null,
+185 verbose parsed url   query: null,
+185 verbose parsed url   pathname: '~0.5.0',
+185 verbose parsed url   path: '~0.5.0',
+185 verbose parsed url   href: '~0.5.0' }
+186 verbose addNamed [ 'grunt-contrib-concat', '~0.5.0' ]
+187 verbose addNamed [ null, '>=0.5.0-0 <0.6.0-0' ]
+188 silly lockFile ab641ed0-grunt-contrib-concat-0-5-0 grunt-contrib-concat@~0.5.0
+189 verbose lock grunt-contrib-concat@~0.5.0 /home/faris/.npm/ab641ed0-grunt-contrib-concat-0-5-0.lock
+190 silly addNameRange { name: 'grunt-contrib-concat',
+190 silly addNameRange   range: '>=0.5.0-0 <0.6.0-0',
+190 silly addNameRange   hasData: false }
+191 verbose request where is /grunt-contrib-concat
+192 verbose request registry https://registry.npmjs.org/
+193 verbose url raw /grunt-contrib-concat
+194 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-contrib-concat' ]
+195 verbose url resolved https://registry.npmjs.org/grunt-contrib-concat
+196 verbose request where is https://registry.npmjs.org/grunt-contrib-concat
+197 info trying registry request attempt 1 at 14:02:18
+198 http GET https://registry.npmjs.org/grunt-contrib-concat
+199 http 200 https://registry.npmjs.org/grunt-contrib-concat
+200 silly registry.get cb [ 200,
+200 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+200 silly registry.get     etag: '"5YSQRTHHXC6IDBJCIWFWIB07E"',
+200 silly registry.get     'content-type': 'application/json',
+200 silly registry.get     'cache-control': 'max-age=60',
+200 silly registry.get     'content-length': '29876',
+200 silly registry.get     'accept-ranges': 'bytes',
+200 silly registry.get     date: 'Sun, 03 May 2015 12:02:18 GMT',
+200 silly registry.get     via: '1.1 varnish',
+200 silly registry.get     age: '9',
+200 silly registry.get     connection: 'keep-alive',
+200 silly registry.get     'x-served-by': 'cache-fra1236-FRA',
+200 silly registry.get     'x-cache': 'HIT',
+200 silly registry.get     'x-cache-hits': '1',
+200 silly registry.get     'x-timer': 'S1430654538.906226,VS0,VE0',
+200 silly registry.get     vary: 'Accept' } ]
+201 silly addNameRange number 2 { name: 'grunt-contrib-concat',
+201 silly addNameRange   range: '>=0.5.0-0 <0.6.0-0',
+201 silly addNameRange   hasData: true }
+202 silly addNameRange versions [ 'grunt-contrib-concat',
+202 silly addNameRange   [ '0.1.0',
+202 silly addNameRange     '0.1.1',
+202 silly addNameRange     '0.1.2',
+202 silly addNameRange     '0.1.3',
+202 silly addNameRange     '0.2.0',
+202 silly addNameRange     '0.3.0',
+202 silly addNameRange     '0.4.0',
+202 silly addNameRange     '0.5.0',
+202 silly addNameRange     '0.5.1',
+202 silly addNameRange     '0.1.2-rc5',
+202 silly addNameRange     '0.1.2-rc6' ] ]
+203 verbose addNamed [ 'grunt-contrib-concat', '0.5.1' ]
+204 verbose addNamed [ '0.5.1', '0.5.1' ]
+205 silly lockFile 63a362d5-grunt-contrib-concat-0-5-1 grunt-contrib-concat@0.5.1
+206 verbose lock grunt-contrib-concat@0.5.1 /home/faris/.npm/63a362d5-grunt-contrib-concat-0-5-1.lock
+207 silly lockFile f6eb0009-t-grunt-contrib-concat-0-5-1-tgz https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz
+208 verbose lock https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz /home/faris/.npm/f6eb0009-t-grunt-contrib-concat-0-5-1-tgz.lock
+209 verbose addRemoteTarball [ 'https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz',
+209 verbose addRemoteTarball   '953c6efdfdfd2c107ab9c85077f2d4b24d31cd49' ]
+210 info retry fetch attempt 1 at 14:02:18
+211 verbose fetch to= /tmp/npm-7775-nZ1rg7ZM/registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz
+212 http GET https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz
+213 http 200 https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz
+214 silly lockFile f6eb0009-t-grunt-contrib-concat-0-5-1-tgz https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz
+215 silly lockFile f6eb0009-t-grunt-contrib-concat-0-5-1-tgz https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz
+216 silly lockFile 63a362d5-grunt-contrib-concat-0-5-1 grunt-contrib-concat@0.5.1
+217 silly lockFile 63a362d5-grunt-contrib-concat-0-5-1 grunt-contrib-concat@0.5.1
+218 silly lockFile ab641ed0-grunt-contrib-concat-0-5-0 grunt-contrib-concat@~0.5.0
+219 silly lockFile ab641ed0-grunt-contrib-concat-0-5-0 grunt-contrib-concat@~0.5.0
+220 silly resolved [ { name: 'grunt-contrib-concat',
+220 silly resolved     description: 'Concatenate files.',
+220 silly resolved     version: '0.5.1',
+220 silly resolved     author: { name: 'Grunt Team', url: 'http://gruntjs.com/' },
+220 silly resolved     repository:
+220 silly resolved      { type: 'git',
+220 silly resolved        url: 'https://github.com/gruntjs/grunt-contrib-concat' },
+220 silly resolved     licenses: [ [Object] ],
+220 silly resolved     engines: { node: '>=0.10.0' },
+220 silly resolved     scripts: { test: 'grunt test' },
+220 silly resolved     dependencies: { chalk: '^0.5.1', 'source-map': '^0.3.0' },
+220 silly resolved     devDependencies:
+220 silly resolved      { grunt: '^0.4.5',
+220 silly resolved        'grunt-cli': '^0.1.13',
+220 silly resolved        'grunt-contrib-clean': '^0.6.0',
+220 silly resolved        'grunt-contrib-internal': '^0.4.2',
+220 silly resolved        'grunt-contrib-jshint': '^0.11.0',
+220 silly resolved        'grunt-contrib-nodeunit': '^0.4.0' },
+220 silly resolved     peerDependencies: { grunt: '>=0.4.0' },
+220 silly resolved     keywords: [ 'gruntplugin' ],
+220 silly resolved     files: [ 'tasks' ],
+220 silly resolved     appveyor_id: 'l42173901ms416km',
+220 silly resolved     contributors:
+220 silly resolved      [ [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object],
+220 silly resolved        [Object] ],
+220 silly resolved     gitHead: 'd4d97a6a65404351155c04fff9303f3c20d5c02c',
+220 silly resolved     bugs: { url: 'https://github.com/gruntjs/grunt-contrib-concat/issues' },
+220 silly resolved     homepage: 'https://github.com/gruntjs/grunt-contrib-concat',
+220 silly resolved     _id: 'grunt-contrib-concat@0.5.1',
+220 silly resolved     _shasum: '953c6efdfdfd2c107ab9c85077f2d4b24d31cd49',
+220 silly resolved     _from: 'grunt-contrib-concat@~0.5.0',
+220 silly resolved     _npmVersion: '1.4.28',
+220 silly resolved     _npmUser: { name: 'sindresorhus', email: 'sindresorhus@gmail.com' },
+220 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+220 silly resolved     dist:
+220 silly resolved      { shasum: '953c6efdfdfd2c107ab9c85077f2d4b24d31cd49',
+220 silly resolved        tarball: 'http://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz' },
+220 silly resolved     directories: {},
+220 silly resolved     _resolved: 'https://registry.npmjs.org/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz' } ]
+221 info install grunt-contrib-concat@0.5.1 into /home/faris/Desktop/novi/node_modules/ng-file-upload
+222 info installOne grunt-contrib-concat@0.5.1
+223 verbose node_modules/ng-file-upload/node_modules/grunt-contrib-concat unbuild
+224 verbose tar unpack /home/faris/.npm/grunt-contrib-concat/0.5.1/package.tgz
+225 silly lockFile 23cf9d3c-ode-modules-grunt-contrib-concat tar:///home/faris/Desktop/novi/node_modules/ng-file-upload/node_modules/grunt-contrib-concat
+226 verbose lock tar:///home/faris/Desktop/novi/node_modules/ng-file-upload/node_modules/grunt-contrib-concat /home/faris/.npm/23cf9d3c-ode-modules-grunt-contrib-concat.lock
+227 silly lockFile 3d1531d2-contrib-concat-0-5-1-package-tgz tar:///home/faris/.npm/grunt-contrib-concat/0.5.1/package.tgz
+228 verbose lock tar:///home/faris/.npm/grunt-contrib-concat/0.5.1/package.tgz /home/faris/.npm/3d1531d2-contrib-concat-0-5-1-package-tgz.lock
+229 silly gunzTarPerm modes [ '775', '664' ]
+230 silly gunzTarPerm extractEntry package.json
+231 silly gunzTarPerm modified mode [ 'package.json', 420, 436 ]
+232 silly gunzTarPerm extractEntry README.md
+233 silly gunzTarPerm modified mode [ 'README.md', 420, 436 ]
+234 silly gunzTarPerm extractEntry tasks/concat.js
+235 silly gunzTarPerm modified mode [ 'tasks/concat.js', 420, 436 ]
+236 silly gunzTarPerm extractEntry tasks/lib/comment.js
+237 silly gunzTarPerm modified mode [ 'tasks/lib/comment.js', 420, 436 ]
+238 silly gunzTarPerm extractEntry tasks/lib/sourcemap.js
+239 silly gunzTarPerm modified mode [ 'tasks/lib/sourcemap.js', 420, 436 ]
+240 silly lockFile 23cf9d3c-ode-modules-grunt-contrib-concat tar:///home/faris/Desktop/novi/node_modules/ng-file-upload/node_modules/grunt-contrib-concat
+241 silly lockFile 23cf9d3c-ode-modules-grunt-contrib-concat tar:///home/faris/Desktop/novi/node_modules/ng-file-upload/node_modules/grunt-contrib-concat
+242 silly lockFile 3d1531d2-contrib-concat-0-5-1-package-tgz tar:///home/faris/.npm/grunt-contrib-concat/0.5.1/package.tgz
+243 silly lockFile 3d1531d2-contrib-concat-0-5-1-package-tgz tar:///home/faris/.npm/grunt-contrib-concat/0.5.1/package.tgz
+244 info preinstall grunt-contrib-concat@0.5.1
+245 verbose readDependencies using package.json deps
+246 verbose readDependencies using package.json deps
+247 verbose cache add [ 'chalk@^0.5.1', null ]
+248 verbose cache add name=undefined spec="chalk@^0.5.1" args=["chalk@^0.5.1",null]
+249 verbose parsed url { protocol: null,
+249 verbose parsed url   slashes: null,
+249 verbose parsed url   auth: null,
+249 verbose parsed url   host: null,
+249 verbose parsed url   port: null,
+249 verbose parsed url   hostname: null,
+249 verbose parsed url   hash: null,
+249 verbose parsed url   search: null,
+249 verbose parsed url   query: null,
+249 verbose parsed url   pathname: 'chalk@^0.5.1',
+249 verbose parsed url   path: 'chalk@^0.5.1',
+249 verbose parsed url   href: 'chalk@^0.5.1' }
+250 verbose cache add [ 'source-map@^0.3.0', null ]
+251 verbose cache add name=undefined spec="source-map@^0.3.0" args=["source-map@^0.3.0",null]
+252 verbose parsed url { protocol: null,
+252 verbose parsed url   slashes: null,
+252 verbose parsed url   auth: null,
+252 verbose parsed url   host: null,
+252 verbose parsed url   port: null,
+252 verbose parsed url   hostname: null,
+252 verbose parsed url   hash: null,
+252 verbose parsed url   search: null,
+252 verbose parsed url   query: null,
+252 verbose parsed url   pathname: 'source-map@^0.3.0',
+252 verbose parsed url   path: 'source-map@^0.3.0',
+252 verbose parsed url   href: 'source-map@^0.3.0' }
+253 verbose cache add name="chalk" spec="^0.5.1" args=["chalk","^0.5.1"]
+254 verbose parsed url { protocol: null,
+254 verbose parsed url   slashes: null,
+254 verbose parsed url   auth: null,
+254 verbose parsed url   host: null,
+254 verbose parsed url   port: null,
+254 verbose parsed url   hostname: null,
+254 verbose parsed url   hash: null,
+254 verbose parsed url   search: null,
+254 verbose parsed url   query: null,
+254 verbose parsed url   pathname: '^0.5.1',
+254 verbose parsed url   path: '^0.5.1',
+254 verbose parsed url   href: '^0.5.1' }
+255 verbose addNamed [ 'chalk', '^0.5.1' ]
+256 verbose addNamed [ null, '>=0.5.1-0 <0.6.0-0' ]
+257 silly lockFile 24b6c7c3-chalk-0-5-1 chalk@^0.5.1
+258 verbose lock chalk@^0.5.1 /home/faris/.npm/24b6c7c3-chalk-0-5-1.lock
+259 verbose cache add name="source-map" spec="^0.3.0" args=["source-map","^0.3.0"]
+260 verbose parsed url { protocol: null,
+260 verbose parsed url   slashes: null,
+260 verbose parsed url   auth: null,
+260 verbose parsed url   host: null,
+260 verbose parsed url   port: null,
+260 verbose parsed url   hostname: null,
+260 verbose parsed url   hash: null,
+260 verbose parsed url   search: null,
+260 verbose parsed url   query: null,
+260 verbose parsed url   pathname: '^0.3.0',
+260 verbose parsed url   path: '^0.3.0',
+260 verbose parsed url   href: '^0.3.0' }
+261 verbose addNamed [ 'source-map', '^0.3.0' ]
+262 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
+263 silly lockFile ef65df8e-source-map-0-3-0 source-map@^0.3.0
+264 verbose lock source-map@^0.3.0 /home/faris/.npm/ef65df8e-source-map-0-3-0.lock
+265 silly addNameRange { name: 'chalk', range: '>=0.5.1-0 <0.6.0-0', hasData: false }
+266 silly addNameRange { name: 'source-map',
+266 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
+266 silly addNameRange   hasData: false }
+267 verbose request where is /source-map
+268 verbose request registry https://registry.npmjs.org/
+269 verbose url raw /source-map
+270 verbose url resolving [ 'https://registry.npmjs.org/', './source-map' ]
+271 verbose url resolved https://registry.npmjs.org/source-map
+272 verbose request where is https://registry.npmjs.org/source-map
+273 info trying registry request attempt 1 at 14:02:19
+274 verbose etag "6X6700A4ARF6BEP1WI9Y86P6"
+275 http GET https://registry.npmjs.org/source-map
+276 verbose request where is /chalk
+277 verbose request registry https://registry.npmjs.org/
+278 verbose url raw /chalk
+279 verbose url resolving [ 'https://registry.npmjs.org/', './chalk' ]
+280 verbose url resolved https://registry.npmjs.org/chalk
+281 verbose request where is https://registry.npmjs.org/chalk
+282 info trying registry request attempt 1 at 14:02:19
+283 verbose etag "C5I5EFJ8JVIOVT9VO2CW914Y8"
+284 http GET https://registry.npmjs.org/chalk
+285 http 304 https://registry.npmjs.org/source-map
+286 silly registry.get cb [ 304,
+286 silly registry.get   { date: 'Sun, 03 May 2015 12:02:19 GMT',
+286 silly registry.get     via: '1.1 varnish',
+286 silly registry.get     'last-modified': 'Sun, 03 May 2015 12:02:12 GMT',
+286 silly registry.get     'cache-control': 'max-age=60',
+286 silly registry.get     etag: '"6X6700A4ARF6BEP1WI9Y86P6"',
+286 silly registry.get     age: '31',
+286 silly registry.get     connection: 'keep-alive',
+286 silly registry.get     'x-served-by': 'cache-fra1226-FRA',
+286 silly registry.get     'x-cache': 'HIT',
+286 silly registry.get     'x-cache-hits': '2',
+286 silly registry.get     'x-timer': 'S1430654539.479536,VS0,VE0',
+286 silly registry.get     vary: 'Accept' } ]
+287 verbose etag https://registry.npmjs.org/source-map from cache
+288 silly addNameRange number 2 { name: 'source-map',
+288 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
+288 silly addNameRange   hasData: true }
+289 silly addNameRange versions [ 'source-map',
+289 silly addNameRange   [ '0.0.0',
+289 silly addNameRange     '0.1.0',
+289 silly addNameRange     '0.1.1',
+289 silly addNameRange     '0.1.2',
+289 silly addNameRange     '0.1.3',
+289 silly addNameRange     '0.1.4',
+289 silly addNameRange     '0.1.5',
+289 silly addNameRange     '0.1.6',
+289 silly addNameRange     '0.1.7',
+289 silly addNameRange     '0.1.8',
+289 silly addNameRange     '0.1.9',
+289 silly addNameRange     '0.1.10',
+289 silly addNameRange     '0.1.11',
+289 silly addNameRange     '0.1.12',
+289 silly addNameRange     '0.1.13',
+289 silly addNameRange     '0.1.14',
+289 silly addNameRange     '0.1.15',
+289 silly addNameRange     '0.1.16',
+289 silly addNameRange     '0.1.17',
+289 silly addNameRange     '0.1.18',
+289 silly addNameRange     '0.1.19',
+289 silly addNameRange     '0.1.20',
+289 silly addNameRange     '0.1.21',
+289 silly addNameRange     '0.1.22',
+289 silly addNameRange     '0.1.23',
+289 silly addNameRange     '0.1.24',
+289 silly addNameRange     '0.1.25',
+289 silly addNameRange     '0.1.26',
+289 silly addNameRange     '0.1.27',
+289 silly addNameRange     '0.1.28',
+289 silly addNameRange     '0.1.29',
+289 silly addNameRange     '0.1.30',
+289 silly addNameRange     '0.1.31',
+289 silly addNameRange     '0.1.32',
+289 silly addNameRange     '0.1.33',
+289 silly addNameRange     '0.1.34',
+289 silly addNameRange     '0.1.35',
+289 silly addNameRange     '0.1.36',
+289 silly addNameRange     '0.1.37',
+289 silly addNameRange     '0.1.38',
+289 silly addNameRange     '0.1.39',
+289 silly addNameRange     '0.1.40',
+289 silly addNameRange     '0.1.41',
+289 silly addNameRange     '0.1.42',
+289 silly addNameRange     '0.1.43',
+289 silly addNameRange     '0.2.0',
+289 silly addNameRange     '0.3.0',
+289 silly addNameRange     '0.4.0',
+289 silly addNameRange     '0.4.1',
+289 silly addNameRange     '0.4.2' ] ]
+290 verbose addNamed [ 'source-map', '0.3.0' ]
+291 verbose addNamed [ '0.3.0', '0.3.0' ]
+292 silly lockFile aca5a9f4-source-map-0-3-0 source-map@0.3.0
+293 verbose lock source-map@0.3.0 /home/faris/.npm/aca5a9f4-source-map-0-3-0.lock
+294 http 200 https://registry.npmjs.org/chalk
+295 silly registry.get cb [ 200,
+295 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+295 silly registry.get     etag: '"7ZX4CYO3RZRAOSKHHEWDR6M8H"',
+295 silly registry.get     'content-type': 'application/json',
+295 silly registry.get     'cache-control': 'max-age=60',
+295 silly registry.get     'content-length': '20116',
+295 silly registry.get     'accept-ranges': 'bytes',
+295 silly registry.get     date: 'Sun, 03 May 2015 12:02:19 GMT',
+295 silly registry.get     via: '1.1 varnish',
+295 silly registry.get     age: '18',
+295 silly registry.get     connection: 'keep-alive',
+295 silly registry.get     'x-served-by': 'cache-fra1237-FRA',
+295 silly registry.get     'x-cache': 'HIT',
+295 silly registry.get     'x-cache-hits': '1',
+295 silly registry.get     'x-timer': 'S1430654539.486493,VS0,VE0',
+295 silly registry.get     vary: 'Accept' } ]
+296 silly addNameRange number 2 { name: 'chalk', range: '>=0.5.1-0 <0.6.0-0', hasData: true }
+297 silly addNameRange versions [ 'chalk',
+297 silly addNameRange   [ '0.1.0',
+297 silly addNameRange     '0.1.1',
+297 silly addNameRange     '0.2.0',
+297 silly addNameRange     '0.2.1',
+297 silly addNameRange     '0.3.0',
+297 silly addNameRange     '0.4.0',
+297 silly addNameRange     '0.5.0',
+297 silly addNameRange     '0.5.1',
+297 silly addNameRange     '1.0.0' ] ]
+298 verbose addNamed [ 'chalk', '0.5.1' ]
+299 verbose addNamed [ '0.5.1', '0.5.1' ]
+300 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+301 verbose lock chalk@0.5.1 /home/faris/.npm/c28973bb-chalk-0-5-1.lock
+302 silly lockFile e1a0a7c7--source-map-source-map-0-3-0-tgz https://registry.npmjs.org/source-map/-/source-map-0.3.0.tgz
+303 verbose lock https://registry.npmjs.org/source-map/-/source-map-0.3.0.tgz /home/faris/.npm/e1a0a7c7--source-map-source-map-0-3-0-tgz.lock
+304 verbose addRemoteTarball [ 'https://registry.npmjs.org/source-map/-/source-map-0.3.0.tgz',
+304 verbose addRemoteTarball   '8586fb9a5a005e5b501e21cd18b6f21b457ad1f9' ]
+305 info retry fetch attempt 1 at 14:02:19
+306 verbose fetch to= /tmp/npm-7775-nZ1rg7ZM/registry.npmjs.org/source-map/-/source-map-0.3.0.tgz
+307 http GET https://registry.npmjs.org/source-map/-/source-map-0.3.0.tgz
+308 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+309 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+310 silly lockFile 24b6c7c3-chalk-0-5-1 chalk@^0.5.1
+311 silly lockFile 24b6c7c3-chalk-0-5-1 chalk@^0.5.1
+312 http 200 https://registry.npmjs.org/source-map/-/source-map-0.3.0.tgz
+313 silly lockFile e1a0a7c7--source-map-source-map-0-3-0-tgz https://registry.npmjs.org/source-map/-/source-map-0.3.0.tgz
+314 silly lockFile e1a0a7c7--source-map-source-map-0-3-0-tgz https://registry.npmjs.org/source-map/-/source-map-0.3.0.tgz
+315 silly lockFile aca5a9f4-source-map-0-3-0 source-map@0.3.0
+316 silly lockFile aca5a9f4-source-map-0-3-0 source-map@0.3.0
+317 silly lockFile ef65df8e-source-map-0-3-0 source-map@^0.3.0
+318 silly lockFile ef65df8e-source-map-0-3-0 source-map@^0.3.0
+319 verbose about to build /home/faris/Desktop/novi/node_modules/ng-file-upload/node_modules/grunt-contrib-concat
+320 verbose node_modules/ng-file-upload/node_modules/grunt-contrib-concat unbuild
+321 info preuninstall grunt-contrib-concat@0.5.1
+322 info uninstall grunt-contrib-concat@0.5.1
+323 verbose false,/home/faris/Desktop/novi/node_modules,/home/faris/Desktop/novi/node_modules/ng-file-upload/node_modules unbuild grunt-contrib-concat@0.5.1
+324 info postuninstall grunt-contrib-concat@0.5.1
+325 verbose about to build /home/faris/Desktop/novi/node_modules/ng-file-upload
+326 verbose node_modules/ng-file-upload unbuild
+327 info preuninstall ng-file-upload@4.1.0
+328 info uninstall ng-file-upload@4.1.0
+329 verbose true,/home/faris/Desktop/novi/node_modules,/home/faris/Desktop/novi/node_modules unbuild ng-file-upload@4.1.0
+330 info postuninstall ng-file-upload@4.1.0
+331 error Error: EACCES, mkdir '/home/faris/.npm/source-map/0.3.0'
+331 error  { [Error: EACCES, mkdir '/home/faris/.npm/source-map/0.3.0']
+331 error   errno: 3,
+331 error   code: 'EACCES',
+331 error   path: '/home/faris/.npm/source-map/0.3.0',
+331 error   parent: 'grunt-contrib-concat' }
+332 error Please try running this command again as root/Administrator.
+333 error System Linux 3.16.0-34-generic
+334 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "ng-file-upload"
+335 error cwd /home/faris/Desktop/novi
+336 error node -v v0.10.25
+337 error npm -v 1.4.21
+338 error path /home/faris/.npm/source-map/0.3.0
+339 error code EACCES
+340 error errno 3
+341 error stack Error: EACCES, mkdir '/home/faris/.npm/source-map/0.3.0'
+342 verbose exit [ 3, true ]

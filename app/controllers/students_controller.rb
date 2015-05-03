@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:edit, :update, :destroy]
 
   skip_before_action :verify_authenticity_token
 
@@ -54,9 +54,9 @@ class StudentsController < ApplicationController
     redirect_to home_path
   end
 
-
+  before_action :set_current_user, :authenticate_request, only: [:show]
   def show
-    @student = Student.find(params[:id])
+    @student = Student.find_by(user_id: current_user.id)
     render json: @student
   end
 
