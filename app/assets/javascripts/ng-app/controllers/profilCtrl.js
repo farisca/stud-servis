@@ -7,6 +7,7 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
          $scope.data.location = data.location;
          $scope.data.university = data.university;
          $scope.data.faculty = data.faculty;
+         $scope.data.cv = data.id;
     });
 
     $scope.filesChanged = function(elm) {
@@ -24,7 +25,7 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
             fd.append('faculty', $scope.data.faculty),
             fd.append('file', file)
         });
-        $http.post('/au', fd, {
+        $http.post('/students/update', fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).success(function(resp) {
@@ -33,7 +34,12 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
             console.log("greska");
         });
     };
-        
+       
+    $scope.downloadCV = function() {
+        alert("Kliknuo");
+        $http.get('/students/download_cv?id=' + $scope.data.cv).success(function(data, status, headers, config) {});
+    };
+
 }]);
 
 

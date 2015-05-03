@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   end
 
   resources :students do
+    get "download_cv", on: :collection
+    post "update", on: :collection
     post "add_student", on: :collection
 
   end
@@ -48,6 +50,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   post 'auth' => 'auth#authenticate'
   get 'auth' => 'auth#confirm_registration'
+
 #  get 'confirm' => 'auth#confirm_registration'
   root 'application#index'
   get '*path' => 'application#index'

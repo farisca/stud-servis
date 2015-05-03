@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   
-  before_action :set_student, only: [:edit, :update, :destroy]
+  before_action :set_student, only: [:edit, :destroy]
 
   skip_before_action :verify_authenticity_token
 
@@ -54,22 +54,37 @@ class StudentsController < ApplicationController
     redirect_to home_path
   end
 
+<<<<<<< HEAD
   before_action :set_current_user, :authenticate_request, only: [:show]
   
   
+=======
+  before_action :set_current_user, :authenticate_request, only: [:show, :update]
+>>>>>>> 40df7084d28a6bef4eaae7d56096abc9a1235d84
   def show
     @student = Student.find_by(user_id: current_user.id)
     render json: @student
   end
 
   def update
-    respond_to do |format|
-      if @student.update(student_params)
-        format.json { render :show, status: :ok, location: @student }
-      else
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
+    @student = Student.find_by(user_id: current_user.id)
+    @student.name = params["name"]
+    @student.surname = params["surname"]
+    #@student.location = params["location"]
+    @student.university = params["university"]
+    @student.faculty = params["faculty"]
+
+    upload = params["file"]
+    name =  @student.id.to_s + ".pdf"
+    directory = "public/data"
+    # create the file path
+    path = File.join(directory, name)
+    # write the file
+    File.open(path, "wb") { |f| f.write(upload.read) }
+
+    @student.cv = path
+    @student.save
+    render json: @student
   end
 
   def destroy
@@ -77,6 +92,15 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.json { head :no_content, status: :deleted }
     end
+  end
+
+  def download_cv
+    render json: "proba"
+    send_file(
+     "#{Rails.root}/public/data/" + params["id"] + ".pdf",
+      filename: "CV.pdf",
+      type: "application/pdf"
+    )
   end
 
   def proba

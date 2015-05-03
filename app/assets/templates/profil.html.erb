@@ -25,10 +25,14 @@
         <p> <%= I18n.t('student_faculty') %> </p>
         <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
         <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
-        
+                
          <p> <%= I18n.t('student_cv') %> </p>
-        <input type="file" onchange="angular.element(this).scope().filesChanged(this)" />
-
+          <div class="row">
+          <div class="col-md-6">
+         <a class="btn btn-default" target="_self" href="/students/download_cv?id={{data.cv}}" download>Download</a>
+</div><div class="col-md-6">
+        <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" /></div>
+</div><br>
         <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('save_student_button') %></button>
         <br>
 
