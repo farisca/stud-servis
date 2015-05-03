@@ -65,4 +65,6 @@ bs:
   student_university: "Univerzitet"
   student_faculty: "Fakultet"
   student_cv: "CV"
+  ad_expires: "Oglas ističe"
+
 

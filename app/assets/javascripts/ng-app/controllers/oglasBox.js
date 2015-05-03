@@ -1,11 +1,20 @@
 app=angular.module('aplikacija');
 
+app.controller('oglasBoxController', ['$http', '$window', '$location', function($http, $window, $location) {
+
+}]);
+
 app.directive('oglasBox', function () {
 	return {
 		restrict: 'E',
-		template: 'oglasBox.html',
+		templateUrl: 'oglasBox.html',
 		link: function(scope, element, attrs) {
-
+			scope.posao = attrs.nazivPosla;
+			scope.poslodavac = attrs.kompanija;
+			scope.lokacija = attrs.lokacija;
+			scope.slika = attrs.logoKompanije;
+			scope.prosireno="/oglas/"+attrs.idOglasa;
+			scope.kraj=attrs.kraj;
 		}
-	}
+	};
 });
