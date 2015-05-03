@@ -43,6 +43,9 @@ angular
             }).when('/unosEmail', {
                 templateUrl: 'unosEmail.html',
                 controller: 'emailController'
+            }).when('/oglas/:id', {
+                templateUrl: 'odabraniOglas.html',
+                controller: 'ChoosenAd'
             });
         $locationProvider.html5Mode(true);
     });

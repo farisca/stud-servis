@@ -22,6 +22,7 @@ angular.module('aplikacija')
 			
 			//Za sve logirane studente
 			if(stranica == "oglasi" && AuthToken.get() != "" ) return true;
+			if(stranica == "oglas" && AuthToken.get() != "") return true;
 			
 			//Za logirane kompanije
 			if(stranica == "unosOglasa" && AuthToken.get() != "") return true;
@@ -32,6 +33,7 @@ angular.module('aplikacija')
 			if(stranica == "potvrdaOUnesenomOglasu" && AuthToken.get() != "") return true;
 			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
+
 			return false;
 			
 		}

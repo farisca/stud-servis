@@ -49,6 +49,17 @@ class JobsController < ApplicationController
     end
   end
 
+  def get_job
+    job = Job.find(params["id"])
+    category = job.category.name
+    company = job.company.name
+    description = job.description
+    location = job.location.city
+    duration = job.duration
+    id = job.id
+    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id}  
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
