@@ -31,6 +31,9 @@ angular
             }).when('/login', {
                 templateUrl: 'login.html',
                 controller: 'loginController'
+            }).when('/profil', {
+                templateUrl: 'profil.html',
+                controller: 'profilCtrl'
             }).when('/kompanija', {
                 templateUrl: 'registracijaKompanije.html',
                 controller: 'registerCompanyController'

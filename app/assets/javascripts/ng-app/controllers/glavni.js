@@ -19,6 +19,7 @@ angular.module('aplikacija')
 			
 			//Za sve logirane usere
 			if(stranica == "odjava" && AuthToken.get() != "") return true;
+			if(stranica == "profil" && AuthToken.get() != "") return true;
 			
 			//Za sve logirane studente
 			if(stranica == "oglasi" && AuthToken.get() != "" ) return true;

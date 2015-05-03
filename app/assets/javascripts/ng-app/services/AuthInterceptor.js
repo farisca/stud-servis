@@ -17,8 +17,11 @@ angular.module('aplikacija').factory("AuthInterceptor", function($q, $injector, 
       console.log("ne valja");
       if (!matchesAuthenticatePath) {
         console.log("nemate pravo pristupa");
+
         $location.path('/login');
       }
+      var AuthToken = $injector.get("AuthToken");
+      AuthToken.set("","");
       $location.path('/login');
       return $q.reject(response);
     }

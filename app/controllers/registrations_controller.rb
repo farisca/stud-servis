@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_action :set_registration, only: [:show, :edit, :update, :destroy]
+  #before_action :set_registration, only: [:show, :edit, :update, :destroy]
 
   # GET /registrations
   # GET /registrations.json
@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1
   # GET /registrations/1.json
   def show
-    @registration = Registration.find(params[:id])
+    #@registration = Registration.find(params[:id])
     render json: @registration
   end
 
@@ -58,11 +58,29 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def make_registration
+    job = params[:job_id]
+    active = params[:active]
+    
+    student = @current_user
+    
+    @registration = Registration.new
+    @registration.job_id = job
+    #@registration.student_id = student.id
+    @registration.active = active
+    if @registration.save!
+      status = "0K"
+    else
+      status = "NOT OK"
+    end 
+    render json: { status: status }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_registration
-      @registration = Registration.find(params[:id])
-    end
+    #def set_registration
+      #@registration = Registration.find(params[:id])
+    #end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registration_params
