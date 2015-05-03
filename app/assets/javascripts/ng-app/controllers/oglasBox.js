@@ -13,7 +13,7 @@ app.directive('oglasBox', function () {
 			scope.poslodavac = attrs.kompanija;
 			scope.lokacija = attrs.lokacija;
 			scope.slika = attrs.logoKompanije;
-			scope.prosireno="localhost:3000/oglas/"+attrs.idOglasa;
+			scope.prosireno="/oglas/"+attrs.idOglasa;
 			scope.kraj=attrs.kraj;
 		}
 	};

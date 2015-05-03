@@ -25,7 +25,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           
           <ul class="nav navbar-nav">
-            <li ng-show="glavni.isVidljiv('pocetna')" ng-class="{active: glavni.isTrenutna('home')}"><a ng-click="glavni.setTrenutna('home')"><%= I18n.t('home')%></a></li>
+            <li ng-show="glavni.isVidljiv('pocetna')" ng-class="{active: glavni.isTrenutna('home')}"><a href= "/home" ng-click="glavni.setTrenutna('home')"><%= I18n.t('home')%></a></li>
             <li ng-show="glavni.isVidljiv('oglasi')" ng-class="{active: glavni.isTrenutna('oglasi')}"><a ng-click="glavni.setTrenutna('oglasi')"><%= I18n.t('ad')%></a></li>
             <li ng-show="glavni.isVidljiv('unosOglasa')" ng-class="{active: glavni.isTrenutna('unosOglasa')}"><a href= "/unosOglasa" ng-click="glavni.setTrenutna('unosOglasa')"><%= I18n.t('new_ad')%></a></li>
             <li ng-show="glavni.isVidljiv('promjenaSifre')" ng-class="{active: glavni.isTrenutna('promjenaSifre')}"><a href= "/promjenaSifre" ng-click="glavni.setTrenutna('promjenaSifre')" ><%= I18n.t('change_password')%></a></li>
