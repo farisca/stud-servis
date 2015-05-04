@@ -34,17 +34,26 @@ angular.module('aplikacija')
             }
         }
 
+        $('.oglas_edit').click(function() {
+            $('.forma_izmjena').show();
+            $('.editAd_button').show();
+        });
+
         var user;
         var rola;
     	var init = function () {
+            $('.forma_izmjena').hide();
+            $('.editAd_button').hide();
 
             user = $http({ url: '/users/get_user', 
                     method: "GET",
             });
             user.success(function(data, status, headers, config) {
                 rola = data.rola;
-                if (data.rola == "student")
+                if (data.rola == "student") {
                     $('.oglass_button').val("Prijavi se na ovaj oglas");
+                    $('.oglas_edit').hide();
+                }
                 else 
                     $('.oglass_button').val("Pregledaj prijavljene studente");
             });

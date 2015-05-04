@@ -59,6 +59,9 @@ angular
             }).when('/oglasBox', {
                 templateUrl: 'oglasBox.html',
                 controller: 'oglasBoxController'
+            }).when('/editAd', {
+                templateUrl: 'editAd.html',
+                controller: 'editAdController'
             });
         $locationProvider.html5Mode(true);
     });
