@@ -38,6 +38,7 @@ angular.module('aplikacija')
 			if(stranica == "potvrdaOUnesenomOglasu" && AuthToken.get() != "") return true;
 			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
+			if(stranica == "home" && AuthToken.get() != "") return true;
 
 			return false;
 			

@@ -2,5 +2,21 @@
 <br><br><br><br>
 <br><br><br><br>
 
-<oglas-box naziv-posla="Progamer" kompanija="Atlant" lokacija="Sarajevo" id-oglasa="1" kraj="25. 05. 2014."> </oglas-box>
+<table  style="position:absolute; left:100px; top:130px;" ng-controller='HomeController'>
+	<tr>
+		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(0,3)">
+			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.finish_at}}"> </oglas-box>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(0,3)">
+			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.finish_at}}"> </oglas-box>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(0,3)">
+			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.finish_at}}"> </oglas-box>
+		</td>
+	</tr>
+</table>
 
