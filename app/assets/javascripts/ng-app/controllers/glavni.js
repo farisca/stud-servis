@@ -5,6 +5,7 @@ angular.module('aplikacija')
         var obj;
 		console.log("token" + AuthToken.get());
 		
+		console.log("rola usera");
 		 $http.get('/users/find_user_role').success(function(data, status, headers, config) {
 
     	 $scope.data.role = data.role;

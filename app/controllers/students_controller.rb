@@ -31,7 +31,7 @@ class StudentsController < ApplicationController
       user.email = params["email"]
       user.password = params["password"]
       user.password_confirmation = params["password_confirmation"]
-      
+      user.role=0; #Student role is zero
       if user.save
 
         student = Student.new
