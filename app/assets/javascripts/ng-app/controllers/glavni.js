@@ -8,7 +8,7 @@ angular.module('aplikacija')
 		 $http.get('/users/find_user_role').success(function(data, status, headers, config) {
 		 	
     	 $scope.data.role = data.role;
-    	 
+    	 console.log($scope.data.role);
          });
 
 		this.isTrenutna = function(stranica) {
