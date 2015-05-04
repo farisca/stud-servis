@@ -61,8 +61,9 @@ class JobsController < ApplicationController
   end
 
   def get_ordered_jobs
-    @jobs =  Job.limit(params["count"]).order("created_at", :desc)
-    render json: {jobs: @jobs}
+    #@jobs =  Job.limit(params["count"]).order("created_at", :desc)
+    @jobs = Job.all
+    render json: {jobs: @jobs, number: @jobs.length}
   end
 
   private
