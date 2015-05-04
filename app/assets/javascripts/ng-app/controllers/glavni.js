@@ -5,11 +5,12 @@ angular.module('aplikacija')
         var obj;
 		console.log("token" + AuthToken.get());
 		
-		console.log("rola usera");
-		 $http.get('/users/find_user_role').success(function(data, status, headers, config) {
+	 	console.log("rola usera");
+		$http.get('/users/get_role').success(function(data, status, headers, config) {
 
-    	 $scope.data.role = data.role;
-    	 console.log($scope.data.role);
+    	 $scope.podaci=data;
+    	 console.log("rola usera");
+    	 console.log(data.rola);
 
          });
 
