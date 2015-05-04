@@ -23,21 +23,23 @@ angular.module('aplikacija')
 			//Za sve logirane usere
 			if(stranica == "odjava" && AuthToken.get() != "") return true;
 			if(stranica == "profil" && AuthToken.get() != "") return true;
+			if(stranica == "pocetna" && AuthToken.get() != "") return true;
+			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
+			if(stranica == "home" && AuthToken.get() != "") return true;
 			
 			//Za sve logirane studente
 			if(stranica == "oglasi" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true;
-			if(stranica == "oglas" && AuthToken.get() != "") return true;
+			if(stranica == "oglas" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true;
 			
 			//Za logirane kompanije
 			if(stranica == "unosOglasa" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
 			if(stranica == "kompanija" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
-			if(stranica == "pocetna" && AuthToken.get() != "") return true;
-			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
-			if(stranica == "listaOglasa" && AuthToken.get() != "") return true;
+		
+		
 			if(stranica == "potvrdaOUnesenomOglasu" && AuthToken.get() != "") return true;
 			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
-			if(stranica == "home" && AuthToken.get() != "") return true;
+
 
 			return false;
 			
