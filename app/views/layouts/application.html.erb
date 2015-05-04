@@ -11,46 +11,59 @@
 
 <body  ng-controller="glavniController as glavni">
 
-	 <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Studentski servis</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          
-          <ul class="nav navbar-nav">
-            <li ng-show="glavni.isVidljiv('pocetna')" ng-class="{active: glavni.isTrenutna('home')}"><a href= "/home" ng-click="glavni.setTrenutna('home')"><%= I18n.t('home')%></a></li>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Studentski servis</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+	     <li ng-show="glavni.isVidljiv('pocetna')" ng-class="{active: glavni.isTrenutna('home')}"><a href= "/home" ng-click="glavni.setTrenutna('home')"><%= I18n.t('home')%></a></li>
             <li ng-show="glavni.isVidljiv('oglasi')" ng-class="{active: glavni.isTrenutna('oglasi')}"><a ng-click="glavni.setTrenutna('oglasi')"><%= I18n.t('ad')%></a></li>
             <li ng-show="glavni.isVidljiv('unosOglasa')" ng-class="{active: glavni.isTrenutna('unosOglasa')}"><a href= "/unosOglasa" ng-click="glavni.setTrenutna('unosOglasa')"><%= I18n.t('new_ad')%></a></li>
             <li ng-show="glavni.isVidljiv('promjenaSifre')" ng-class="{active: glavni.isTrenutna('promjenaSifre')}"><a href= "/promjenaSifre" ng-click="glavni.setTrenutna('promjenaSifre')" ><%= I18n.t('change_password')%></a></li>
-            <li ng-show="glavni.isVidljiv('kompanije')" ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" ><%= I18n.t('companies')%></a></li>
-            </ul>
-            
-          
-        
-          <ul class="nav navbar-nav navbar-right">
-
-            <li ng-show="glavni.isVidljiv('registracijaKompanije')" ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')"><%= I18n.t('register_company')%></a></li>
-            <li ng-show="glavni.isVidljiv('registracijaStudenta')" ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')"><%= I18n.t('register_student')%></a></li>
-            <li ng-show="glavni.isVidljiv('profil')" ng-class="{active: glavni.isTrenutna('profil')}"><a href="/profil" ng-click="glavni.setTrenutna('profil')"><%= I18n.t('profil')%></a></li>
-           <li ng-show="glavni.isVidljiv('prijava')" ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.prijava()"><%= I18n.t('login')%></a></li>
-            <li ng-show="glavni.isVidljiv('odjava')" ng-class="{active: glavni.isTrenutna('odjava')}"><a href="/" ng-click="glavni.logout()"><%= I18n.t('logout')%></a></li>
-            <li><%= link_to "BS", change_locale_path(:bs) %></li>
-            <li><%= link_to "EN", change_locale_path(:en) %></li> <!-- change_locale_path(:en)  --> 
-           </ul>
-        
-
-           
-          
+            <li ng-show="glavni.isVidljiv('kompanije')" ng-class="{active: glavni.isTrenutna('kompanije')}"><a ng-click="glavni.setTrenutna('kompanije')" ><%= I18n.t('companies')%></a></li>  
+       
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
         </div>
-      </div>
-    </nav>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-right">
+	      <li ng-show="glavni.isVidljiv('registracijaKompanije')" ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')"><%= I18n.t('register_company')%></a></li>
+        <li ng-show="glavni.isVidljiv('registracijaStudenta')" ng-class="{active: glavni.isTrenutna('regStud')}"><a href="/registracija" ng-click="glavni.setTrenutna('regStud')"><%= I18n.t('register_student')%></a></li>
+        <li ng-show="glavni.isVidljiv('profil')" ng-class="{active: glavni.isTrenutna('profil')}"><a href="/profil" ng-click="glavni.setTrenutna('profil')"><%= I18n.t('profil')%></a></li>
+        <li ng-show="glavni.isVidljiv('prijava')" ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.prijava()"><%= I18n.t('login')%></a></li>
+        <li ng-show="glavni.isVidljiv('odjava')" ng-class="{active: glavni.isTrenutna('odjava')}"><a href="/" ng-click="glavni.logout()"><%= I18n.t('logout')%></a></li>
+        <li><%= link_to "BS", change_locale_path(:bs) %></li>
+        <li><%= link_to "EN", change_locale_path(:en) %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div ng-view>
 <%= yield %>
 </div>
