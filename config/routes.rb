@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get "download_cv", on: :collection
     post "update", on: :collection
     post "add_student", on: :collection
+    get "cv_exists", on: :collection
 
   end
 

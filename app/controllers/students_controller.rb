@@ -90,12 +90,19 @@ class StudentsController < ApplicationController
   end
 
   def download_cv
-    render json: "proba"
     send_file(
      "#{Rails.root}/public/data/" + params["id"] + ".pdf",
       filename: "CV.pdf",
       type: "application/pdf"
     )
+  end
+
+  def cv_exists
+    if File.file?("#{Rails.root}/public/data/" + params["id"] + ".pdf")
+      render json: { exists: 1}
+    else
+      render json: { exists: 0}
+    end
   end
 
   def proba
