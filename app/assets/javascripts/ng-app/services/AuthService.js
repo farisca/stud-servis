@@ -10,7 +10,18 @@ angular.module('aplikacija').factory("AuthService", function($http, $q, $rootSco
         
         AuthToken.set(resp.auth_token, resp.type);
         console.log("Uspjesno logiran."+resp.type+" Dobiven token: " + resp.auth_token);
-        $location.path('/listaOglasa');
+        //odmah rolu spasi za logovanog usera u AuthToken
+        $http.get('/users/get_role').success(function(data, status, headers, config) {
+         AuthToken.setTipKorisnika(data.rola);
+         });
+        
+        //prikaz razlicitog home pagea u zavisnoti od role
+        
+        if(AuthToken.tipKorisnika()==0)
+          $location.path('/listaOglasa');
+        else
+          $location.path('/listaOglasa'); //treba izmjeniti u home page
+          
         d.resolve(resp.user);
       }).error(function(resp) {
         console.log($rootScope);
