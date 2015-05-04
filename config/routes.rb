@@ -28,12 +28,13 @@ Rails.application.routes.draw do
 
   resources :registrations do
     get "make_registration", on: :collection
+    get "get_all_students", on: :collection
   end
 
   resources :users do
     post "check_user", on: :collection
     post "password_change", on: :collection
-
+    get "get_user", on: :collection
   end
 
   resources :students do

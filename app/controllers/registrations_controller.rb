@@ -77,6 +77,18 @@ class RegistrationsController < ApplicationController
     render json: { status: status }
   end
 
+  def get_all_students
+    job_id = params[:id]
+    @all_registrations = Registration.where(job_id: job_id).all
+    @students = []
+    @all_registrations.each do |registration|
+      s = Student.find(registration.student_id)
+      @students << s
+    end
+
+    render json: { students: @students, number: @students.length }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     #def set_registration
