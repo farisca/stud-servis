@@ -36,12 +36,14 @@ Rails.application.routes.draw do
     post "check_user", on: :collection
     post "password_change", on: :collection
     get "get_user", on: :collection
+    get "get_role", on: :collection
   end
 
   resources :students do
     get "download_cv", on: :collection
     post "update", on: :collection
     post "add_student", on: :collection
+    get "cv_exists", on: :collection
 
   end
 

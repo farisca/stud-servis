@@ -1,6 +1,8 @@
 
 angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken', function($scope, $http, $window, $location, AuthToken) {
     $scope.data = {};
+    $scope.download = false;
+
     $http.get('/students/find_student').success(function(data, status, headers, config) {
     	 $scope.data.name = data.name;
          $scope.data.surname = data.surname;
@@ -8,6 +10,11 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
          $scope.data.university = data.university;
          $scope.data.faculty = data.faculty;
          $scope.data.cv = data.id;
+         $http.get('/students/cv_exists?id=' + $scope.data.cv ).success(function(data, status, headers, config) {
+            if (data.exists)
+                $scope.download = true;
+            else
+                $scope.download = false;});
     });
 
     $scope.filesChanged = function(elm) {
