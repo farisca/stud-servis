@@ -4,7 +4,7 @@
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-controller="registerController as register" ng-submit="register.posalji()">
-            
+
         <p> <%= I18n.t('student_name') %> </p>
         <label for="inputName" class="sr-only">Ime</label>
         <input type="text" ng-model="register.podaci.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
@@ -30,16 +30,17 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_student_button') %></button>
         <br>
 
-        <div ng-show="register.isError()" class="alert alert-danger" role="alert">
+        <!--  <div ng-show="register.isError()" class="alert alert-danger" role="alert">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <span class="sr-only">Greška:</span>
           {{register.errorMsg}}
-        </div>
+        </div> -->
+        <error-message></error-message>
 
         <div ng-show="register.isSuccess()" class="alert alert-success" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  {{register.successMsg}}
-</div>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            {{register.successMsg}}
+        </div>
 
     </form>
     <br><br><br><br>
