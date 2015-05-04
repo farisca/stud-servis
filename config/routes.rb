@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     post "check_user", on: :collection
     post "password_change", on: :collection
     get "get_user", on: :collection
+    get "get_role", on: :collection
   end
 
   resources :students do
