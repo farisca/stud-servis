@@ -4,7 +4,7 @@
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-submit="save()">
-            
+           
         <p> <%= I18n.t('student_name') %> </p>
         <label for="inputName" class="sr-only">Ime</label>
         <input type="text" ng-model="data.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
@@ -25,7 +25,7 @@
         <p> <%= I18n.t('student_faculty') %> </p>
         <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
         <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
-                
+              <hello-world></hello-world>  
          <p> <%= I18n.t('student_cv') %> </p>
           <div class="row">
           <div class="col-md-6">

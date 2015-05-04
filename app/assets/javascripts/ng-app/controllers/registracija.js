@@ -1,35 +1,36 @@
 angular.module('aplikacija')
-    .controller('registerController', ['$http', '$location', '$window', function ($http, $location, $window) {
+    .controller('registerController', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
     	this.podaci={};
-    	this.errorMsg="";
-    	this.successMsg="";
+    	$scope.errorMsg="";
+    	$scope.successMsg="";
         var res;
+
         
-    	this.isError=function() {
-    		return (!(this.errorMsg===""));
+        
+    	$scope.isError=function() {
+    		return (!($scope.errorMsg===""));
     	}
-    	this.isSuccess=function() {
-    		return (!(this.successMsg===""));
+    	$scope.isSuccess=function() {
+    		return (!($scope.successMsg===""));
     	}
     	this.posalji= function() {
-    		this.errorMsg="";
+    		$scope.errorMsg="";
 
-    		if (this.podaci.password.length < 5) this.errorMsg = "Password mora biti barem 5 karaktera dug!"
-    		else if (this.podaci.password != this.podaci.password_confirmation) this.errorMsg ="Password i potvrda passworda se razlikuju!";
-            else if (grecaptcha.getResponse() == "") this.errorMsg = "Morate potvrditi da niste robot!";
+    		if (this.podaci.password.length < 5) $scope.errorMsg = "Password mora biti barem 5 karaktera dug!"
+    		else if (this.podaci.password != this.podaci.password_confirmation) $scope.errorMsg ="Password i potvrda passworda se razlikuju!";
+            else if (grecaptcha.getResponse() == "") $scope.errorMsg = "Morate potvrditi da niste robot!";
 
-    		if (!(this.isError())) {
+    		if (!($scope.isError())) {
     			res = $http.post('/students/add_student', this.podaci);
 
 				res.success(function(data, status, headers, config) {
-					if (data.error=="OK") {
-                        this.successMsg = data;
+					if (data.error!="Korisnik već postoji") {
                         $location.path('potvrdaORegistraciji');
                     }
                     else if(data.error=="Korisnik već postoji")
-                        this.errorMsg = "Korisnik već postoji!";
+                        $scope.errorMsg = "Korisnik već postoji!";
                     
-					else this.errorMsg=data.error;
+					else $scope.errorMsg=data.error;
 				});
     		}
     	}

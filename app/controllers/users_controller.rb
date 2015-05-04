@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
+  before_action :set_current_user, :authenticate_request, only: [:show]
 
-before_action :set_current_user, :authenticate_request, only: [:show]
-
-def find_user_role
-  u = User.find_by(id: current_user.id);
-  return u.id;
-end
+  def find_user_role
+    u = User.find_by(id: @current_user.id);
+    return u.id;
+  end
 
   def show
     render json: @user
@@ -84,6 +83,22 @@ end
 
   end
 
+  before_action :set_current_user, :authenticate_request, only: [:get_user]
+
+  def get_user
+
+    id = @current_user.id
+    student = Student.find_by(user_id: id)
+    kompanija = Company.find_by(user_id: id)
+    if !student.nil?
+      status = "student"
+    elsif !kompanija.nil?
+      status = "kompanija"
+    end
+
+    return render json: { rola: status }
+  end
+
   def login
   end
 
@@ -96,7 +111,7 @@ end
   end
 
   def set_user 
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end	
 
 end

@@ -6,9 +6,10 @@ angular.module('aplikacija')
 		console.log("token" + AuthToken.get());
 		
 		 $http.get('/users/find_user_role').success(function(data, status, headers, config) {
-		 	
+
     	 $scope.data.role = data.role;
     	 console.log($scope.data.role);
+
          });
 
 		this.isTrenutna = function(stranica) {
@@ -38,6 +39,7 @@ angular.module('aplikacija')
 			if(stranica == "potvrdaOUnesenomOglasu" && AuthToken.get() != "") return true;
 			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
+			if(stranica == "home" && AuthToken.get() != "") return true;
 
 			return false;
 			

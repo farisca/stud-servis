@@ -42,7 +42,7 @@ class StudentsController < ApplicationController
         if student.save
           
           SignUpNotifier.registrated(user).deliver
-          return render json: { error: student }
+          return render json: { error: "OK" }
         end
 
       end

@@ -52,10 +52,16 @@ angular
                 controller: 'ChoosenAd'
             }).when('/home', {
                 templateUrl: 'home.html',
-                controller: 'oglasBoxController'
+                controller: 'HomeController'
+            }).when('/', {
+                templateUrl: 'home.html',
+                controller: 'HomeController'
             }).when('/oglasBox', {
                 templateUrl: 'oglasBox.html',
                 controller: 'oglasBoxController'
+            }).when('/editAd', {
+                templateUrl: 'editAd.html',
+                controller: 'editAdController'
             });
         $locationProvider.html5Mode(true);
     });

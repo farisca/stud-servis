@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get "getAllJobs", on: :collection
     post "add_job", on: :collection
     get "get_job", on: :collection
+    get "get_ordered_jobs", on: :collection
   end
 
   resources :companies do
@@ -28,12 +29,13 @@ Rails.application.routes.draw do
 
   resources :registrations do
     get "make_registration", on: :collection
+    get "get_all_students", on: :collection
   end
 
   resources :users do
     post "check_user", on: :collection
     post "password_change", on: :collection
-
+    get "get_user", on: :collection
   end
 
   resources :students do
