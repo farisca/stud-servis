@@ -60,6 +60,11 @@ class JobsController < ApplicationController
     render json: { category: category, company: company, description: description, location: location, duration: duration, id: id}  
   end
 
+  def get_ordered_jobs
+    @jobs =  Job.limit(params["count"]).order("created_at", :desc)
+    render json: {jobs: @jobs}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job

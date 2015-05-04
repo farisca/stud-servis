@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get "getAllJobs", on: :collection
     post "add_job", on: :collection
     get "get_job", on: :collection
+    get "get_ordered_jobs", on: :collection
   end
 
   resources :companies do
