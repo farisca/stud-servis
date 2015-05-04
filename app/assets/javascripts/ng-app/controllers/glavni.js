@@ -7,11 +7,7 @@ angular.module('aplikacija')
 		
 	 	console.log("rola usera");
 		$http.get('/users/get_role').success(function(data, status, headers, config) {
-
-    	 $scope.podaci=data;
-    	 console.log("rola usera");
-    	 console.log(data.rola);
-
+         AuthToken.setTipKorisnika(data.rola);
          });
 
 		this.isTrenutna = function(stranica) {
@@ -29,12 +25,12 @@ angular.module('aplikacija')
 			if(stranica == "profil" && AuthToken.get() != "") return true;
 			
 			//Za sve logirane studente
-			if(stranica == "oglasi" && AuthToken.get() != "" ) return true;
+			if(stranica == "oglasi" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true;
 			if(stranica == "oglas" && AuthToken.get() != "") return true;
 			
 			//Za logirane kompanije
-			if(stranica == "unosOglasa" && AuthToken.get() != "") return true;
-			if(stranica == "kompanija" && AuthToken.get() != "") return true;
+			if(stranica == "unosOglasa" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
+			if(stranica == "kompanija" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
 			if(stranica == "pocetna" && AuthToken.get() != "") return true;
 			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
 			if(stranica == "listaOglasa" && AuthToken.get() != "") return true;
