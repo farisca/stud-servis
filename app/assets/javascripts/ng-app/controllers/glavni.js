@@ -1,5 +1,4 @@
-angular.module('aplikacija')
-    .controller("glavniController", ['$http', '$location', '$window', 'AuthToken','$scope', function($http, $location, $window, AuthToken, $scope) {
+app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken','$scope', function($http, $location, $window, AuthToken, $scope) {
 		this.trenutnaStranica="home";
 		this.prijavljen={};
         var obj;

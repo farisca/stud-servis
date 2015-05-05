@@ -10,12 +10,15 @@
             });
         $locationProvider.html5Mode(true);
     });*/
+'use strict';
 
-angular
+var app = angular
     .module('aplikacija', [
         'ngRoute',
-        'templates'
-    ]).config(function ($routeProvider, $locationProvider) {
+        'templates',
+        'pascalprecht.translate'
+    ]);
+    app.config(['$routeProvider','$locationProvider',function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/registracija', {
                 templateUrl: 'registracija.html',
@@ -68,7 +71,7 @@ angular
                 controller: 'editAdController'
             });
         $locationProvider.html5Mode(true);
-    });
+    }]);
 
 
 /*angular
