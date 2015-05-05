@@ -37,13 +37,19 @@
         <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
               <hello-world></hello-world>  
          <p> {{ 'CV' | translate }} </p>
-          <div class="row">
-          <div class="col-md-6">
+          <div class="btn-group">
          <a class="btn btn-default" ng-show="download" target="_self" href="/students/download_cv?id={{data.cv}}" download>{{ 'DOWNLOAD' | translate }}</a>
-</div><div class="col-md-6">
-        <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" /></div>
-</div><br>
-        <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}</button>
+
+  
+        <span class="btn btn-default btn-file">
+          <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" />{{ 'BROWSE' | translate }}
+        </span>
+        
+        </div>
+        <p id="fajl" ng-model="label"></p>
+        <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}
+        </button>
+
         <br>
 
         <div ng-show="register.isError()" class="alert alert-danger" role="alert">

@@ -1,27 +1,31 @@
 
-angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken', function($scope, $http, $window, $location, AuthToken) {
+angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken', '$route', function($scope, $http, $window, $location, AuthToken, $route) {
     $scope.data = {};
     $scope.download = false;
     $scope.savebutton = {};
     $scope.savebutton.disabled = false;
     $scope.infoMsg = "";
     $scope.data.location = 2;
+    
+    getData = function() {
+        $http.get('/students/find_student').success(function(data, status, headers, config) {
+        	 $scope.data.name = data.name;
+             $scope.data.surname = data.surname;
+             
+             $scope.data.location = data.location_id;
 
-    $http.get('/students/find_student').success(function(data, status, headers, config) {
-    	 $scope.data.name = data.name;
-         $scope.data.surname = data.surname;
-         
-         $scope.data.location = data.location_id;
+             $scope.data.university = data.university;
+             $scope.data.faculty = data.faculty;
+             $scope.data.cv = data.id;
+             $http.get('/students/cv_exists?id=' + $scope.data.cv ).success(function(data, status, headers, config) {
+                if (data.exists)
+                    $scope.download = true;
+                else
+                    $scope.download = false;});
+        });
+    };
 
-         $scope.data.university = data.university;
-         $scope.data.faculty = data.faculty;
-         $scope.data.cv = data.id;
-         $http.get('/students/cv_exists?id=' + $scope.data.cv ).success(function(data, status, headers, config) {
-            if (data.exists)
-                $scope.download = true;
-            else
-                $scope.download = false;});
-    });
+    getData();
 
     $scope.filesChanged = function(elm) {
         $scope.files = elm.files;
@@ -55,7 +59,7 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
                 $scope.savebutton.disabled = false;
                 $scope.infoMsg = "Podaci spašeni!";
                 console.log("Data saved...");
-
+                $route.reload();
             }).error(function(resp) {
                 console.log("greska");
             });
@@ -86,8 +90,20 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
     $scope.isInfo = function() {
         return (!($scope.infoMsg === ""));
     }
+$(document).ready( function() {
+    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        $('#fajl').text(function() {
+            return "{{ 'SELECTED_FILE' | translate }}: " + label;
+        });
+    });
+});
 
 }]);
 
-
+$(document).on('change', '.btn-file :file', function() {
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
 
