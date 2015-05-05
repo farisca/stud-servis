@@ -23,6 +23,16 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DOWNLOAD': 'Download',
     'BROWSE': 'Browse',
     'SAVE': 'Save',
+    'MY_ADS': 'My ads',
+    'MY_ADS2': 'Ads I have applied to...',
+    'EMAIL': 'E-mail',
+    'PASSWORD': 'Password',
+    'REMEMBER_ME': 'Remember me',
+    'FORGOT_PASSWORD': 'Forgot your password?',
+    'COMPANY_NAME': "Company's name",
+    'DESCRIPTION': 'Description',
+    'WEB': 'Web site',
+    'PHONE': 'Phone',
     'FOO': 'This is a paragraph',
     'CREATE_AD': 'Create ad',
     'AD_CATEGORY': 'Choose category',
@@ -38,6 +48,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'LOGIN_BUTTON': 'Login',
     'FORGOT_PASS': 'Forgot password?'
     
+
   });
  
   $translateProvider.translations('bs', {
@@ -61,9 +72,19 @@ app.config(['$translateProvider', function ($translateProvider) {
     'UNIVERSITY': 'Univerzitet',
     'FACULTY': 'Fakultet',
     'CV': 'CV',
+    'MY_ADS': 'Moji oglasi',
     'DOWNLOAD': 'Preuzmi',
     'BROWSE': 'Browse',
     'SAVE': 'Spasi',
+    'MY_ADS2': 'Oglasi na koje sam se prijavio/la...',
+    'EMAIL': 'E-mail',
+    'PASSWORD': 'Šifra',
+    'REMEMBER_ME': 'Zapamti me',
+    'FORGOT_PASSWORD': 'Zaboravili ste šifru?',
+    'COMPANY_NAME': 'Naziv kompanije',
+    'DESCRIPTION': 'Opis',
+    'WEB': 'Web stranica',
+    'PHONE': 'Telefon',
     'FOO': 'Dies ist ein Absatz',
     'CREATE_AD': 'Kreiraj oglas',
     'AD_CATEGORY': 'Odaberite kategoriju',

@@ -2,7 +2,7 @@
 var app=angular.module('aplikacija');
 
 app.controller('JobsController', ['$http','$scope','$location', function ($http, $scope,$location ) {
-    	$scope.podaci={};
+    	$scope.data={};
     	this.errorMsg="";
     	this.successMsg="";
 	    var res;
@@ -17,16 +17,16 @@ app.controller('JobsController', ['$http','$scope','$location', function ($http,
     	
     	$http.get('jobs/getAllJobs').success(function(data, status, headers, config) {
 					$scope.successMsg="Success while geting all jobs!";
-					$scope.podaci=data;
+					$scope.data=data;
 				
 				}).error(function(){
 					$scope.errorMsg="Error while geting all jobs!";
 				});
 		
 		this.createNewJob= function() {		
-		console.log(this.podaci);
 		
-        res= $http.post('/jobs/add_job',this.podaci);
+		
+        res= $http.post('/jobs/add_job',this.data);
         
         res.success(function(data, status, headers, config) {
         	       if (data.error=="OK") {

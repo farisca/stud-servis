@@ -7,6 +7,16 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			return (stranica===this.trenutnaStranica);
 		}
 
+		this.isCurrentLanguage = function(lng) {
+			
+		    if ($translate.use() === lng) {
+		    	console.log($translate.use());
+		      return 1;
+		    } else {
+		      return 0;
+		    }
+		}
+
 		this.isVidljiv = function(stranica) {
 			//console.log("mijenjam vidljivost" + stranica);
 			if(stranica == "prijava" && AuthToken.get() == "") return true;
@@ -19,7 +29,7 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
 			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
-			if(stranica == "profil" && AuthToken.get() != "" ) return true;
+			if(stranica == "profil" && AuthToken.get() != "") return true;
 			
 			//Za sve logirane studente
 			if(stranica == "oglasi" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true;

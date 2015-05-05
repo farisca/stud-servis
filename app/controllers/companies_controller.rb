@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:edit, :update, :destroy]
-  before_action :set_current_user, :authenticate_request, only: [:show, :find_company]
+  before_action :set_company, only: [:edit, :destroy]
+  before_action :set_current_user, :authenticate_request, only: [:show, :find_company, :update]
 
   def show
     @company = Company.find_by(user_id: current_user.id)
@@ -32,16 +32,18 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /companies/1
-  # PATCH/PUT /companies/1.json
   def update
-    respond_to do |format|
-      if @company.update(company_params)
-        format.json { render :show, status: :ok, location: @company }
-      else
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
-    end
+    @company = Company.find_by(user_id: current_user.id)
+    @company.name = params["name"]
+    
+    @location = Location.find_by(id: params["location"])
+    @company.location = @location
+    @company.description = params["description"]
+    @company.web = params["web"]
+    @company.phone = params["phone"]
+    @company.save
+    render json: { status: "OK"}
+    
   end
 
   # DELETE /companies/1
