@@ -69,5 +69,7 @@ bs:
   my_profile: "Moj profil"
   save_student_button: "Spasi moj profil"
   categories: "Kategorije"
+  potvrdaOUnesenomOglasu: "Novi oglas je uspjesno unesen!"
+  potvrdaORegistraciji: "Poslali smo Vam e-mail!"
 
 

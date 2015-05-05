@@ -23,7 +23,15 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DOWNLOAD': 'Download',
     'BROWSE': 'Browse',
     'SAVE': 'Save',
-    'FOO': 'This is a paragraph'
+    'FOO': 'This is a paragraph',
+    'CREATE_AD': 'Create ad',
+    'AD_CATEGORY': 'Choose category',
+    'AD_COMPANY': 'Choose company',
+    'AD_DESCRIPTION': 'Description',
+    'AD_LOCATION': 'Choose location',
+    'AD_DURATION': 'Duration',
+    'AD_BUTTON': 'Create ad'
+    
   });
  
   $translateProvider.translations('bs', {
@@ -39,7 +47,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'LOGIN': 'Prijava',
     'LOGOUT': 'Odjava',
     'CATEGORIES': 'Kategorije',
-    'HOME': 'Doma doma',
+    'HOME': 'Pocetna',
     'COMPANIES': 'Kompanije',
     'CHANGE_PASSWORD': 'Promijeni šifru',
     'AD': 'Oglasi',
@@ -50,7 +58,14 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DOWNLOAD': 'Preuzmi',
     'BROWSE': 'Browse',
     'SAVE': 'Spasi',
-    'FOO': 'Dies ist ein Absatz'
+    'FOO': 'Dies ist ein Absatz',
+    'CREATE_AD': 'Kreiraj oglas',
+    'AD_CATEGORY': 'Odaberite kategoriju',
+    'AD_COMPANY': 'Odaberite kompaniju',
+    'AD_DESCRIPTION': 'Opis',
+    'AD_LOCATION': 'Odaberite lokaciju',
+    'AD_DURATION': 'Trajanje oglasa',
+    'AD_BUTTON': 'Kreiraj oglas'
   });
  
   $translateProvider.preferredLanguage('en');

@@ -8,17 +8,11 @@ app.controller('JobsController', ['$http','$scope','$location', function ($http,
 	    var res;
 	    
     	this.isError=function() {
-    		if($scope.errorMsg!="")
-    		return true;
-    		else 
-    		return false
-    	}
-    	this.isSuccess=function() {
-    		if($scope.successMsg)
-    		return true;
-    		else 
-    		return false;
-    	}
+        return (!(this.errorMsg===""));
+      }
+      this.isSuccess=function() {
+        return (!(this.successMsg===""));
+      }
     	
     	
     	$http.get('jobs/getAllJobs').success(function(data, status, headers, config) {
@@ -38,7 +32,7 @@ app.controller('JobsController', ['$http','$scope','$location', function ($http,
         	       if (data.error=="OK") {
 					$scope.successMsg="Success while saving a new job!";
 					console.log(this.successMsg);
-				//$location.path('potvrdaOUnesenomOglasu');
+				    $location.path('/potvrdaOUnesenomOglasu');
 				//	$scope.podaci=data;
         	       }
 				

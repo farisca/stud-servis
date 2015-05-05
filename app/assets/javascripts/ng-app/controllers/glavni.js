@@ -19,12 +19,12 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
 			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
+			if(stranica == "profil" && AuthToken.get() != "" ) return true;
 			
 			//Za sve logirane studente
 			if(stranica == "oglasi" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true;
 			if(stranica == "oglas" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true;
 			if(stranica == "kategorije" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true; //prikaz kategorija za pretragu
-			if(stranica == "profil" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0) return true;
 			if(stranica == "home" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0) return true;
 			
 			//Za logirane kompanije

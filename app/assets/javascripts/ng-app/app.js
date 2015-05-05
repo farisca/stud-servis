@@ -32,6 +32,10 @@ var app = angular
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'
             })
+            .when('/listaOglasa', {
+                templateUrl: 'listaOglasa.html',
+                controller: 'JobsController'
+            })
             .when('/myads', {
                 templateUrl: 'myads.html',
                 controller: 'MyAdsCtrl'
