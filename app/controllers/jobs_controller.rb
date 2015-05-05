@@ -19,7 +19,7 @@ class JobsController < ApplicationController
   def add_job
     @job = Job.new
 
-    is_added, status = @job.create_job(params["category_name"], params["company_name"], params["description"], params["city"], params["duration"]);
+    is_added, status = @job.create_job(params["name"],params["category_name"], params["company_name"], params["description"], params["city"], params["duration"]);
     
     if is_added == false
       return render json: { error: "Greska pri kreiranju oglasa!" } 

@@ -3,7 +3,10 @@
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-controller="JobsController as job" ng-submit="job.createNewJob()">
-        
+        <p>{{ 'AD_NAME' | translate }}</p>
+        <label for="inputName" class="sr-only">{{ 'AD_NAME' | translate }}</label>
+        <input type="text" ng-model="job.data.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
+         
         <div ng-controller="CategoryController">
         <p>{{ 'AD_CATEGORY' | translate }}</p>
         <label for="inputCategory" class="sr-only">Kategorija</label>
