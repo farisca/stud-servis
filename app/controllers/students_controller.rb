@@ -31,7 +31,7 @@ class StudentsController < ApplicationController
       user.email = params["email"]
       user.password = params["password"]
       user.password_confirmation = params["password_confirmation"]
-      
+      user.role=0; #Student role is zero
       if user.save
 
         student = Student.new
@@ -90,12 +90,19 @@ class StudentsController < ApplicationController
   end
 
   def download_cv
-    render json: "proba"
     send_file(
      "#{Rails.root}/public/data/" + params["id"] + ".pdf",
       filename: "CV.pdf",
       type: "application/pdf"
     )
+  end
+
+  def cv_exists
+    if File.file?("#{Rails.root}/public/data/" + params["id"] + ".pdf")
+      render json: { exists: 1}
+    else
+      render json: { exists: 0}
+    end
   end
 
   def proba

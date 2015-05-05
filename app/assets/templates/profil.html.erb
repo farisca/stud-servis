@@ -1,6 +1,6 @@
 <br>
 <br>
-<h2> <%= I18n.t('moj_profil') %> </h2>
+<h2 align="center"> <%= I18n.t('my_profile') %> </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-submit="save()">
@@ -29,7 +29,7 @@
          <p> <%= I18n.t('student_cv') %> </p>
           <div class="row">
           <div class="col-md-6">
-         <a class="btn btn-default" target="_self" href="/students/download_cv?id={{data.cv}}" download>Download</a>
+         <a class="btn btn-default" ng-show="download" target="_self" href="/students/download_cv?id={{data.cv}}" download>Download</a>
 </div><div class="col-md-6">
         <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" /></div>
 </div><br>

@@ -11,10 +11,11 @@ angular.module('aplikacija').controller("confirmCtrl", ['$scope', '$http', '$win
   // Potvrdi korisnika
   $http.get('/auth').success(function(data, status, headers, config) {
     $scope.message.confirming = false;
-    if(data.status != "OK")
-      $scope.message.error = true;
-    else
+    console.log(data.status.id);
+    if(data.status.id != null)
       $scope.message.ok = true;
+    else
+      $scope.message.error = true;
   });
 
 

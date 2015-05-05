@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.json { render :show, status: :created, location: @location }
+        format.json { render json: @location }
       else
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
