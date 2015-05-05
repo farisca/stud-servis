@@ -17,6 +17,12 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CHANGE_PASSWORD': 'Change password',
     'AD': 'Ads',
     'NEW_AD': 'New ad',
+    'UNIVERSITY': 'University',
+    'FACULTY': 'Faculty',
+    'CV': 'CV',
+    'DOWNLOAD': 'Download',
+    'BROWSE': 'Browse',
+    'SAVE': 'Save',
     'FOO': 'This is a paragraph'
   });
  
@@ -38,6 +44,12 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CHANGE_PASSWORD': 'Promijeni šifru',
     'AD': 'Oglasi',
     'NEW_AD': 'Novi oglas',
+    'UNIVERSITY': 'Univerzitet',
+    'FACULTY': 'Fakultet',
+    'CV': 'CV',
+    'DOWNLOAD': 'Preuzmi',
+    'BROWSE': 'Browse',
+    'SAVE': 'Spasi',
     'FOO': 'Dies ist ein Absatz'
   });
  
