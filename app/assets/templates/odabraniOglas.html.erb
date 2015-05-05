@@ -1,7 +1,7 @@
 <br><br>
 <h2> Oglas </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
-  <form class="form-choosen-ad" ng-controller="ChoosenAd as ad" ng-submit="ad.prijavi()">
+  <form class="form-choosen-ad ad_forma" ng-controller="ChoosenAd as ad" ng-submit="ad.prijavi()" action="">
     <span> Kategorija: </span> <span class="kategorija"> </span> <br>
     <span> Kompanija: </span> <span class="kompanija"> </span> <br>
     <span> Opis: </span> <span class="opis"> </span> <br>
@@ -13,9 +13,14 @@
     <input type="button" class="btn btn-default oglas_edit" style="width: 300px;" value="Izmjena oglasa" > 
 
   </form>
-  	<edit-Ad class="forma_izmjena" kategorija="NEKA" kompanija="API" lokacija="Sarajevo" opis="Nesto" trajanje="10"> </edit-Ad>
+  
+  	<edit-Ad class="forma_izmjena" kategorija="{{ad_kategorija}}" kompanija="{{ad_kompanija}}" lokacija="{{ad_lokacija}}" opis="{{ad_opis}}" trajanje="{{ad_trajanje}}"></edit-Ad>
   	<input type="button" name="editAd_button" value="Spasi izmjene" class="btn btn-default editAd_button">
   	<br>
+  </form>
+
+  </form>
+  	<p class="svi_studenti"></p>
   </form>
 
 <br><br>

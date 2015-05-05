@@ -9,25 +9,28 @@ angular.module('aplikacija')
 
         this.prijavi = function() {
 
-            if (rola == "student") {
+            if (rola == 0) {
+                alert("student");
                 prijava = $http({ url: '/registrations/make_registration', 
                         method: "GET",
                         params: {job_id: job_id, active: 1}
                 });
                 prijava.success(function(data, status, headers, config) {
+                    alert("uspjeh");
                     alert(data.status);
                     $location.path(path);
                 });
             }
             else {
+                alert("kompanija");
                 prijava = $http({ url: '/registrations/get_all_students', 
                         method: "GET",
                         params: {id: job_id}
                 });
 
                 prijava.success(function(data, status, headers, config) {
-                    alert(data.number);
-                    alert(JSON.stringify(data.students));
+                    alert("Na oglas je prijavljeno: "+data.number+" studenata");
+                    //alert(JSON.stringify(data.students));
                     $location.path(path);
                 });
 
@@ -45,12 +48,12 @@ angular.module('aplikacija')
             $('.forma_izmjena').hide();
             $('.editAd_button').hide();
 
-            user = $http({ url: '/users/get_user', 
+            user = $http({ url: '/users/get_role', 
                     method: "GET",
             });
             user.success(function(data, status, headers, config) {
                 rola = data.rola;
-                if (data.rola == "student") {
+                if (rola == 0) {
                     $('.oglass_button').val("Prijavi se na ovaj oglas");
                     $('.oglas_edit').hide();
                 }
@@ -65,11 +68,21 @@ angular.module('aplikacija')
             });
 
             res.success(function(data, status, headers, config) {
+                
                 $('.kategorija').html(data.category);
                 $('.kompanija').html(data.company);
                 $('.opis').html(data.description);
                 $('.lokacija').html(data.location);
                 $('.trajanje').html(data.duration);
+
+                var help = $("edit-Ad").html();
+               
+                $scope.ad_kategorija = data.category;
+                $scope.ad_kompanija = data.company;
+                $scope.ad_opsi = data.description;
+                $scope.ad_lokacija = data.location;
+                $scope.trajanje = data.duration;
+
                 var path = 'oglas/'+data.id;
                 $location.path(path);
             });

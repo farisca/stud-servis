@@ -84,6 +84,7 @@ class UsersController < ApplicationController
     id = @current_user.id
     student = Student.find_by(user_id: id)
     kompanija = Company.find_by(user_id: id)
+    raise
     if !student.nil?
       status = "student"
     elsif !kompanija.nil?
