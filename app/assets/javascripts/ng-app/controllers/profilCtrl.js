@@ -5,11 +5,14 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
     $scope.savebutton = {};
     $scope.savebutton.disabled = false;
     $scope.infoMsg = "";
+    $scope.data.location = 2;
 
     $http.get('/students/find_student').success(function(data, status, headers, config) {
     	 $scope.data.name = data.name;
          $scope.data.surname = data.surname;
-         $scope.data.location = data.location;
+         
+         $scope.data.location = data.location_id;
+
          $scope.data.university = data.university;
          $scope.data.faculty = data.faculty;
          $scope.data.cv = data.id;
@@ -25,7 +28,12 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
         $scope.$apply();
     }
 
-    $scope.save = function() {
+    $scope.locationSelected = function(id) {
+        if (id == $scope.data.location) return true;
+        else return false;
+    }
+
+    $scope.save = function() {        
         $scope.savebutton.disabled = true;
         $scope.infoMsg = "Spašavam podatke...";
         var fd = new FormData();

@@ -27,7 +27,7 @@
 
         <div ng-model="register.grecaptcha" class="g-recaptcha" data-sitekey="6LdCOgYTAAAAAPYxkwGNL9UKIIj9dwP2VvsaL43t"></div>
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_student_button') %></button>
+        <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_student_button') %></button>
         <br>
 
         <!--  <div ng-show="register.isError()" class="alert alert-danger" role="alert">
@@ -36,12 +36,7 @@
           {{register.errorMsg}}
         </div> -->
         <error-message></error-message>
-
-        <div ng-show="register.isSuccess()" class="alert alert-success" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            {{register.successMsg}}
-        </div>
-
+        <info-message></info-message>
     </form>
     <br><br><br><br>
 </div>

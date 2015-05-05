@@ -65,7 +65,8 @@ class StudentsController < ApplicationController
     @student = Student.find_by(user_id: current_user.id)
     @student.name = params["name"]
     @student.surname = params["surname"]
-    #@student.location = params["location"]
+    @location = Location.find_by(id: params["location"])
+    @student.location = @location
     @student.university = params["university"]
     @student.faculty = params["faculty"]
 
