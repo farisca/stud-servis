@@ -10,26 +10,24 @@ angular.module('aplikacija')
         this.prijavi = function() {
 
             if (rola == 0) {
-                alert("student");
                 prijava = $http({ url: '/registrations/make_registration', 
                         method: "GET",
                         params: {job_id: job_id, active: 1}
                 });
                 prijava.success(function(data, status, headers, config) {
-                    alert("uspjeh");
-                    alert(data.status);
+                    alert("Uspješno ste prijavljeni na ovaj oglas.");
                     $location.path(path);
                 });
             }
             else {
-                alert("kompanija");
+                //alert("kompanija");
                 prijava = $http({ url: '/registrations/get_all_students', 
                         method: "GET",
                         params: {id: job_id}
                 });
 
                 prijava.success(function(data, status, headers, config) {
-                    alert("Uspjeh");
+                    //alert("Uspjeh");
                     alert("Na oglas je prijavljeno: "+data.number+" studenata");
                     //alert(JSON.stringify(data.students));
                     $location.path(path);
