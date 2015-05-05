@@ -1,9 +1,14 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:edit, :update, :destroy]
+  before_action :set_current_user, :authenticate_request, only: [:show, :find_company]
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
+    @company = Company.find_by(user_id: current_user.id)
+    render json: @company
+  end
+
+  def find_company
+    @company = Company.find_by(user_id: current_user.id)
     render json: @company
   end
   

@@ -66,5 +66,56 @@
   </div>
 </div>
 <div ng-show="isVisibleByRole('company')">
-  PROBA
+  <h2 align="center"> {{ 'MY_PROFILE' | translate }} </h2>
+  <div class="container" style="position:relative; top:50px; width:400px;">
+          
+      <form class="form-register" ng-submit="saveCompany()">
+             
+          <p> {{ 'COMPANY_NAME' | translate }} </p>
+          <label for="inputName" class="sr-only">Ime</label>
+          <input type="text" ng-model="data.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
+
+       
+          <div ng-controller="LocationController">
+            <p>{{ 'CITY' | translate }}</p>
+            <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
+            <select class="form-control" id="select" ng-model="data.location" >
+              <option ng-repeat="location in podaci" ng-selected="locationSelected(location.id)" value="{{location.id}}">
+                {{location.city}}
+              </option>
+            </select>
+            <br/>
+          </div>
+
+          <p> {{ 'DESCRIPTION' | translate }} </p>
+          <label for="inputUniversity" class="sr-only"><%= I18n.t('student_university') %></label>
+          <input type="text" ng-model="data.university" id="inputUniversity" class="form-control" placeholder="" required autofocus><br>
+
+
+
+          <p> {{ 'WEB' | translate }} </p>
+          <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
+          <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
+
+          <p> {{ 'PHONE' | translate }} </p>
+          <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
+          <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
+                <hello-world></hello-world>  
+          
+          <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}
+          </button>
+
+          <br>
+
+          <div ng-show="register.isError()" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Greška:</span>
+    {{register.errorMsg}}
+  </div>
+
+          <info-message></info-message>
+
+      </form>
+      <br><br><br><br>
+  </div>
 </div>
