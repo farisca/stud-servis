@@ -61,7 +61,7 @@ class JobsController < ApplicationController
   end
 
   def get_ordered_jobs
-    @jobs =  Job.select('companies.name as company_name, jobs.name as name, jobs.finish_at, jobs.id, locations.city').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').limit(params["count"])
+    @jobs =  Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, locations.city').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').limit(params["count"])
     #@jobs = Job.all
     render json: {jobs: @jobs, number: @jobs.length}
   end

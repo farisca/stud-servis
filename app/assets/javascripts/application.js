@@ -16,6 +16,7 @@
 //= require angular-translate
 //= require angular-route
 //= require angular-rails-templates
+//= require bootstrap
 //= require main
 //= require_tree ../templates
 //= require_tree .

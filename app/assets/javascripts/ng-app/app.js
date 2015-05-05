@@ -16,7 +16,8 @@ var app = angular
     .module('aplikacija', [
         'ngRoute',
         'templates',
-        'pascalprecht.translate'
+        'pascalprecht.translate',
+        'ui.bootstrap'
     ]);
     app.config(['$routeProvider','$locationProvider',function ($routeProvider, $locationProvider) {
         $routeProvider
