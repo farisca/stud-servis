@@ -61,10 +61,13 @@ bs:
   profil: "Profil"
   student_name: "Ime"
   student_surname: "Prezime"
-  student_location: "Location"
+  student_location: "Lokacija"
   student_university: "Univerzitet"
   student_faculty: "Fakultet"
   student_cv: "CV"
   ad_expires: "Oglas ističe"
+  my_profile: "Moj profil"
+  save_student_button: "Spasi moj profil"
+  categories: "Kategorije"
 
 
