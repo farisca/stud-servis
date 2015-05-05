@@ -23,6 +23,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DOWNLOAD': 'Download',
     'BROWSE': 'Browse',
     'SAVE': 'Save',
+<<<<<<< HEAD
     'MY_ADS': 'My ads',
     'MY_ADS2': 'Ads I have applied to...',
     'EMAIL': 'E-mail',
@@ -34,6 +35,19 @@ app.config(['$translateProvider', function ($translateProvider) {
     'WEB': 'Web site',
     'PHONE': 'Phone',
     'FOO': 'This is a paragraph'
+=======
+    'FOO': 'This is a paragraph',
+    'CREATE_AD': 'Create ad',
+    'AD_CATEGORY': 'Choose category',
+    'AD_COMPANY': 'Choose company',
+    'AD_DESCRIPTION': 'Description',
+    'AD_LOCATION': 'Choose location',
+    'AD_DURATION': 'Duration',
+    'AD_BUTTON': 'Create ad',
+    'CONFIRMATION_AD': 'New ad successufully added!',
+    'CONFIRMATION_REGISTRATION': 'Confirmation email was sent to you!'
+    
+>>>>>>> e15ef00c87e70ff0b3ef7ea1eaad444025a8f2c2
   });
  
   $translateProvider.translations('bs', {
@@ -49,7 +63,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'LOGIN': 'Prijava',
     'LOGOUT': 'Odjava',
     'CATEGORIES': 'Kategorije',
-    'HOME': 'Doma doma',
+    'HOME': 'Pocetna',
     'COMPANIES': 'Kompanije',
     'CHANGE_PASSWORD': 'Promijeni šifru',
     'AD': 'Oglasi',
@@ -61,6 +75,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DOWNLOAD': 'Preuzmi',
     'BROWSE': 'Browse',
     'SAVE': 'Spasi',
+<<<<<<< HEAD
     'MY_ADS2': 'Oglasi na koje sam se prijavio/la...',
     'EMAIL': 'E-mail',
     'PASSWORD': 'Šifra',
@@ -71,6 +86,18 @@ app.config(['$translateProvider', function ($translateProvider) {
     'WEB': 'Web stranica',
     'PHONE': 'Telefon',
     'FOO': 'Dies ist ein Absatz'
+=======
+    'FOO': 'Dies ist ein Absatz',
+    'CREATE_AD': 'Kreiraj oglas',
+    'AD_CATEGORY': 'Odaberite kategoriju',
+    'AD_COMPANY': 'Odaberite kompaniju',
+    'AD_DESCRIPTION': 'Opis',
+    'AD_LOCATION': 'Odaberite lokaciju',
+    'AD_DURATION': 'Trajanje oglasa',
+    'AD_BUTTON': 'Kreiraj oglas',
+    'CONFIRMATION_AD': 'Novi oglas je uspjesno unesen!',
+    'CONFIRMATION_REGISTRATION': 'Poslali smo Vam e-mail!'
+>>>>>>> e15ef00c87e70ff0b3ef7ea1eaad444025a8f2c2
   });
  
   $translateProvider.preferredLanguage('en');

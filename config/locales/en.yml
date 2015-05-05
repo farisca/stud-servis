@@ -66,3 +66,5 @@ en:
   student_cv: "CV"
   ad_expires: "Ad expires"
   categories: "Categories"
+  potvrdaOUnesenomOglasu: "New ad successufully added!"
+  potvrdaORegistraciji: "Confirmation email was sent to you!"
