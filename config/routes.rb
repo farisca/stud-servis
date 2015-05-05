@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "getAllCompanies", on: :collection
     post "add_company", on: :collection
     get "find_company", on: :collection
+    post "update", on: :collection
   end
 
   resources :sessions do

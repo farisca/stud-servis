@@ -1,7 +1,7 @@
 <div ng-show="isVisibleByRole('student')">
   <ul class="nav nav-tabs" >
-    <li role="presentation" class="active"><a href="profil">My profile</a></li>
-    <li role="presentation"><a href="myads">My ads</a></li>
+    <li role="presentation" class="active"><a href="profil">{{ 'MY_PROFILE' | translate }}</a></li>
+    <li role="presentation"><a href="myads">{{ 'MY_ADS' | translate }}</a></li>
   </ul>
   <h2 align="center"> {{ 'MY_PROFILE' | translate }} </h2>
   <div class="container" style="position:relative; top:50px; width:400px;">
@@ -88,18 +88,18 @@
           </div>
 
           <p> {{ 'DESCRIPTION' | translate }} </p>
-          <label for="inputUniversity" class="sr-only"><%= I18n.t('student_university') %></label>
-          <input type="text" ng-model="data.university" id="inputUniversity" class="form-control" placeholder="" required autofocus><br>
+          <label for="inputDescription" class="sr-only"><%= I18n.t('student_university') %></label>
+          <textarea cols="40" rows="5" type="text" ng-model="data.description" id="inputDescription" class="form-control" placeholder="" required autofocus></textarea><br>
 
 
 
           <p> {{ 'WEB' | translate }} </p>
-          <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
-          <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
+          <label for="inputWeb" class="sr-only"><%= I18n.t('student_faculty') %></label>
+          <input type="text" ng-model="data.web" id="inputWeb" class="form-control" placeholder="" required autofocus><br>
 
           <p> {{ 'PHONE' | translate }} </p>
-          <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
-          <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
+          <label for="inputPhone" class="sr-only"><%= I18n.t('student_faculty') %></label>
+          <input type="text" ng-model="data.phone" id="inputPhone" class="form-control" placeholder="" required autofocus><br>
                 <hello-world></hello-world>  
           
           <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}

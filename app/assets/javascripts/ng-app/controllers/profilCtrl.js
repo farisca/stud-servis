@@ -34,14 +34,10 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
         console.log("kupim podatke o kompaniji");
         $http.get('/companies/find_company').success(function(data, status, headers, config) {
              $scope.data.name = data.name;
-             console.log("Primljeno ime: " + data.name);
-             console.log("Ubaceno ime: " + $scope.data.name);
              $scope.data.location = data.location_id;
-
              $scope.data.description = data.description;
              $scope.data.web = data.web;
              $scope.data.phone = data.phone;
-             
         });
     };
 
@@ -110,7 +106,7 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
                 $scope.savebutton.disabled = false;
                 $scope.infoMsg = "Podaci spašeni!";
                 console.log("Data saved...");
-
+                $route.reload();
             }).error(function(resp) {
                 console.log("greska");
             });
@@ -133,7 +129,7 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
             $scope.savebutton.disabled = false;
             $scope.infoMsg = "Podaci spašeni!";
             console.log("Data saved...");
-
+            
         }).error(function(resp) {
             console.log("greska");
         });  
