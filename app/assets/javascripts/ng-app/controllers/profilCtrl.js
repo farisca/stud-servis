@@ -37,25 +37,45 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
         $scope.savebutton.disabled = true;
         $scope.infoMsg = "Spašavam podatke...";
         var fd = new FormData();
+        var imaFajl = false;
         angular.forEach($scope.files, function(file) {
             fd.append('name', $scope.data.name),
             fd.append('surname', $scope.data.surname),
             fd.append('location', $scope.data.location),
             fd.append('university', $scope.data.university),
             fd.append('faculty', $scope.data.faculty),
-            fd.append('file', file)
+            fd.append('file', file),
+            imaFajl = true;
         });
-        $http.post('/students/update', fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        }).success(function(resp) {
-            $scope.savebutton.disabled = false;
-            $scope.infoMsg = "Podaci spašeni!";
-            console.log("Data saved...");
+        if(imaFajl) {
+            $http.post('/students/update', fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            }).success(function(resp) {
+                $scope.savebutton.disabled = false;
+                $scope.infoMsg = "Podaci spašeni!";
+                console.log("Data saved...");
 
-        }).error(function(resp) {
-            console.log("greska");
-        });
+            }).error(function(resp) {
+                console.log("greska");
+            });
+        } else {
+            $http.post('/students/update', {
+                name: $scope.data.name,
+                surname: $scope.data.surname,
+                location: $scope.data.location,
+                university: $scope.data.university,
+                faculty: $scope.data.faculty
+            }).success(function(resp) {
+                $scope.savebutton.disabled = false;
+                $scope.infoMsg = "Podaci spašeni!";
+                console.log("Data saved...");
+
+            }).error(function(resp) {
+                console.log("greska");
+            });
+        }
+        
     };
        
     $scope.downloadCV = function() {

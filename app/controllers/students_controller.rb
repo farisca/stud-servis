@@ -69,16 +69,18 @@ class StudentsController < ApplicationController
     @student.location = @location
     @student.university = params["university"]
     @student.faculty = params["faculty"]
+    fajl = params["file"]
+    if !fajl.nil?
+      upload = params["file"]
+      name =  @student.id.to_s + ".pdf"
+      directory = "public/data"
+      # create the file path
+      path = File.join(directory, name)
+      # write the file
+      File.open(path, "wb") { |f| f.write(upload.read) }
 
-    upload = params["file"]
-    name =  @student.id.to_s + ".pdf"
-    directory = "public/data"
-    # create the file path
-    path = File.join(directory, name)
-    # write the file
-    File.open(path, "wb") { |f| f.write(upload.read) }
-
-    @student.cv = path
+      @student.cv = path
+    end
     @student.save
     render json: @student
   end
