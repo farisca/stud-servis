@@ -6,7 +6,22 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
     $scope.savebutton.disabled = false;
     $scope.infoMsg = "";
     $scope.data.location = 2;
+    var role = -1;
     
+    $http.get('/users/get_role').success(function(data, status, headers, config) {
+             
+        alert(data.rola);     
+        });
+
+    $scope.isVisibleByRole = function(rola) {
+        
+             if (role == 0 && rola == "student") return true;
+             else if (role != 0 && rola == "company") return true;
+             return false;
+        
+
+    }
+
     getData = function() {
         $http.get('/students/find_student').success(function(data, status, headers, config) {
         	 $scope.data.name = data.name;

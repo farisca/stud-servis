@@ -1,65 +1,70 @@
-<ul class="nav nav-tabs" >
-  <li role="presentation" class="active"><a href="profil">My profile</a></li>
-  <li role="presentation"><a href="myads">My ads</a></li>
-</ul>
-<h2 align="center"> {{ 'MY_PROFILE' | translate }} </h2>
-<div class="container" style="position:relative; top:50px; width:400px;">
-        
-    <form class="form-register" ng-submit="save()">
-           
-        <p> {{ 'STUDENT_NAME' | translate }} </p>
-        <label for="inputName" class="sr-only">Ime</label>
-        <input type="text" ng-model="data.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
+<div ng-show="isVisibleByRole('student')">
+  <ul class="nav nav-tabs" >
+    <li role="presentation" class="active"><a href="profil">My profile</a></li>
+    <li role="presentation"><a href="myads">My ads</a></li>
+  </ul>
+  <h2 align="center"> {{ 'MY_PROFILE' | translate }} </h2>
+  <div class="container" style="position:relative; top:50px; width:400px;">
+          
+      <form class="form-register" ng-submit="save()">
+             
+          <p> {{ 'STUDENT_NAME' | translate }} </p>
+          <label for="inputName" class="sr-only">Ime</label>
+          <input type="text" ng-model="data.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
 
-        <p> {{ 'STUDENT_SURNAME' | translate }} </p>
-        <label for="inputSurname" class="sr-only"><%= I18n.t('student_surname') %></label>
-        <input type="text" ng-model="data.surname" id="inputSurname" class="form-control" placeholder="" required autofocus><br>
+          <p> {{ 'STUDENT_SURNAME' | translate }} </p>
+          <label for="inputSurname" class="sr-only"><%= I18n.t('student_surname') %></label>
+          <input type="text" ng-model="data.surname" id="inputSurname" class="form-control" placeholder="" required autofocus><br>
 
-        <div ng-controller="LocationController">
-          <p>{{ 'CITY' | translate }}</p>
-          <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
-          <select class="form-control" id="select" ng-model="data.location" >
-            <option ng-repeat="location in podaci" ng-selected="locationSelected(location.id)" value="{{location.id}}">
-              {{location.city}}
-            </option>
-          </select>
-          <br/>
-        </div>
+          <div ng-controller="LocationController">
+            <p>{{ 'CITY' | translate }}</p>
+            <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
+            <select class="form-control" id="select" ng-model="data.location" >
+              <option ng-repeat="location in podaci" ng-selected="locationSelected(location.id)" value="{{location.id}}">
+                {{location.city}}
+              </option>
+            </select>
+            <br/>
+          </div>
 
-        <p> {{ 'UNIVERSITY' | translate }} </p>
-        <label for="inputUniversity" class="sr-only"><%= I18n.t('student_university') %></label>
-        <input type="text" ng-model="data.university" id="inputUniversity" class="form-control" placeholder="" required autofocus><br>
+          <p> {{ 'UNIVERSITY' | translate }} </p>
+          <label for="inputUniversity" class="sr-only"><%= I18n.t('student_university') %></label>
+          <input type="text" ng-model="data.university" id="inputUniversity" class="form-control" placeholder="" required autofocus><br>
 
 
 
-        <p> {{ 'FACULTY' | translate }} </p>
-        <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
-        <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
-              <hello-world></hello-world>  
-         <p> {{ 'CV' | translate }} </p>
-          <div class="btn-group">
-         <a class="btn btn-default" ng-show="download" target="_self" href="/students/download_cv?id={{data.cv}}" download>{{ 'DOWNLOAD' | translate }}</a>
+          <p> {{ 'FACULTY' | translate }} </p>
+          <label for="inputFaculty" class="sr-only"><%= I18n.t('student_faculty') %></label>
+          <input type="text" ng-model="data.faculty" id="inputFaculty" class="form-control" placeholder="" required autofocus><br>
+                <hello-world></hello-world>  
+           <p> {{ 'CV' | translate }} </p>
+            <div class="btn-group">
+           <a class="btn btn-default" ng-show="download" target="_self" href="/students/download_cv?id={{data.cv}}" download>{{ 'DOWNLOAD' | translate }}</a>
 
-  
-        <span class="btn btn-default btn-file">
-          <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" />{{ 'BROWSE' | translate }}
-        </span>
-        
-        </div>
-        <p id="fajl" ng-model="label"></p>
-        <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}
-        </button>
+    
+          <span class="btn btn-default btn-file">
+            <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" />{{ 'BROWSE' | translate }}
+          </span>
+          
+          </div>
+          <p id="fajl" ng-model="label"></p>
+          <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}
+          </button>
 
-        <br>
+          <br>
 
-        <div ng-show="register.isError()" class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Greška:</span>
-  {{register.errorMsg}}
+          <div ng-show="register.isError()" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Greška:</span>
+    {{register.errorMsg}}
+  </div>
+
+          <info-message></info-message>
+
+      </form>
+      <br><br><br><br>
+  </div>
 </div>
-
-        <info-message></info-message>
-
-    </form>
-    <br><br><br><br>
+<div ng-show="isVisibleByRole('company')">
+  PROBA
 </div>
