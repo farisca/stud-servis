@@ -26,6 +26,7 @@ angular.module('aplikacija').factory("AuthService", function($http, $q, $rootSco
       }).error(function(resp) {
         console.log($rootScope);
         $scope.errorMsg ="Netačni podaci!";
+        $scope.podaci.password = "";
         d.reject(resp.error);
       });
       return d.promise;

@@ -16,8 +16,8 @@
         <div ng-controller="LocationController">
           <p><%= I18n.t('city')%></p>
           <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
-          <select class="form-control" id="select" ng-model="data.location" ng-init="data.location='Sarajevo'">
-            <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
+          <select class="form-control" id="select" ng-model="data.location" >
+            <option ng-repeat="location in podaci" ng-selected="locationSelected(location.id)" value="{{location.id}}">
               {{location.city}}
             </option>
           </select>
