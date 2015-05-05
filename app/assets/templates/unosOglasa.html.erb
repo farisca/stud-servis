@@ -16,15 +16,7 @@
         <br/><br/>
         </div>
         
-        <div ng-controller="CompanyController">
-        <p></p>{{ 'AD_COMPANY' | translate }}</p>
-        <label for="inputCompany" class="sr-only">Kompanija</label>
-        <select class="form-control" id="select" ng-model="job.data.company_name"  ng-init="job.data.company_name='Authority Partners'" >
-        <option ng-repeat="company in podaci" ng-selected="{{company.id==1}}" value="{{company.name}}">
-        {{company.name}}</option>
-        </select>
-        <br/><br/>
-        </div>
+        <companies></companies>
         
         <p>{{ 'AD_DESCRIPTION' | translate }}</p>
         <label for="inputDescription" class="sr-only">Opis</label>
@@ -34,7 +26,7 @@
         <p>{{ 'AD_LOCATION' | translate }}</p>
         <label for="inputLocation" class="sr-only">Lokacija</label>
         <select class="form-control" id="select" ng-model="job.data.city"  ng-init="job.data.city='Sarajevo'">
-              <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.name}}">
+              <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
                 {{location.city}}
               </option>
             </select>
