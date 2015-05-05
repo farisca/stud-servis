@@ -13,13 +13,25 @@
         <label for="inputSurname" class="sr-only"><%= I18n.t('student_surname') %></label>
         <input type="text" ng-model="data.surname" id="inputSurname" class="form-control" placeholder="" required autofocus><br>
 
-        <p> <%= I18n.t('student_location') %> </p>
+        <div ng-controller="LocationController">
+          <p><%= I18n.t('city')%></p>
+          <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
+          <select class="form-control" id="select" ng-model="data.location" ng-init="data.location='Sarajevo'">
+            <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
+              {{location.city}}
+            </option>
+          </select>
+          <br/>
+        </div>
+
+        <!-- <p> <%= I18n.t('student_location') %> </p>
         <label for="inputLocation" class="sr-only"><%= I18n.t('student_telephone') %></label>
-        <input type="text" ng-model="data.location" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
+        <input type="text" ng-model="data.location" id="inputLocation" class="form-control" placeholder="" required autofocus><br> -->
 
         <p> <%= I18n.t('student_university') %> </p>
         <label for="inputUniversity" class="sr-only"><%= I18n.t('student_university') %></label>
         <input type="text" ng-model="data.university" id="inputUniversity" class="form-control" placeholder="" required autofocus><br>
+
 
 
         <p> <%= I18n.t('student_faculty') %> </p>
@@ -33,7 +45,7 @@
 </div><div class="col-md-6">
         <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" /></div>
 </div><br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('save_student_button') %></button>
+        <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('save_student_button') %></button>
         <br>
 
         <div ng-show="register.isError()" class="alert alert-danger" role="alert">
@@ -42,10 +54,7 @@
   {{register.errorMsg}}
 </div>
 
-        <div ng-show="register.isSuccess()" class="alert alert-success" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  {{register.successMsg}}
-</div>
+        <info-message></info-message>
 
     </form>
     <br><br><br><br>

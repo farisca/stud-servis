@@ -2,6 +2,9 @@
 angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken', function($scope, $http, $window, $location, AuthToken) {
     $scope.data = {};
     $scope.download = false;
+    $scope.savebutton = {};
+    $scope.savebutton.disabled = false;
+    $scope.infoMsg = "";
 
     $http.get('/students/find_student').success(function(data, status, headers, config) {
     	 $scope.data.name = data.name;
@@ -23,6 +26,8 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
     }
 
     $scope.save = function() {
+        $scope.savebutton.disabled = true;
+        $scope.infoMsg = "Spašavam podatke...";
         var fd = new FormData();
         angular.forEach($scope.files, function(file) {
             fd.append('name', $scope.data.name),
@@ -36,7 +41,10 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).success(function(resp) {
-            console.log("ok");
+            $scope.savebutton.disabled = false;
+            $scope.infoMsg = "Podaci spašeni!";
+            console.log("Data saved...");
+
         }).error(function(resp) {
             console.log("greska");
         });
@@ -46,6 +54,10 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
         alert("Kliknuo");
         $http.get('/students/download_cv?id=' + $scope.data.cv).success(function(data, status, headers, config) {});
     };
+
+    $scope.isInfo = function() {
+        return (!($scope.infoMsg === ""));
+    }
 
 }]);
 
