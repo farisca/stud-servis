@@ -3,7 +3,10 @@
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-controller="JobsController as job" ng-submit="job.createNewJob()">
-        
+        <p>{{ 'AD_NAME' | translate }}</p>
+        <label for="inputName" class="sr-only">{{ 'AD_NAME' | translate }}</label>
+        <input type="text" ng-model="job.data.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
+         
         <div ng-controller="CategoryController">
         <p>{{ 'AD_CATEGORY' | translate }}</p>
         <label for="inputCategory" class="sr-only">Kategorija</label>
@@ -16,15 +19,7 @@
         <br/><br/>
         </div>
         
-        <div ng-controller="CompanyController">
-        <p></p>{{ 'AD_COMPANY' | translate }}</p>
-        <label for="inputCompany" class="sr-only">Kompanija</label>
-        <select class="form-control" id="select" ng-model="job.data.company_name"  ng-init="job.data.company_name='Authority Partners'" >
-        <option ng-repeat="company in podaci" ng-selected="{{company.id==1}}" value="{{company.name}}">
-        {{company.name}}</option>
-        </select>
-        <br/><br/>
-        </div>
+        <companies></companies>
         
         <p>{{ 'AD_DESCRIPTION' | translate }}</p>
         <label for="inputDescription" class="sr-only">Opis</label>
@@ -34,7 +29,7 @@
         <p>{{ 'AD_LOCATION' | translate }}</p>
         <label for="inputLocation" class="sr-only">Lokacija</label>
         <select class="form-control" id="select" ng-model="job.data.city"  ng-init="job.data.city='Sarajevo'">
-              <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.name}}">
+              <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
                 {{location.city}}
               </option>
             </select>
