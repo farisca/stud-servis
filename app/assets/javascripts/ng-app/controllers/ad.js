@@ -26,8 +26,8 @@ angular.module('aplikacija')
                 });
 
                 prijava.success(function(data, status, headers, config) {
-                    alert(data.number);
-                    alert(JSON.stringify(data.students));
+                    alert("Na oglas je prijavljeno: "+data.number+" studenata");
+                    //alert(JSON.stringify(data.students));
                     $location.path(path);
                 });
 
@@ -64,12 +64,18 @@ angular.module('aplikacija')
                     params: {id: job_id}
             });
 
-            res.success(function(data, status, headers, config) {
+            res.success(function(data, status, headers, config, scope) {
+                
                 $('.kategorija').html(data.category);
                 $('.kompanija').html(data.company);
                 $('.opis').html(data.description);
                 $('.lokacija').html(data.location);
                 $('.trajanje').html(data.duration);
+
+                var help = $("edit-Ad").html();
+               
+                //$scope.kategorija = data.category;
+
                 var path = 'oglas/'+data.id;
                 $location.path(path);
             });
