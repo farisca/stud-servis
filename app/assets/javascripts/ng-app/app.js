@@ -26,6 +26,10 @@ angular
             .when('/oglasi', {
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'
+            })
+            .when('/myads', {
+                templateUrl: 'myads.html',
+                controller: 'MyAdsCtrl'
             }).when('/unosOglasa', {
                 templateUrl: 'unosOglasa.html',
                 controller: 'JobsController'
