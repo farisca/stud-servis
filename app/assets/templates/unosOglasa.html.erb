@@ -22,12 +22,12 @@
         <companies></companies>
         
         <p>{{ 'AD_DESCRIPTION' | translate }}</p>
-        <label for="inputDescription" class="sr-only">Opis</label>
+        <label for="inputDescription" class="sr-only">{{ 'AD_DESCRIPTION' | translate }}</label>
         <input type="text" ng-model="job.data.description" id="inputDescription" class="form-control" placeholder="" required autofocus><br>
          
         <div ng-controller="LocationController">
         <p>{{ 'AD_LOCATION' | translate }}</p>
-        <label for="inputLocation" class="sr-only">Lokacija</label>
+        <label for="inputLocation" class="sr-only">{{ 'AD_LOCATION' | translate }}</label>
         <select class="form-control" id="select" ng-model="job.data.city"  ng-init="job.data.city='Sarajevo'">
               <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
                 {{location.city}}
@@ -36,8 +36,8 @@
         <br/><br/>
         </div>
         <p>{{ 'AD_DURATION' | translate }}</p>
-        <label for="inputDuration" class="sr-only">Trajanje:</label>
-        <input type="text" ng-model="job.data.duration" id="inputDuration" class="form-control" placeholder="" required autofocus><br><br>
+        <label for="inputDuration" class="sr-only">{{ 'AD_DURATION' | translate }}</label>
+        <input type="datetime-local" ng-model="job.data.duration" id="inputDuration" class="form-control" placeholder="" required autofocus><br><br>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('ad_button') %></button>
         <br>
