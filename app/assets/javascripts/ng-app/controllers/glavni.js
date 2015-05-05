@@ -1,4 +1,4 @@
-app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken','$scope', function($http, $location, $window, AuthToken, $scope) {
+app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken','$scope', '$translate', function($http, $location, $window, AuthToken, $scope, $translate) {
 		this.trenutnaStranica="home";
 		this.prijavljen={};
         var obj;
@@ -67,6 +67,12 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			//alert("logiram se");
 			$location.path('/login');
 		}
+
+		
+		this.promijeniJezik = function (langKey) {
+		    $translate.use(langKey);
+		  };
+		
 
 
 

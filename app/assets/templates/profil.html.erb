@@ -2,21 +2,21 @@
   <li role="presentation" class="active"><a href="profil">My profile</a></li>
   <li role="presentation"><a href="myads">My ads</a></li>
 </ul>
-<h2 align="center"> <%= I18n.t('my_profile') %> </h2>
+<h2 align="center"> {{ 'MY_PROFILE' | translate }} </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
         
     <form class="form-register" ng-submit="save()">
            
-        <p> <%= I18n.t('student_name') %> </p>
+        <p> {{ 'STUDENT_NAME' | translate }} </p>
         <label for="inputName" class="sr-only">Ime</label>
         <input type="text" ng-model="data.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
 
-        <p> <%= I18n.t('student_surname') %> </p>
+        <p> {{ 'STUDENT_SURNAME' | translate }} </p>
         <label for="inputSurname" class="sr-only"><%= I18n.t('student_surname') %></label>
         <input type="text" ng-model="data.surname" id="inputSurname" class="form-control" placeholder="" required autofocus><br>
 
         <div ng-controller="LocationController">
-          <p><%= I18n.t('city')%></p>
+          <p>{{ 'CITY' | translate }}</p>
           <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
           <select class="form-control" id="select" ng-model="data.location" >
             <option ng-repeat="location in podaci" ng-selected="locationSelected(location.id)" value="{{location.id}}">

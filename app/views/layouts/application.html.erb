@@ -58,8 +58,8 @@
         <li ng-show="glavni.isVidljiv('profil')" ng-class="{active: glavni.isTrenutna('profil')}"><a href="/profil" ng-click="glavni.setTrenutna('profil')"><%= I18n.t('profil')%></a></li>
         <li ng-show="glavni.isVidljiv('prijava')" ng-class="{active: glavni.isTrenutna('prijava')}"><a href="/login" ng-click="glavni.prijava()"><%= I18n.t('login')%></a></li>
         <li ng-show="glavni.isVidljiv('odjava')" ng-class="{active: glavni.isTrenutna('odjava')}"><a href="/" ng-click="glavni.logout()"><%= I18n.t('logout')%></a></li>
-        <li><%= link_to "BS", change_locale_path(:bs) %></li>
-        <li><%= link_to "EN", change_locale_path(:en) %></li>
+        <li><a href="#" ng-click="glavni.promijeniJezik('bs')">BS</a></li>
+        <li><a href="#" ng-click="glavni.promijeniJezik('en')">EN</a></li>
       </ul>
     </div>
   </div>
