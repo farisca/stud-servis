@@ -29,6 +29,7 @@ angular.module('aplikacija')
                 });
 
                 prijava.success(function(data, status, headers, config) {
+                    alert("Uspjeh");
                     alert("Na oglas je prijavljeno: "+data.number+" studenata");
                     //alert(JSON.stringify(data.students));
                     $location.path(path);
