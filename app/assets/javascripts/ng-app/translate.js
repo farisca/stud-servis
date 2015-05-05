@@ -32,7 +32,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_DURATION': 'Duration',
     'AD_BUTTON': 'Create ad',
     'CONFIRMATION_AD': 'New ad successufully added!',
-    'CONFIRMATION_REGISTRATION': 'Confirmation email was sent to you!'
+    'CONFIRMATION_REGISTRATION': 'Confirmation email was sent to you!',
+    'LOGIN': 'Login',
+    'SAVE_LOGIN': 'Remember me',
+    'LOGIN_BUTTON': 'Login',
+    'FORGOT_PASS': 'Forgot password?'
     
   });
  
@@ -69,7 +73,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_DURATION': 'Trajanje oglasa',
     'AD_BUTTON': 'Kreiraj oglas',
     'CONFIRMATION_AD': 'Novi oglas je uspjesno unesen!',
-    'CONFIRMATION_REGISTRATION': 'Poslali smo Vam e-mail!'
+    'CONFIRMATION_REGISTRATION': 'Poslali smo Vam e-mail!',
+    'LOGIN': 'Prijava',
+    'SAVE_LOGIN': 'Zapamti prijavu',
+    'LOGIN_BUTTON': 'Prijava',
+    'FORGOT_PASS': 'Zaboravili ste šifru?'
   });
  
   $translateProvider.preferredLanguage('en');
