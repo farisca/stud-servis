@@ -7,11 +7,9 @@
         <div ng-controller="CategoryController">
         <p>{{ 'AD_CATEGORY' | translate }}</p>
         <label for="inputCategory" class="sr-only">Kategorija</label>
-<<<<<<< HEAD
-        <select class="form-control" id="select" ng-model="job.data.category_name">
-=======
+
         <select class="form-control" id="select" ng-model="job.podaci.category_name"   ng-init="job.podaci.category_name='IT'">
->>>>>>> e15ef00c87e70ff0b3ef7ea1eaad444025a8f2c2
+
         <option ng-repeat="category in podaci" ng-selected="{{category.id==1}}" value="{{category.name}}" >
         {{category.name}}</option>
         </select>

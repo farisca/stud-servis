@@ -23,7 +23,6 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DOWNLOAD': 'Download',
     'BROWSE': 'Browse',
     'SAVE': 'Save',
-<<<<<<< HEAD
     'MY_ADS': 'My ads',
     'MY_ADS2': 'Ads I have applied to...',
     'EMAIL': 'E-mail',
@@ -34,8 +33,6 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DESCRIPTION': 'Description',
     'WEB': 'Web site',
     'PHONE': 'Phone',
-    'FOO': 'This is a paragraph'
-=======
     'FOO': 'This is a paragraph',
     'CREATE_AD': 'Create ad',
     'AD_CATEGORY': 'Choose category',
@@ -47,7 +44,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CONFIRMATION_AD': 'New ad successufully added!',
     'CONFIRMATION_REGISTRATION': 'Confirmation email was sent to you!'
     
->>>>>>> e15ef00c87e70ff0b3ef7ea1eaad444025a8f2c2
+
   });
  
   $translateProvider.translations('bs', {
@@ -75,7 +72,6 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DOWNLOAD': 'Preuzmi',
     'BROWSE': 'Browse',
     'SAVE': 'Spasi',
-<<<<<<< HEAD
     'MY_ADS2': 'Oglasi na koje sam se prijavio/la...',
     'EMAIL': 'E-mail',
     'PASSWORD': 'Šifra',
@@ -85,8 +81,6 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DESCRIPTION': 'Opis',
     'WEB': 'Web stranica',
     'PHONE': 'Telefon',
-    'FOO': 'Dies ist ein Absatz'
-=======
     'FOO': 'Dies ist ein Absatz',
     'CREATE_AD': 'Kreiraj oglas',
     'AD_CATEGORY': 'Odaberite kategoriju',
@@ -97,7 +91,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_BUTTON': 'Kreiraj oglas',
     'CONFIRMATION_AD': 'Novi oglas je uspjesno unesen!',
     'CONFIRMATION_REGISTRATION': 'Poslali smo Vam e-mail!'
->>>>>>> e15ef00c87e70ff0b3ef7ea1eaad444025a8f2c2
+
   });
  
   $translateProvider.preferredLanguage('en');
