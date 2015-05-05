@@ -25,6 +25,8 @@ var app = angular
                 controller: 'registerController'
             }).when('/potvrdaORegistraciji', {
                 templateUrl: 'potvrdaORegistraciji.html',
+            }).when('/potvrdaOUnesenomOglasu', {
+                templateUrl: 'potvrdaOUnesenomOglasu.html',
             })
             .when('/oglasi', {
                 templateUrl: 'oglasi.html',
