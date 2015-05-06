@@ -3,6 +3,14 @@
   <li role="presentation" class="active"><a href="myads">My ads</a></li>
 </ul>
 <h2 align="center"> {{ 'MY_ADS2' | translate }} </h2>
-<h1>{{ 'TITLE' | translate }}</h1>
 
-<my-ad></my-ad><my-ad></my-ad><my-ad></my-ad>
+<table>
+	<tr>
+		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(0,3)">
+			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" datumprijave="{{oglas.created_at}}"> </oglas-box>
+		</td>
+	</tr>
+</table>
+
+
+

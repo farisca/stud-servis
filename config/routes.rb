@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :registrations do
     get "make_registration", on: :collection
     get "get_all_students", on: :collection
+    get "get_my_jobs", on: :collection
   end
 
   resources :users do
