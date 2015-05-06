@@ -50,9 +50,18 @@ app.config(['$translateProvider', function ($translateProvider) {
     'LOGIN': 'Login',
     'SAVE_LOGIN': 'Remember me',
     'LOGIN_BUTTON': 'Login',
-    'FORGOT_PASS': 'Forgot password?'
+    'FORGOT_PASS': 'Forgot password?',
+    'MY_AD_SHOW': 'Ad',
+    'AD_CATEGORY_SHOW': 'Category',
+    'AD_COMPANY_SHOW': 'Company',
+    'AD_LOCATION_SHOW': 'Location',
+    'AD_DESCRIPTION_SHOW': 'Description',
+    'AD_DURATION_SHOW': 'Duration',
+    'AD_REGISTRATION_BUTTON': 'Register to this ad',
+    'AD_EDIT_BUTTON': 'Edit ad',
+    'AD_ALL_STUDENTS_BUTTON': 'See all registrated students',
+    'AD_EDIT_SAVE': 'Save ad'
     
-
   });
  
   $translateProvider.translations('bs', {
@@ -106,7 +115,17 @@ app.config(['$translateProvider', function ($translateProvider) {
     'LOGIN': 'Prijava',
     'SAVE_LOGIN': 'Zapamti prijavu',
     'LOGIN_BUTTON': 'Prijava',
-    'FORGOT_PASS': 'Zaboravili ste šifru?'
+    'FORGOT_PASS': 'Zaboravili ste šifru?',
+    'MY_AD_SHOW': 'Oglas',
+    'AD_CATEGORY_SHOW': 'Kategorija',
+    'AD_COMPANY_SHOW': 'Kompanija',
+    'AD_LOCATION_SHOW': 'Lokacija',
+    'AD_DESCRIPTION_SHOW': 'Opis',
+    'AD_DURATION_SHOW': 'Trajanje',
+    'AD_REGISTRATION_BUTTON': 'Registracija na ovaj oglas',
+    'AD_EDIT_BUTTON': 'Izmjena oglasa',
+    'AD_ALL_STUDENTS_BUTTON': 'Pregledaj prijavljene studente',
+    'AD_EDIT_SAVE': 'Spasi oglas'
   });
  
   $translateProvider.preferredLanguage('en');

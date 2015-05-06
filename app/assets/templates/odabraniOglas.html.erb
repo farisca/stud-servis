@@ -1,16 +1,16 @@
 <br><br>
-<h2> Oglas </h2>
+<h2> {{ 'MY_AD_SHOW' | translate }} </h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
   <form class="form-choosen-ad ad_forma" ng-controller="ChoosenAd as ad" ng-submit="ad.prijavi()" action="">
-    <span> Kategorija: </span> <span class="kategorija"> </span> <br>
-    <span> Kompanija: </span> <span class="kompanija"> </span> <br>
-    <span> Opis: </span> <span class="opis"> </span> <br>
-    <span> Lokacija: </span> <span class="lokacija"> </span> <br>
-    <span> Trajanje oglasa: </span> <span class="trajanje"> </span> <br>
+    <span> {{ 'AD_CATEGORY_SHOW' | translate }}: </span> <span class="kategorija"> </span> <br>
+    <span> {{ 'AD_COMPANY_SHOW' | translate }}: </span> <span class="kompanija"> </span> <br>
+    <span> {{ 'AD_DESCRIPTION_SHOW' | translate }}: </span> <span class="opis"> </span> <br>
+    <span> {{ 'AD_LOCATION_SHOW' | translate }}: </span> <span class="lokacija"> </span> <br>
+    <span> {{ 'AD_DURATION_SHOW' | translate }}: </span> <span class="trajanje"> </span> <br>
     <br>
     
     <input ng-click="ad.prijavi()" class="btn btn-default oglass_button" style="width: 300px;" value=""> <br><br>
-    <input type="button" class="btn btn-default oglas_edit" style="width: 300px;" value="Izmjena oglasa" > 
+    <input type="button" class="btn btn-default oglas_edit" style="width: 300px;" value="{{ 'AD_EDIT_BUTTON' | translate }}" > 
 
   </form>
 
