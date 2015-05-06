@@ -30,6 +30,7 @@ gem 'bcrypt',               '3.1.7'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'jwt'
+gem 'mandrill-rails'
 
 group :production do
   gem "pg"
