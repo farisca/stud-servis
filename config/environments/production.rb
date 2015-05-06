@@ -86,5 +86,5 @@ Rails.application.configure do
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
     :domain => 'yourdomain.com', # your domain to identify your server when connecting
   }
-  
+
 end
