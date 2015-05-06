@@ -66,6 +66,8 @@ class JobsController < ApplicationController
     render json: {jobs: @jobs, number: @jobs.length}
   end
 
+ 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job

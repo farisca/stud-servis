@@ -1,30 +1,17 @@
 class RegistrationsController < ApplicationController
-  #before_action :set_registration, only: [:show, :edit, :update, :destroy]
   
-  # GET /registrations
-  # GET /registrations.json
   def index
     @registrations = Registration.all
   end
 
-  # GET /registrations/1
-  # GET /registrations/1.json
   def show
-    #@registration = Registration.find(params[:id])
     render json: @registration
   end
 
-  # GET /registrations/new
   def new
     @registration = Registration.new
   end
 
-  # GET /registrations/1/edit
-  def edit
-  end
-
-  # POST /registrations
-  # POST /registrations.json
   def create
     @registration = Registration.new(registration_params)
 
@@ -37,8 +24,6 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /registrations/1
-  # PATCH/PUT /registrations/1.json
   def update
     respond_to do |format|
       if @registration.update(registration_params)
@@ -49,8 +34,6 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  # DELETE /registrations/1
-  # DELETE /registrations/1.json
   def destroy
     @registration.destroy
     respond_to do |format|
@@ -58,7 +41,7 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  before_action :set_current_user, :authenticate_request, only: [:make_registration]
+  before_action :set_current_user, :authenticate_request, only: [:make_registration, :get_my_jobs]
 
   def make_registration
     
@@ -92,13 +75,28 @@ class RegistrationsController < ApplicationController
     render json: { students: @students, number: @students.length }
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    #def set_registration
-      #@registration = Registration.find(params[:id])
-    #end
+   def get_my_jobs
+    
+    if params["role"] == "1"
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    elsif params["role"] == "0"
+      @all_registrations = Registration.where(student_id: Student.find_by(user_id: current_user.id).id).all
+
+      @jobs = []
+      @all_registrations.each do |registration|
+        @all_jobs = Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, locations.city, registrations.created_at')
+          .joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id')
+          .joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id')
+          .joins('LEFT OUTER JOIN registrations ON registrations.job_id = jobs.id')
+        j = @all_jobs.find_by(id: registration.job_id)
+        @jobs << j
+      end
+      return render json: { jobs: @jobs, number: @jobs.length }
+    end
+  end
+
+
+  private
     def registration_params
       params.require(:registration).permit(:job_id, :student_id, :time, :active)
     end

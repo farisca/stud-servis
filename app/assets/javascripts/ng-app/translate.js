@@ -60,6 +60,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_REGISTRATION_BUTTON': 'Register to this ad',
     'AD_EDIT_BUTTON': 'Edit ad',
     'AD_ALL_STUDENTS_BUTTON': 'See all registrated students',
+    'SELECTED_FILE': 'Selected file',
     'AD_EDIT_SAVE': 'Save ad'
     
   });
@@ -125,6 +126,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_REGISTRATION_BUTTON': 'Registracija na ovaj oglas',
     'AD_EDIT_BUTTON': 'Izmjena oglasa',
     'AD_ALL_STUDENTS_BUTTON': 'Pregledaj prijavljene studente',
+    'SELECTED_FILE': 'Odabrana datoteka',
     'AD_EDIT_SAVE': 'Spasi oglas'
   });
  
