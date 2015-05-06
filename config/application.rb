@@ -25,5 +25,6 @@ module StudServis
     I18n.available_locales = [:en, :bs]
     config.time_zone = 'Sarajevo' 
     config.i18n.default_locale = :en
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
   end
 end

@@ -32,7 +32,7 @@ gem 'angular-rails-templates'
 gem 'jwt'
 
 group :production do
-#  gem "pg"
+  gem "pg"
 end
 
 
@@ -51,7 +51,8 @@ group :development, :test do
   gem "binding_of_caller"
   gem 'better_errors', '~> 2.1.1'
   gem 'byebug'
-  gem 'sqlite3'
+  #gem 'sqlite3'
+  gem 'pg'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
