@@ -25,7 +25,13 @@ default: &default
 test:
   <<: *default
   #database: db/test.sqlite3
+  adapter: postgresql
+  encoding: unicode
   database: servis_test
+  host: localhost
+  pool: 5
+  username: postgres
+  password: sifra
 
 #production:
   #<<: *default
@@ -43,6 +49,10 @@ production:
 
 development:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: servis_development
+  host: localhost
+  pool: 5
   username: postgres
-  #password: a
-  database: servis_developement
+  password: sifra
