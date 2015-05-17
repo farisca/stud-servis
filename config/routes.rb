@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get "get_new_notifications", on: :collection
     get "mark_viewed", on: :collection
     get "get_all_notifications", on: :collection
+    post "new_notification", on: :collection
   end
 
   resources :categories do

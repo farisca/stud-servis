@@ -57,7 +57,8 @@ class JobsController < ApplicationController
     location = job.location.city
     duration = job.duration
     id = job.id
-    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id}  
+    user_id = job.company.user_id
+    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id}  
   end
 
   def get_ordered_jobs

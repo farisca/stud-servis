@@ -20,7 +20,13 @@ class NotificationsController < ApplicationController
     return render json: {notifications: @my_notifications}
   end
 
-  def add_notification
+  def new_notification
+    @notification = Notification.new
+    @notification.text = params[:text]
+    @notification.user_id = params[:user]
+    @notification.viewed = false
+    @notification.save
+    return render json: {status: "OK"}
   end
 
   

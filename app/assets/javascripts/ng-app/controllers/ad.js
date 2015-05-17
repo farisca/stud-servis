@@ -1,5 +1,5 @@
 angular.module('aplikacija')
-    .controller('ChoosenAd', ['$http', '$location', '$window', '$routeParams', function ($http, $location, $window, $scope, $routeParams) {
+    .controller('ChoosenAd', ['$http', '$location', '$window', '$routeParams', 'NotificationService', '$scope', function ($http, $location, $window, $routeParams, NotificationService, $scope) {
         this.kategorija="";
         var res;
         var prijava;
@@ -15,6 +15,10 @@ angular.module('aplikacija')
                         params: {job_id: job_id, active: 1}
                 });
                 prijava.success(function(data, status, headers, config) {
+                    // spasi notifikaciju
+                    
+                    tekst = "Student se prijavio na oglas " ;
+                    NotificationService.new_notification(tekst, $scope.company_user_id);
                     alert("Uspješno ste prijavljeni na ovaj oglas.");
                     $location.path(path);
                 });
@@ -81,7 +85,8 @@ angular.module('aplikacija')
                 $scope.ad_opsi = data.description;
                 $scope.ad_lokacija = data.location;
                 $scope.trajanje = data.duration;
-
+                // Ne dirati ovo, treba mi za slanje notifikacije!!!!!
+                $scope.company_user_id = data.company_user_id;
                 var path = 'oglas/'+data.id;
                 $location.path(path);
             });
