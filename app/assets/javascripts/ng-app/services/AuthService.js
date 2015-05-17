@@ -23,7 +23,10 @@ angular.module('aplikacija').factory("AuthService", function($http, $q, $rootSco
           
         d.resolve(resp.user);
       }).error(function(resp) {
-        $scope.errorMsg ="Netačni podaci!";
+        if (resp.error == "banned")
+          $scope.errorMsg ="Vi ste banovani!";
+        else
+          $scope.errorMsg ="Netačni podaci!";
         $scope.podaci.password = "";
         d.reject(resp.error);
       });
