@@ -2,6 +2,10 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 		this.trenutnaStranica="home";
 		this.prijavljen={};
         var obj;
+
+		$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
+        	$scope.new_notifications = " (" + data.new + ")";
+        });
         
 		this.isTrenutna = function(stranica) {
 			return (stranica===this.trenutnaStranica);
@@ -39,6 +43,7 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			
 			//Za logirane kompanije
 			if(stranica == "unosOglasa" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
+			if(stranica == "notifikacije" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
 			if(stranica == "kompanija" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
 			if(stranica == "potvrdaOUnesenomOglasu" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
 			
@@ -48,6 +53,9 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 
 		this.setTrenutna = function(stranica) {
 			this.trenutnaStranica=stranica;
+			$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
+	        	$scope.new_notifications = " (" + data.new + ")";
+	        });
 		}
 
 		this.isPrijavljen = function() {

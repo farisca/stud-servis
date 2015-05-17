@@ -33,6 +33,10 @@ var app = angular
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'
             })
+            .when('/notifikacije', {
+                templateUrl: 'mynotifications.html',
+                controller: 'NotificationsCtrl'
+            })
             .when('/listaOglasa', {
                 templateUrl: 'listaOglasa.html',
                 controller: 'JobsController'
