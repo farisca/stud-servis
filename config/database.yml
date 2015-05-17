@@ -10,22 +10,33 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: servis_development
+  pool: 5
+  username: postgres
+  password: sifra
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: servis_test
+  pool: 5
+  username: postgres
+  password: sifra
 
 #production:
   #<<: *default
   #database: db/production.sqlite3
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: servis_production
-  username: servis
-  password: <%= ENV['CPRR_DATABASE_PASSWORD'] %>
+  pool: 5
+  username: postgres
+  password: sifra
