@@ -78,7 +78,8 @@ class RegistrationsController < ApplicationController
    def get_my_jobs
     
     if params["role"] == "1"
-
+      @jobs = Job.where(company_id: Company.find_by(user_id: current_user.id).id).all
+      eturn render json: { jobs: @jobs, number: @jobs.length }
     elsif params["role"] == "0"
       @all_registrations = Registration.where(student_id: Student.find_by(user_id: current_user.id).id).all
 
