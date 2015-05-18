@@ -30,14 +30,9 @@ gem 'bcrypt',               '3.1.7'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'jwt'
-<<<<<<< HEAD
-gem 'mandrill-rails'
-
-=======
 gem "pg"
->>>>>>> 9625a3107cb862fd110551b442e99a4c12e7481f
 group :production do
-  gem "pg"
+#  gem "pg"
 end
 
 
@@ -56,11 +51,6 @@ group :development, :test do
   gem "binding_of_caller"
   gem 'better_errors', '~> 2.1.1'
   gem 'byebug'
-<<<<<<< HEAD
-  #gem 'sqlite3'
-  gem 'pg'
-=======
->>>>>>> 9625a3107cb862fd110551b442e99a4c12e7481f
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
