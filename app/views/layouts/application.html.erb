@@ -52,6 +52,7 @@
       </form>-->
       
       <ul class="nav navbar-nav navbar-right">
+        <li ng-show="glavni.isVidljiv('admin')" ng-class="{active: glavni.isTrenutna('admin')}"><a href= "/admin" ng-click="glavni.setTrenutna('admin')" >{{ 'ADMIN' | translate }}</a></li>
         <li ng-show="glavni.isVidljiv('notifikacije')" ng-class="{active: glavni.isTrenutna('notifikacije')}"><a href= "/notifikacije" ng-click="glavni.setTrenutna('notifikacije')" >{{ 'NOTIFICATIONS' | translate }} {{new_notifications}}</a></li>
         <li ng-show="glavni.isVidljiv('promjenaSifre')" ng-class="{active: glavni.isTrenutna('promjenaSifre')}"><a href= "/promjenaSifre" ng-click="glavni.setTrenutna('promjenaSifre')" >{{ 'CHANGE_PASSWORD' | translate }}</a></li>
 	      <li ng-show="glavni.isVidljiv('registracijaKompanije')" ng-class="{active: glavni.isTrenutna('regKom')}"><a href="/kompanija" ng-click="glavni.setTrenutna('regKom')">{{ 'REGISTER_COMPANY' | translate }}</a></li>

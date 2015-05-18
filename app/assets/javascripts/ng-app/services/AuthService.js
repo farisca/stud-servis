@@ -13,6 +13,7 @@ angular.module('aplikacija').factory("AuthService", function($http, $q, $rootSco
         //odmah rolu spasi za logovanog usera u AuthToken
         $http.get('/users/get_role').success(function(data, status, headers, config) {
           AuthToken.setTipKorisnika(data.rola);
+          console.log("Tip korisnika: " + data.rola);
         });
         
         //prikaz razlicitog home pagea u zavisnoti od role

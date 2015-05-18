@@ -1,15 +1,3 @@
-/*angular
-    .module('aplikacija', [
-        'ngRoute',
-        'templates'
-    ]).config(function ($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/login', {
-                templateUrl: 'login.html',
-                controller: 'login'
-            });
-        $locationProvider.html5Mode(true);
-    });*/
 'use strict';
 
 var app = angular
@@ -20,104 +8,104 @@ var app = angular
         'ui.bootstrap'
     ]);
     app.config(['$routeProvider','$locationProvider',function ($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/registracija', {
+        $routeProvider.
+            when('/registracija', {
                 templateUrl: 'registracija.html',
                 controller: 'registerController'
-            }).when('/potvrdaORegistraciji', {
+            }).
+            when('/potvrdaORegistraciji', {
                 templateUrl: 'potvrdaORegistraciji.html',
-            }).when('/potvrdaOUnesenomOglasu', {
+            }).
+            when('/potvrdaOUnesenomOglasu', {
                 templateUrl: 'potvrdaOUnesenomOglasu.html',
-            })
-            .when('/oglasi', {
+            }).
+            when('/oglasi', {
                 templateUrl: 'oglasi.html',
                 controller: 'OglasiCtrl'
-            })
-            .when('/notifikacije', {
+            }).
+            when('/admin', {
+                templateUrl: 'statistics.html',
+                controller: 'AdminStatisticsCtrl'
+            }).
+            when('/admin/locations', {
+                templateUrl: 'locations.html',
+                controller: 'AdminLocationsCtrl'
+            }).
+            when('/admin/categories', {
+                templateUrl: 'categories.html',
+                controller: 'AdminCategoriesCtrl'
+            }).
+            when('/admin/students', {
+                templateUrl: 'students.html',
+                controller: 'AdminStudentsCtrl'
+            }).
+            when('/admin/companies', {
+                templateUrl: 'companies.html',
+                controller: 'AdminCompaniesCtrl'
+            }).
+            when('/admin/statistics', {
+                templateUrl: 'statistics.html',
+                controller: 'AdminStatisticsCtrl'
+            }).
+            when('/notifikacije', {
                 templateUrl: 'mynotifications.html',
                 controller: 'NotificationsCtrl'
-            })
-            .when('/listaOglasa', {
+            }).
+            when('/listaOglasa', {
                 templateUrl: 'listaOglasa.html',
                 controller: 'JobsController'
-            })
-            .when('/myads', {
+            }).
+            when('/myads', {
                 templateUrl: 'myads.html',
                 controller: 'MyAdsCtrl'
-            }).when('/unosOglasa', {
+            }).
+            when('/unosOglasa', {
                 templateUrl: 'unosOglasa.html',
                 controller: 'JobsController'
-            }).when('/login', {
+            }).
+            when('/login', {
                 templateUrl: 'login.html',
                 controller: 'loginController'
-            }).when('/profil', {
+            }).
+            when('/profil', {
                 templateUrl: 'profil.html',
                 controller: 'profilCtrl'
-            }).when('/kompanija', {
+            }).
+            when('/kompanija', {
                 templateUrl: 'registracijaKompanije.html',
                 controller: 'registerCompanyController'
-            }).when('/promjenaSifre', {
+            }).
+            when('/promjenaSifre', {
                 templateUrl: 'promjenaSifre.html',
                 controller: 'passwordController'
-            }).when('/confirm', {
+            }).
+            when('/confirm', {
                 templateUrl: 'confirm.html',
                 controller: 'confirmCtrl'
-            }).when('/unosEmail', {
+            }).
+            when('/unosEmail', {
                 templateUrl: 'unosEmail.html',
                 controller: 'emailController'
-            }).when('/oglas/:id', {
+            }).
+            when('/oglas/:id', {
                 templateUrl: 'odabraniOglas.html',
                 controller: 'ChoosenAd'
-            }).when('/home', {
+            }).
+            when('/home', {
                 templateUrl: 'home.html',
                 controller: 'HomeController'
-            }).when('/', {
+            }).
+            when('/', {
                 templateUrl: 'home.html',
                 controller: 'HomeController'
-            }).when('/oglasBox', {
+            }).
+            when('/oglasBox', {
                 templateUrl: 'oglasBox.html',
                 controller: 'oglasBoxController'
-            }).when('/editAd', {
+            }).
+            when('/editAd', {
                 templateUrl: 'editAd.html',
                 controller: 'editAdController'
             });
         $locationProvider.html5Mode(true);
     }]);
-
-
-/*angular
-    .module('aplikacija', [
-        'ngRoute',
-        'templates'
-    ]).config(function ($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'login.html',
-                controller: 'login'
-            }).whern ('/azra', {
-                templateUrl: 'login.html',
-                controller: 'login'
-            });
-        $locationProvider.html5Mode(true);
-    });*/
-
-
-/*angular
-    .module('aplikacija', [
-        'ngRoute',
-        'templates'
-    ]).config(function($routeProvider, $locationProvider) {
-    $routeProvider.
-      when('/', {
-        templateUrl: 'login.html',
-        controller: 'login'
-      }).
-      when('/registracija', {
-        templateUrl: 'registracija.html',
-        controller: 'register'
-      }).
-      otherwise({
-        redirectTo: '/phones'
-      });
-  }]);*/
-
