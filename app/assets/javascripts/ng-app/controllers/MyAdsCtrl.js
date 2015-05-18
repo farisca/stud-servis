@@ -1,10 +1,11 @@
 app.controller("MyAdsCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken',  function($scope, $http, $window, $location, AuthToken, $translate) {
 	var kon;
 	$scope.oglasi = [];
+    tipKorisnika = AuthToken.tipKorisnika();
 
 	kon = $http({ url: '/registrations/get_my_jobs', 
         method: "GET",
-        params: {role: 0}
+        params: {role: tipKorisnika}
     });
     
     kon.success(function(data, status, headers, config) {

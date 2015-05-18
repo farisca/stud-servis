@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
   end
 
-  before_action :set_current_user, :authenticate_request, only: [:get_user]
+  before_action :set_current_user, :authenticate_request, only: [:get_user, :get_role]
 
   def get_user
 
@@ -94,11 +94,19 @@ class UsersController < ApplicationController
     return render json: { rola: status }
   end
 
- before_action :set_current_user, :authenticate_request, only: [:get_role]
-
   def get_role
     role= @current_user.role
     return render json: { rola: role }
+  end
+
+  def get_signedupusers
+    q = User.all.order("DATE_TRUNC('month', created_at)").group("DATE_TRUNC('month', created_at)").count
+    user_hash_array = q.collect{|user| {:created => user[0].to_date.to_s, :amount => user[1]}}
+    g = user_hash_array.group_by {|v| Date.parse(v[:created][0,7] + '-01') }.sort
+    h = Hash[g]
+    range = Date.new(params[:from_y].to_f,params[:from_m].to_f)..Date.new(params[:to_y].to_f,params[:to_m].to_f)
+    return render json: range.to_a.map {|d| Date.new(d.year,d.month,1)}.uniq.map {|d| h[d] && h[d].reduce(0) {|sum,h| sum + h[:amount]} || 0 }
+    
   end
 
   def login

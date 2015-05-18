@@ -78,7 +78,11 @@ class RegistrationsController < ApplicationController
    def get_my_jobs
     
     if params["role"] == "1"
-
+      @all_jobs = Job.where(company_id: Company.find_by(user_id: current_user.id).id).all
+      @jobs = @all_jobs.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, locations.city, jobs.created_at')
+          .joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id')
+          .joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id')
+      return render json: { jobs: @jobs, number: @jobs.length }
     elsif params["role"] == "0"
       @all_registrations = Registration.where(student_id: Student.find_by(user_id: current_user.id).id).all
 

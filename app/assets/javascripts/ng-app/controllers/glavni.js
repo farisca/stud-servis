@@ -2,6 +2,10 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 		this.trenutnaStranica="home";
 		this.prijavljen={};
         var obj;
+
+		$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
+        	$scope.new_notifications = " (" + data.new + ")";
+        });
         
 		this.isTrenutna = function(stranica) {
 			return (stranica===this.trenutnaStranica);
@@ -18,7 +22,7 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 		}
 
 		this.isVidljiv = function(stranica) {
-			//console.log("mijenjam vidljivost" + stranica);
+			console.log("Tip korisnika: " + AuthToken.tipKorisnika());
 			if(stranica == "prijava" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaStudenta" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaKompanije" && AuthToken.get() == "") return true;
@@ -39,15 +43,22 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			
 			//Za logirane kompanije
 			if(stranica == "unosOglasa" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
+			if(stranica == "notifikacije" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
 			if(stranica == "kompanija" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
 			if(stranica == "potvrdaOUnesenomOglasu" && AuthToken.get() != "" && AuthToken.tipKorisnika()==1) return true;
-			
+
+			//Za admina
+			if(stranica == "admin" && AuthToken.get() != "" && AuthToken.tipKorisnika()==2) return true;
+
 			return false;
 			
 		}
 
 		this.setTrenutna = function(stranica) {
 			this.trenutnaStranica=stranica;
+			$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
+	        	$scope.new_notifications = " (" + data.new + ")";
+	        });
 		}
 
 		this.isPrijavljen = function() {
