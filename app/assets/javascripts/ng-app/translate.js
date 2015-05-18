@@ -63,6 +63,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     'SELECTED_FILE': 'Selected file',
     'AD_EDIT_SAVE': 'Save ad',
     'NOTIFICATIONS': 'Notifications',
+    'STUDENTS': 'Students',
+    'COMPANIES': 'Companies',
+    'STATISTICS': 'Statistics',
+    'CATEGORIES': 'Categories',
+    'ADMIN': 'Administration',
     'NUMBER_OF_SIGN_UPS': 'Number of sign ups'
   });
  
@@ -130,6 +135,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     'SELECTED_FILE': 'Odabrana datoteka',
     'AD_EDIT_SAVE': 'Spasi oglas',
     'NOTIFICATIONS': 'Notifikacije',
+    'STUDENTS': 'Studenti',
+    'COMPANIES': 'Kompanije',
+    'STATISTICS': 'Statistike',
+    'CATEGORIES': 'Kategorije',
+    'ADMIN': 'Administracija',
     'NUMBER_OF_SIGN_UPS': 'Broj registriranih korisnika'
   });
  
