@@ -32,8 +32,20 @@
 <div class="row" style="margin: 20px;">
   <div class="col-md-6">
   	<div class="panel panel-danger">
-		<div class="panel-heading">{{NUMBER_OR_SIGN_UPS | translate}}</div>
-    	<canvas id="signedUpUsersChart" width="400" height="400"></canvas>
+		<div class="panel-heading">Number of sign ups</div>
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-register" ng-submit="drawSignedUpUsers()">
+					<select class="form-control" ng-model="signedUpUsers.from_m" ng-options="k as v for (k , v) in months"></select>
+			       	<input type="text" ng-model="signedUpUsers.from_y">
+			       	<select class="form-control" ng-model="signedUpUsers.to_m"  ng-options="k as v for (k , v) in months"></select>
+			       	<input type="text" ng-model="signedUpUsers.to_y">
+			       	<button class="btn btn-lg btn-primary btn-block"></button>
+			    </form>
+			</div>
+		<div class="col-md-4">
+    		<canvas id="signedUpUsersChart" width="400" height="400"></canvas></div>
+    	</div>
 	</div>
   </div>
   <div class="col-md-6">

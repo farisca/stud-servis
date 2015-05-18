@@ -1,36 +1,50 @@
 app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken',  function($scope, $http, $window, $location, AuthToken, $translate) {
-	
-    console.log("Dodao statistike");
-	var ctx = document.getElementById("signedUpUsersChart").getContext("2d");
+    // Referenciranje chartova
+	var signedUpUsersChart = document.getElementById("signedUpUsersChart").getContext("2d");
+    $scope.months = {"1" : "JANUARY", "2" : "FEBRUARY", "3" : "MARCH", "4": "APRIL", "5": "MAY", "6": "JUNE", "7": "JULY", "8": "AUGUST", "9": "SEPTEMBER", "10": "OCTOBER", "11": "NOVEMBER", "12": "DECEMBER"};
 
-    $http.get('/users/get_signedupusers?from_y=2013&from_m=3&to_y=2016&to_m=3').success(function(data, status, headers, config) {
-         console.log(Object.keys(data));
+    // Funkcija koja poziva servis i crta broj registriranih korisnika po mjesecima
+    $scope.drawSignedUpUsers = function() {
+        // Ocitaj od kad do kad je potrebno prikazati podatke
+        var from_m = $scope.signedUpUsers.from_m;
+        var from_y = $scope.signedUpUsers.from_y;
+        var to_m = $scope.signedUpUsers.to_m;
+        var to_y = $scope.signedUpUsers.to_y;
 
-         
-         var signedupUsersData = {
-            labels: Object.keys(data),
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80]
+        // Pozovi servis kojem se prosljedjuju datumi i koji vraca broj registriranih korisnika
+        $http.get('/users/get_signedupusers?from_y=' + from_y + '&from_m='+from_m+'&to_y='+to_y+'&to_m='+to_m).success(function(data, status, headers, config) {
+            var serviceResponse = data;
+            var labels = [];
+            // Kreiranje labela u grafiku -> svi mjeseci izmedju zadanih u formatu M - YYYY 
+            for(year = from_y; year <= to_y; year++) {
+                for (month = (year == from_y ? from_m : 1); month <= (year == to_y ? to_m : 12); month++) {
+                    labels.push(month + " - " + year);
                 }
-            ]
-        };
-         //console.log(data.(Object.keys(data));
-         //signedupUsersData.datasets.data = Object.values(data);
-         
+            }
 
-         var signedUpUsersChart = new Chart(ctx).Line(signedupUsersData);
-    });
+            console.log("Labele: " + labels);
+            console.log("Podaci: " + serviceResponse);
+
+            var signedupUsersData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Sign ups",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: serviceResponse
+                    }
+                ]
+            };
+            new Chart(signedUpUsersChart).Line(signedupUsersData);
+        });    
+    }
 
     
-
 }]);
 
 

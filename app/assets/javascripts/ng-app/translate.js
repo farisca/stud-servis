@@ -62,7 +62,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_ALL_STUDENTS_BUTTON': 'See all registrated students',
     'SELECTED_FILE': 'Selected file',
     'AD_EDIT_SAVE': 'Save ad',
-    'NOTIFICATIONS': 'Notifications'
+    'NOTIFICATIONS': 'Notifications',
+    'NUMBER_OF_SIGN_UPS': 'Number of sign ups'
   });
  
   $translateProvider.translations('bs', {
@@ -128,7 +129,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_ALL_STUDENTS_BUTTON': 'Pregledaj prijavljene studente',
     'SELECTED_FILE': 'Odabrana datoteka',
     'AD_EDIT_SAVE': 'Spasi oglas',
-    'NOTIFICATIONS': 'Notifikacije'
+    'NOTIFICATIONS': 'Notifikacije',
+    'NUMBER_OF_SIGN_UPS': 'Broj registriranih korisnika'
   });
  
   $translateProvider.preferredLanguage('en');
