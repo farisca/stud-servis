@@ -29,11 +29,11 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			
 			//Za sve logirane usere
 			if(stranica == "odjava" && AuthToken.get() != "") return true;
-			if(stranica == "pocetna" && AuthToken.get() != "") return true;
+			if(stranica == "pocetna" && AuthToken.get() != "" && AuthToken.tipKorisnika() != 2) return true;
 			if(stranica == "promjenaSifre" && AuthToken.get() != "") return true;
 			if(stranica == "potvrdaORegistraciji" && AuthToken.get() != "") return true;
 			if(stranica == "change_locale" && AuthToken.get() != "") return true;
-			if(stranica == "profil" && AuthToken.get() != "") return true;
+			if(stranica == "profil" && AuthToken.get() != ""  && AuthToken.tipKorisnika() != 2) return true;
 			
 			//Za sve logirane studente
 			if(stranica == "oglasi" && AuthToken.get() != "" && AuthToken.tipKorisnika()==0 ) return true;
