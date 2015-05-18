@@ -1,7 +1,9 @@
 app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken',  function($scope, $http, $window, $location, AuthToken, $translate) {
     // Referenciranje chartova
 	var signedUpUsersChart = document.getElementById("signedUpUsersChart").getContext("2d");
-    $scope.months = {"1" : "JANUARY", "2" : "FEBRUARY", "3" : "MARCH", "4": "APRIL", "5": "MAY", "6": "JUNE", "7": "JULY", "8": "AUGUST", "9": "SEPTEMBER", "10": "OCTOBER", "11": "NOVEMBER", "12": "DECEMBER"};
+    $scope.months = {"01" : "JANUARY", "02" : "FEBRUARY", "03" : "MARCH", "04": "APRIL", "05": "MAY", "06": "JUNE", "07": "JULY", "08": "AUGUST", "09": "SEPTEMBER", "10": "OCTOBER", "11": "NOVEMBER", "12": "DECEMBER"};
+    $scope.signedUpUsers = {};
+    $scope.signedUpUsers.from_m = "JANUARY";
 
     // Funkcija koja poziva servis i crta broj registriranih korisnika po mjesecima
     $scope.drawSignedUpUsers = function() {

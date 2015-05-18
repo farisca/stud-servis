@@ -34,13 +34,25 @@
   	<div class="panel panel-danger">
 		<div class="panel-heading">Number of sign ups</div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4" style="margin: 20px;">
 				<form class="form-register" ng-submit="drawSignedUpUsers()">
-					<select class="form-control" ng-model="signedUpUsers.from_m" ng-options="k as v for (k , v) in months"></select>
-			       	<input type="text" ng-model="signedUpUsers.from_y">
-			       	<select class="form-control" ng-model="signedUpUsers.to_m"  ng-options="k as v for (k , v) in months"></select>
-			       	<input type="text" ng-model="signedUpUsers.to_y">
-			       	<button class="btn btn-lg btn-primary btn-block"></button>
+				<div class="col-xs-8">
+					<div class="form-group">
+    					<label>From: </label><br>
+    					
+						<select class="form-control input-sm"  ng-model="signedUpUsers.from_m" ng-options="k as v for (k , v) in months" ></select>
+						<input class="form-control input-sm" type="text" ng-model="signedUpUsers.from_y">
+						</div>
+				    </div>
+				    <div class="col-xs-8">
+				    <div class="form-group">
+    					<label>To: </label><br>
+    					
+				       		<select class="form-control input-sm"  ng-model="signedUpUsers.to_m"  ng-options="k as v for (k , v) in months"></select>
+				       		<input class="form-control input-sm" type="text" ng-model="signedUpUsers.to_y"><br><br>
+				       		<button class="btn btn-lg btn-primary btn-block btn-xs">Draw</button>
+			       		</div>
+			       	</div>
 			    </form>
 			</div>
 		<div class="col-md-4">
