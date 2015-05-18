@@ -5,7 +5,7 @@ var app = angular
         'ngRoute',
         'templates',
         'pascalprecht.translate',
-        'ui.bootstrap'
+        'ui.bootstrap',
     ]);
     app.config(['$routeProvider','$locationProvider',function ($routeProvider, $locationProvider) {
         $routeProvider.

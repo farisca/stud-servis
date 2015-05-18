@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     post "password_change", on: :collection
     get "get_user", on: :collection
     get "get_role", on: :collection
+    get "get_signedupusers", on: :collection
   end
 
   resources :students do
