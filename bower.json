@@ -15,3 +15,10 @@
     }
   }
 }
+
+{
+  "name": "my-project",
+  "dependencies": {
+    "bootstrap": "~> 3.0"
+  }
+}
