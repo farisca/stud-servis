@@ -10,6 +10,7 @@ class Company < ActiveRecord::Base
     user.password = password
     user.password_confirmation = password_confirmation
     user.role=1; #Company role is one
+    user.banned=false;
     if user.save
       
     	location = Location.new

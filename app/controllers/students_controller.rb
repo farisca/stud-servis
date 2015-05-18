@@ -32,6 +32,7 @@ class StudentsController < ApplicationController
       user.password = params["password"]
       user.password_confirmation = params["password_confirmation"]
       user.role=0; #Student role is zero
+      user.banned=false;
       if user.save
 
         student = Student.new
