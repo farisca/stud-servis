@@ -3,9 +3,11 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 		this.prijavljen={};
         var obj;
 
-		$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
-        	$scope.new_notifications = " (" + data.new + ")";
-        });
+        if(AuthToken.get() != "" && AuthToken.tipKorisnika() == 1) {
+			$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
+	        	$scope.new_notifications = " (" + data.new + ")";
+	        });
+		}
         
 		this.isTrenutna = function(stranica) {
 			return (stranica===this.trenutnaStranica);
@@ -56,9 +58,11 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 
 		this.setTrenutna = function(stranica) {
 			this.trenutnaStranica=stranica;
-			$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
-	        	$scope.new_notifications = " (" + data.new + ")";
-	        });
+			if(AuthToken.get() != "" && AuthToken.tipKorisnika() == 1) {
+				$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
+		        	$scope.new_notifications = " (" + data.new + ")";
+		        });
+			}
 		}
 
 		this.isPrijavljen = function() {
