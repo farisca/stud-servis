@@ -59,8 +59,6 @@ class CompaniesController < ApplicationController
     render json: {status: status, user: @user.id}
   end
 
-
-
   def add_company
     @co = Company.new
     

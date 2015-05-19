@@ -1,0 +1,33 @@
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="admin/locations">{{'LOCATION' | translate}}s</a></li>
+  <li role="presentation"><a href="admin/categories">{{'CATEGORIES' | translate}}</a></li>
+  <li role="presentation"><a href="admin/students">{{'STUDENTS' | translate}}</a></li>
+  <li role="presentation"><a href="admin/companies">{{'COMPANIES' | translate}}</a></li>
+  <li role="presentation"><a href="admin/statistics">{{'STATISTICS' | translate}}</a></li>
+</ul>
+<h2 align="center"> {{ 'CREATE_LOCATION' | translate }}</h2>
+<div class="container" style="position:relative; top:50px; width:400px;">
+        
+    <form class="form-register" ng-controller="AdminLocationsCtrl as loc" ng-submit="loc.createNewLoc()">
+        <p>{{ 'ADD_NEW_LOCATION' | translate }}</p>
+        <label for="inputName" class="sr-only">{{ 'CITY' | translate }}</label>
+        <input type="text" ng-model="loc.data.city" id="inputCity" class="form-control" placeholder="" required autofocus><br>
+         
+        <button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'AD_LOCATION' | translate }}</button>
+        <br>
+        <div ng-show="loc.isSuccess()" class="alert alert-success" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          {{loc.successMsg}}
+        </div>
+        <div ng-show="loc.isError()" class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Greška:</span>
+              {{loc.errorMsg}}
+        </div>
+
+        
+
+    </form>
+    <br><br><br><br>
+</div>
