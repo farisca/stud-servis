@@ -58,12 +58,14 @@ class JobsController < ApplicationController
     duration = job.duration
     id = job.id
     user_id = job.company.user_id
-    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id}  
+    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id, logo: "#{Rails.root}/" + job.company.logo}  
   end
 
   def get_ordered_jobs
-    @jobs =  Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, companies.promoted as promoted, locations.city').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').limit(params["count"]).order("companies.promoted DESC, jobs.created_at DESC")
-    #@jobs = Job.all
+    @jobs =  Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, companies.promoted as promoted, locations.city, companies.logo as logo').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').limit(params["count"]).order("companies.promoted DESC, jobs.created_at DESC")
+    @jobs.each do |job|
+      job.logo = job.logo.to_s
+    end
     render json: {jobs: @jobs, number: @jobs.length}
   end
 
