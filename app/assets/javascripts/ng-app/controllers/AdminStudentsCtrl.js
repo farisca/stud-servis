@@ -2,12 +2,45 @@ angular.module('aplikacija')
     .controller('AdminStudentsCtrl', ['$http', '$location', '$window', '$routeParams', 'NotificationService', '$scope', function ($http, $location, $window, $routeParams, NotificationService, $scope) {
     
     var result;
+    var ban;
     var studenti = [];
     var test;
+
     $scope.studenti=[]; 
 
-    this.ban = function() {
-        alert()            
+    this.bannStudent = function(id_student) {
+        //alert(id_student);
+        ban = $http({ url: '/students/bann_student', 
+            method: "GET",
+            params: {id_student: id_student}
+        });
+        
+        ban.success(function(data, status, headers, config) {
+            //alert(data.status);
+            
+            niz = $scope.studenti;
+            for (i=0; i<niz.length; i++) {
+                if(niz[i]["id"] == id_student)
+                    $scope.studenti[i]["bann"] = data.status;
+            }
+        });
+    }
+
+    this.unbannStudent = function(id_student) {
+        //alert(id_studenta);
+        ban = $http({ url: '/students/unbann_student', 
+            method: "GET",
+            params: {id_student: id_student}
+        });
+        
+        ban.success(function(data, status, headers, config) {
+            niz = $scope.studenti;
+            for (i=0; i<niz.length; i++) {
+                if(niz[i]["id"] == id_student)
+                    $scope.studenti[i]["bann"] = data.status;
+            }
+        });
+
     }
 
     var init = function () {
@@ -17,9 +50,6 @@ angular.module('aplikacija')
         });
         
         result.success(function(data, status, headers, config) {
-
-            //studenti = data.studenti;
-            //alert(studenti);
 
             var brojStudenata = data.students.length
 
