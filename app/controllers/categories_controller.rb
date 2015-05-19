@@ -13,16 +13,17 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   # POST /categories.json
-  def create
-    @category = Category.new(category_params)
-
-    respond_to do |format|
-      if @category.save
-        format.json { render json: @category }
-      else
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
-    end
+  def add_category
+     u = Category.find_by(name: params["name"])
+    if !u.nil?
+      return render json: { error: "Category already exists!" } 
+    else
+      
+    category = Category.new
+    category.name=params["name"]
+    category.save
+    return render json: { error: "OK" }
+  end
   end
 
   # PATCH/PUT /categories/1
