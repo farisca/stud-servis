@@ -51,7 +51,7 @@ class CompaniesController < ApplicationController
       # write the file
       File.open(path, "wb") { |f| f.write(upload.read) }
 
-      @company.logo = path
+      @company.logo = name
     end
     @company.save
     render json: { status: "OK"}
