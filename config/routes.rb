@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get "make_registration", on: :collection
     get "get_all_students", on: :collection
     get "get_my_jobs", on: :collection
+    get "get_registrations_time", on: :collection
   end
 
   resources :users do

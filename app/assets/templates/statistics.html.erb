@@ -6,6 +6,7 @@
   <li role="presentation" class="active"><a href="admin/statistics">{{'STATISTICS' | translate}}</a></li>
 </ul>
 
+<!-- Prvi -->
 <div class="row" style="margin: 20px;">
 	<div class="col-md-6">
 		<div class="panel panel-danger">
@@ -40,6 +41,74 @@
 			</div>
 		</div>
 
+<!-- Drugi -->
+		<div class="col-md-6">
+			<div class="panel panel-danger">
+				<div class="panel-heading">Ads/Location</div>
+
+				<div class="row">
+				<div class="col-md-4" style="margin: 20px;">
+					<form class="form-register" ng-submit="drawAdsLocation()">
+						<div class="col-xs-8">
+							<div class="form-group">
+								<label>Location id: </label><br>
+
+								<input class="form-control input-sm" type="text" ng-model="ads_locations.location_id">
+
+							</div>
+						</div>
+						<div class="col-xs-8">
+							<div class="form-group">
+								
+								<button class="btn btn-lg btn-primary btn-block btn-xs">{{'DRAW' | translate}}</button><br>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="col-md-4">
+					<canvas id="adsLocationChart" width="400" height="400"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Treći -->
+<div class="row" style="margin: 20px;">
+	<div class="col-md-6">
+		<div class="panel panel-danger">
+			<div class="panel-heading">Number of registrations</div>
+			<div class="row">
+				<div class="col-md-4" style="margin: 20px;">
+					<form class="form-register" ng-submit="drawRegistrations()">
+						<div class="col-xs-8">
+							<div class="form-group">
+								<label>From: </label><br>
+
+								<select class="form-control input-sm"  ng-model="registrations.fromR_m" ng-options="k as v for (k , v) in months" ></select>
+								<input class="form-control input-sm" type="text" ng-model="registrations.fromR_y">
+							</div>
+						</div>
+						<div class="col-xs-8">
+							<div class="form-group">
+								<label>To: </label><br>
+
+								<select class="form-control input-sm"  ng-model="registrations.toR_m"  ng-options="k as v for (k , v) in months"></select>
+								<input class="form-control input-sm" type="text" ng-model="registrations.toR_y"><br><br>
+								<button class="btn btn-lg btn-primary btn-block btn-xs">{{'DRAW' | translate}}</button><br>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-4">
+					<canvas id="registrationsChart" width="400" height="400"></canvas></div>
+				</div>
+			</div>
+		</div>
+
+
+<!-- Četvrti -->
 		<div class="col-md-6">
 			<div class="panel panel-danger">
 				<div class="panel-heading">Ads/Location</div>
