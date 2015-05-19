@@ -15,6 +15,8 @@ app.directive('oglasBox', function () {
 			scope.slika = attrs.logoKompanije;
 			scope.prosireno="/oglas/"+attrs.idOglasa;
 			scope.kraj=attrs.kraj;
+			scope.pozadina="";
+			if (attrs.promoviran=="1") scope.pozadina="#E3B35F";
 		}
 	};
 });
