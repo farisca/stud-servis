@@ -1,12 +1,10 @@
 app=angular.module('aplikacija');
 
 app.controller('oglasBoxController', ['$http', '$window', '$location', '$scope', function($http, $window, $location, $scope) {
-	$scope.ucitajSliku = function(id) {
 
-	}
 }]);
 
-app.directive('oglasBox', function () {
+app.directive('oglasBox', ['$http', function ($http) {
 	return {
 		restrict: 'E',
 		templateUrl: 'oglasBox.html',
@@ -19,7 +17,8 @@ app.directive('oglasBox', function () {
 			scope.kraj=attrs.kraj;
 			scope.pozadina="";
 			if (attrs.promoviran=='true') scope.pozadina="#E3B35F";
-			scope.ucitajSliku();
+			scope.slika = '/companies/download_logo?filename=' + attrs.logo
+			
 		}
 	};
-});
+}]);

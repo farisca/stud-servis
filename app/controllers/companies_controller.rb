@@ -59,11 +59,7 @@ class CompaniesController < ApplicationController
   end
 
   def download_logo
-    @company = Company.find_by(id: params["id"])
-
-    send_file(
-     "#{Rails.root}/" + @company.logo
-    )
+    send_file "#{Rails.root}/public/data/" + params["filename"], type: 'image/png', disposition: 'inline' 
   end
 
   # DELETE /companies/1

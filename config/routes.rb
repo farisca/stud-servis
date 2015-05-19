@@ -63,4 +63,5 @@ Rails.application.routes.draw do
   get 'auth' => 'auth#confirm_registration'
   root 'application#index'
   get '*path' => 'application#index'
+  get 'public/data'
 end
