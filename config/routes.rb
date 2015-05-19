@@ -34,10 +34,12 @@ Rails.application.routes.draw do
 
   resources :categories do
     get "getAllCategories", on: :collection
+    post "add_category", on: :collection
   end
 
   resources :locations do
     get "getAllLocations", on: :collection
+    post "add_location", on: :collection
   end
 
   resources :registrations do
