@@ -32,17 +32,21 @@
 <table  style="position:absolute; left:100px; top:130px;" ng-controller='HomeController'>
 	<tr>
 		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(0,3)">
+<<<<<<< HEAD
 			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran="{{oglas.promoted}}" logo="{{oglas.logo}}"> </oglas-box>
+=======
+			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran={{oglas.promoted}}> </oglas-box>
+>>>>>>> fc9c415291d95f7ff6a18ec5f8855f295dbc57da
 		</td>
 	</tr>
 	<tr>
 		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(3,3)">
-			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}"> </oglas-box>
+			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran={{oglas.promoted}}> </oglas-box>
 		</td>
 	</tr>
 	<tr>
 		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(6,3)">
-			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}"> </oglas-box>
+			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran={{oglas.promoted}}> </oglas-box>
 		</td>
 	</tr>
 </table>
