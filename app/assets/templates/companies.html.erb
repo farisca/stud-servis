@@ -6,12 +6,13 @@
   <li role="presentation"><a href="admin/statistics">{{'STATISTICS' | translate}}</a></li>
 </ul>
 
-<div class="container" style="position:relative; top:50px; right: 150px; width:400px;">
+<div class="container" style="position:relative; top:30px;">
   
   <form class="form-choosen-ad ad_forma" ng-controller="AdminCompaniesCtrl as acc" ng-submit="acc.ban()">
     
-    <table border="1" style="padding:10px;">
-    	<tr style="padding:10px;">
+    <table align="center" class="table table-striped table-hover ">
+    <thead>
+    	<tr>
 	    	<th> Naziv </th>
 	    	<th> Lokacija </th>
 	    	<th> Opis </th>
@@ -22,6 +23,7 @@
 	    	<th> </th>
 	    	<th> </th>
 	    </tr>
+	   </thead>
 	    <tr ng-repeat="kompanija in kompanije" style="padding:10px;">
 	    	<td class="companies_name" ng-model="acc.student.name"> {{kompanija.name}} </td>
 	    	<td class="companies_locatin">{{kompanija.location}} </td>
