@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get "find_company", on: :collection
     post "update", on: :collection
     get "download_logo", on: :collection
+    get "get_all_companies", on: :collection
+    get "bann_company", on: :collection
+    get "unbann_company", on: :collection
   end
 
   resources :sessions do

@@ -18,6 +18,47 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
 
+  def get_all_companies 
+    @companies = Company.all
+    
+    array = []
+ 
+    @companies.each do |company|
+      @element = Hash.new
+      @element["id"] = company.user.id
+      @element["name"] = company.name
+      @element["location"] = company.location.city
+      @element["description"] = company.description
+      @element["web"] = company.web
+      @element["phone"] = company.phone
+      @element["email"] = company.user.email
+      @element["bann"] = company.user.banned
+      array.push(@element)
+    end
+
+    render json: {companies: array}
+  end
+
+  def bann_company
+    id_company = params[:id_company]
+    @user = User.find_by(id: id_company)
+    @user.banned = 't'
+    @user.save
+    status = @user.banned
+
+    render json: {status: status, user: @user.id}
+  end
+
+  def unbann_company
+    id_company = params[:id_company]
+    @user = User.find_by(id: id_company)
+    @user.banned = 'f'
+    @user.save
+    status = @user.banned
+
+    render json: {status: status, user: @user.id}
+  end
+
   def add_company
     @co = Company.new
     

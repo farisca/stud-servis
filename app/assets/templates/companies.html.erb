@@ -1,0 +1,42 @@
+<br><br>
+<div class="container" style="position:relative; top:20px; right: 150px; width:400px;">
+  
+  <form class="form-choosen-ad ad_forma" ng-controller="AdminCompaniesCtrl as acc" ng-submit="acc.ban()">
+    
+    <table border="1" style="padding:10px;">
+    	<tr style="padding:10px;">
+	    	<th> Naziv </th>
+	    	<th> Lokacija </th>
+	    	<th> Opis </th>
+	    	<th> Web </th>
+	    	<th> Phone </th>
+	    	<th> Email </th>
+	    	<th> BAN - status </th>
+	    	<th> </th>
+	    	<th> </th>
+	    </tr>
+	    <tr ng-repeat="kompanija in kompanije" style="padding:10px;">
+	    	<td class="companies_name" ng-model="acc.student.name"> {{kompanija.name}} </td>
+	    	<td class="companies_locatin">{{kompanija.location}} </td>
+	    	<td class="companies_description">  {{kompanija.description}}</td>
+	    	<td class="companies_web">  {{kompanija.web}}</td>
+	    	<td class="companies_phone">  {{kompanija.phone}}</td>
+	    	<td class="companies_email">  {{kompanija.email}}</td>
+	    	<td class="students_bann">  {{kompanija.bann}}</td>
+	    	<td><input ng-click="acc.bannCompany(kompanija.id)" class="btn btn-default" style="width: 90px; background-color:#990000;" value="BAN"></td>
+	    	<td><input ng-click="acc.unbannCompany(kompanija.id)" class="btn btn-default" style="width: 90px; background-color:#339900;" value="UNBAN"></td>
+	    	<td><input ng-click="acc.unbannCompany(kompanija.id)" class="btn btn-default" style="width: 100px; background-color:gray;" value="PROMOTE"></td>
+	    	<td> {{kompanija.id}}</td>
+	    </tr>
+
+    </table>
+
+
+  </form>
+
+  </form>
+  	<p class="svi_studenti"></p>
+  </form>
+
+<br><br>
+</div>
