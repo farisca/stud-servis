@@ -93,6 +93,26 @@ class StudentsController < ApplicationController
     end
   end
 
+  def get_all_students 
+    @students = Student.all
+    
+    array = []
+ 
+    @students.each do |student|
+      @element = Hash.new
+      @element["name"] = student.name
+      @element["surname"] = student.surname
+      @element["location"] = student.location.city
+      @element["university"] = student.university
+      @element["faculty"] = student.faculty
+      @element["email"] = student.user.email
+      @element["bann"] = student.user.banned
+      array.push(@element)
+    end
+
+    render json: {students: array}
+  end
+
   def download_cv
     send_file(
      "#{Rails.root}/public/data/" + params["id"] + ".pdf",

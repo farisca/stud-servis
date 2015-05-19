@@ -1,0 +1,39 @@
+<br><br>
+<div class="container" style="position:relative; top:50px; width:400px;">
+  
+  <form class="form-choosen-ad ad_forma" ng-controller="AdminStudentsCtrl as asc" ng-submit="asc.ban()">
+    
+  
+    <table border="1" style="padding:10px;">
+    	<tr style="padding:10px;">
+	    	<th> Ime </th>
+	    	<th> Prezime </th>
+	    	<th> Lokacija </th>
+	    	<th> Univerzitet </th>
+	    	<th> Fakultet </th>
+	    	<th> Email </th>
+	    	<th> BANN </th>
+	    	<th> Button </th>
+	    </tr>
+	    <tr ng-repeat="student in studenti" style="padding:10px;">
+	    	<td class="students_name"> {{student.name}} </td>
+	    	<td class="students_surname"> {{student.surname}} </td>
+	    	<td class="students_locatin">{{student.location}} </td>
+	    	<td class="students_university"> {{student.university}}</td>
+	    	<td class="students_faculty">  {{student.faculty}}</td>
+	    	<td class="students_email">  {{student.email}}</td>
+	    	<td class="students_bann">  {{student.bann}}</td>
+	    	<td><input id="{{student.id}}" type="submit" name="BAN" value="BAN"></td>
+	    </tr>
+
+    </table>
+
+
+  </form>
+
+  </form>
+  	<p class="svi_studenti"></p>
+  </form>
+
+<br><br>
+</div>

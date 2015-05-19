@@ -22,15 +22,9 @@ Location.create([{city: 'Banja Luka'}])
 @us.password_digest = '$2a$10$sV5etH1BX7KoyYBeag3Sveem2Rzz2HP5Wft9r6TUUwkb9BgqSYqwa'
 @us.banned = false
 @us.save
-
 @cp = Company.new
+
 @cp.user = @us
 @cp.name = 'Authority Partners'
 @cp.location = @lc
-@cp.promoted = false
-@cp.logo = false
 @cp.save
-
-@ct = Category.new
-@ct.name = "IT"
-@ct.save
