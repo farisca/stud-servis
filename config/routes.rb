@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     post "update", on: :collection
     post "add_student", on: :collection
     get "cv_exists", on: :collection
-
+    get "get_all_students", on: :collection
   end
 
   post 'auth' => 'auth#authenticate'
