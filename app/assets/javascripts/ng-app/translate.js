@@ -71,7 +71,13 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NUMBER_OF_SIGN_UPS': 'Number of sign ups',
     'ERROR_FROM_GT_TO': 'End before beginning!',
     'ERROR_NUM_NOT_TEXT': 'Year in format YYYY!',
-    'DRAW': 'Draw'
+    'DRAW': 'Draw',
+    'ADD_NEW_LOCATION' : 'Add new location',
+    'AD_LOCATION' : 'Add location',
+   'CREATE_LOCATION': 'Create location',
+   'CREATE_CATEGORY': 'Create category',
+    'ADD_NEW_CATEGORY' : 'Add new category',
+    'AD_CATEGORY' : 'Add category'
   });
  
   $translateProvider.translations('bs', {
@@ -146,7 +152,13 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NUMBER_OF_SIGN_UPS': 'Broj registriranih korisnika',
     'ERROR_FROM_GT_TO': 'Kraj prije početka!',
     'ERROR_NUM_NOT_TEXT': 'Godina u obliku YYYY!',
-    'DRAW': 'Iscrtaj'
+    'DRAW': 'Iscrtaj',
+    'ADD_NEW_LOCATION' : 'Dodajte novu lokaciju',
+    'AD_LOCATION' : 'Kreiraj lokaciju',
+    'CREATE_LOCATION': 'Kreiraj lokaciju',
+    'CREATE_CATEGORY': 'Kreiraj kategoriju',
+    'ADD_NEW_CATEGORY' : 'Dodajte novu kategoriju',
+    'AD_CATEGORY' : 'Kreiraj kategoriju'
   });
  
   $translateProvider.preferredLanguage('en');

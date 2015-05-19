@@ -58,8 +58,4 @@ angular.module('aplikacija')
     }
     init();
 }]);
-        
-
-
-
 
