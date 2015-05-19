@@ -58,6 +58,10 @@ class CompaniesController < ApplicationController
     
   end
 
+  def download_logo
+    send_file "#{Rails.root}/public/data/" + params["filename"], type: 'image/png', disposition: 'inline' 
+  end
+
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy

@@ -1,10 +1,10 @@
 app=angular.module('aplikacija');
 
-app.controller('oglasBoxController', ['$http', '$window', '$location', function($http, $window, $location) {
+app.controller('oglasBoxController', ['$http', '$window', '$location', '$scope', function($http, $window, $location, $scope) {
 
 }]);
 
-app.directive('oglasBox', function () {
+app.directive('oglasBox', ['$http', function ($http) {
 	return {
 		restrict: 'E',
 		templateUrl: 'oglasBox.html',
@@ -12,12 +12,13 @@ app.directive('oglasBox', function () {
 			scope.posao = attrs.nazivPosla;
 			scope.poslodavac = attrs.kompanija;
 			scope.lokacija = attrs.lokacija;
-			scope.slika = attrs.logo;
-			alert(attrs.logo);
+			
 			scope.prosireno="/oglas/"+attrs.idOglasa;
 			scope.kraj=attrs.kraj;
 			scope.pozadina="";
 			if (attrs.promoviran=='true') scope.pozadina="#E3B35F";
+			scope.slika = '/companies/download_logo?filename=' + attrs.logo
+			
 		}
 	};
-});
+}]);

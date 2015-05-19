@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post "add_company", on: :collection
     get "find_company", on: :collection
     post "update", on: :collection
+    get "download_logo", on: :collection
   end
 
   resources :sessions do
@@ -64,4 +65,5 @@ Rails.application.routes.draw do
   get 'auth' => 'auth#confirm_registration'
   root 'application#index'
   get '*path' => 'application#index'
+  get 'public/data'
 end
