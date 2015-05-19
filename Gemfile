@@ -30,8 +30,7 @@ gem 'bcrypt',               '3.1.7'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'jwt'
-#gem "pg"
-gem 'sqlite3'
+gem "pg"
 group :production do
 #  gem "pg"
 end
