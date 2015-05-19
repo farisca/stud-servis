@@ -57,6 +57,8 @@ Rails.application.routes.draw do
     post "add_student", on: :collection
     get "cv_exists", on: :collection
     get "get_all_students", on: :collection
+    get "bann_student", on: :collection
+    get "unbann_student", on: :collection
   end
 
   post 'auth' => 'auth#authenticate'

@@ -100,6 +100,7 @@ class StudentsController < ApplicationController
  
     @students.each do |student|
       @element = Hash.new
+      @element["id"] = student.user.id
       @element["name"] = student.name
       @element["surname"] = student.surname
       @element["location"] = student.location.city
@@ -111,6 +112,30 @@ class StudentsController < ApplicationController
     end
 
     render json: {students: array}
+  end
+
+  def bann_student
+    id_student = params[:id_student]
+    #5
+    @user = User.find_by(id: id_student)
+    @user.banned = 't'
+    @user.save
+    status = @user.banned
+
+    render json: {status: status, user: @user.id}
+  end
+
+  def unbann_student
+    id_student = params[:id_student]
+    @user = User.find_by(id: id_student)
+    #@student = Student.find_by(id: id_student)
+    #@user = User.find(@student.user_id)
+
+    @user.banned = 'f'
+    @user.save
+    status = @user.banned
+
+    render json: {status: status, user: @user.id}
   end
 
   def download_cv
