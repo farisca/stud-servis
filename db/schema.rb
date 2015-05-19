@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517115732) do
+ActiveRecord::Schema.define(version: 20150519121112) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20150517115732) do
     t.string   "phone"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "promoted"
+    t.string   "logo"
   end
 
   add_index "companies", ["location_id"], name: "index_companies_on_location_id"

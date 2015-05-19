@@ -19,6 +19,7 @@ class Company < ActiveRecord::Base
     	if location.save
 	      student = Company.new
 	      student.name = name
+        student.promoted = false
 	      student.user_id = user.id
 	      if student.save
           

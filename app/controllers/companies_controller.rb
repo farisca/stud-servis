@@ -41,6 +41,18 @@ class CompaniesController < ApplicationController
     @company.description = params["description"]
     @company.web = params["web"]
     @company.phone = params["phone"]
+    fajl = params["file"]
+    if !fajl.nil?
+      upload = params["file"]
+      name =  @company.id.to_s + params["file"].original_filename
+      directory = "public/data"
+      # create the file path
+      path = File.join(directory, name)
+      # write the file
+      File.open(path, "wb") { |f| f.write(upload.read) }
+
+      @company.logo = path
+    end
     @company.save
     render json: { status: "OK"}
     

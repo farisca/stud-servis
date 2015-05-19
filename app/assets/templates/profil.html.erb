@@ -50,7 +50,7 @@
           <p id="fajl" ng-model="label"></p>
           <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}
           </button>
-
+ 
           <br>
 
           <div ng-show="register.isError()" class="alert alert-danger" role="alert">
@@ -102,6 +102,16 @@
           <input type="text" ng-model="data.phone" id="inputPhone" class="form-control" placeholder="" required autofocus><br>
                 <hello-world></hello-world>  
           
+           <p> {{ 'IMAGE' | translate }} </p>
+            <div class="btn-group">
+           <!--<a class="btn btn-default" ng-show="download" target="_self" href="/students/download_cv?id={{data.cv}}" download>{{ 'DOWNLOAD' | translate }}</a>-->
+
+    
+          <span class="btn btn-default btn-file">
+            <input  type="file" onchange="angular.element(this).scope().filesChanged(this)" />{{ 'BROWSE' | translate }}
+          </span>
+          </div>
+
           <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}
           </button>
 
@@ -112,6 +122,7 @@
     <span class="sr-only">Greška:</span>
     {{register.errorMsg}}
   </div>
+
 
           <info-message></info-message>
 

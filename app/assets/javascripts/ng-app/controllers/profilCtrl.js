@@ -118,21 +118,47 @@ angular.module('aplikacija').controller("profilCtrl", ['$scope', '$http', '$wind
     $scope.saveCompany = function() {        
         $scope.savebutton.disabled = true;
         $scope.infoMsg = "Spašavam podatke...";
-        
-        $http.post('/companies/update', {
-            name: $scope.data.name,
-            location: $scope.data.location,
-            description: $scope.data.description,
-            web: $scope.data.web,
-            phone: $scope.data.phone,
-        }).success(function(resp) {
-            $scope.savebutton.disabled = false;
-            $scope.infoMsg = "Podaci spašeni!";
-            console.log("Data saved...");
-            
-        }).error(function(resp) {
-            console.log("greska");
-        });  
+        var fd = new FormData();
+        var imaFajl = false;
+
+        angular.forEach($scope.files, function(file) {
+            fd.append('name', $scope.data.name),
+            fd.append('location', $scope.data.location),
+            fd.append('description', $scope.data.description),
+            fd.append('web', $scope.data.web),
+            fd.append('phone', $scope.data.phone),
+            fd.append('file', file),
+            imaFajl = true;
+        });
+        if(imaFajl) {
+            $http.post('/companies/update', fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            }).success(function(resp) {
+                $scope.savebutton.disabled = false;
+                $scope.infoMsg = "Podaci spašeni!";
+                console.log("Data saved...");
+                $route.reload();
+            }).error(function(resp) {
+                console.log("greska");
+            });
+        }
+        else {
+            $http.post('/companies/update', {
+                name: $scope.data.name,
+                location: $scope.data.location,
+                description: $scope.data.description,
+                web: $scope.data.web,
+                phone: $scope.data.phone,
+            }).success(function(resp) {
+                $scope.savebutton.disabled = false;
+                $scope.infoMsg = "Podaci spašeni!";
+                console.log("Data saved...");
+                
+            }).error(function(resp) {
+                console.log("greska");
+            });  
+        }
         
     };
        
