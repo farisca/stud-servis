@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
     
      u = Location.find_by(city: params["city"])
     if !u.nil?
-      return render json: { error: "Lokacija vec postoji!" } 
+      return render json: { error: "Location already exists!" } 
     else
       
     location = Location.new
