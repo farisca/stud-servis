@@ -69,6 +69,14 @@ class JobsController < ApplicationController
     render json: {jobs: @jobs, number: @jobs.length}
   end
 
+  def get_jobs_at_location
+    location_id = params[:location_id]
+    @number = 0
+    @jobs = Job.where(location_id: location_id).all
+    @number = @jobs.length
+
+    render json: {number: @number}
+  end
  
 
   private

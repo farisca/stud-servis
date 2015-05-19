@@ -1,6 +1,7 @@
 app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken', '$translate', function($scope, $http, $window, $location, AuthToken, $translate) {
     // Referenciranje chartova
 	var signedUpUsersChart = document.getElementById("signedUpUsersChart").getContext("2d");
+    var adsLocationChart = document.getElementById("signedUpUsersChart").getContext("2d");
 
     // Neka pocetna inicijalizacija
     if ($translate.use() === 'en') {
@@ -82,6 +83,55 @@ app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location'
             new Chart(signedUpUsersChart).Line(signedupUsersData);
         });    
     }
+
+    $scope.ads_locations = {};
+    $scope.ads_locations.locations = 1;
+    //$scope.ads_locations.location_id 
+
+    //Funkcija koja crta grafig broj prijavljanih oglasa po odabranoj lokaciji
+    $scope.drawAdsLocation = function() {
+
+
+
+        //poziv servisa koji na osnovu proslijedjene lokacije vraca broj korisnika
+        var result;
+        var location_id = $scope.ads_locations.location_id;
+
+        result = $http({ url: '/jobs/get_jobs_at_location', 
+            method: "GET",
+            params: {location_id: location_id}
+        });
+
+        result.success(function(data, status, headers, config) {
+            var numberOfAds = data.number;
+            var labels = [];
+            alert("Broj oglasa: "+data.number);
+
+            labels.push("1");
+            labels.push("1");
+            labels.push("1");
+            var adsLocationData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Ads on locaction",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: numberOfAds
+                    }
+                ]
+            };
+            new Chart(adsLocationChart).Line(adsLocationData);
+
+
+        });    
+    }
+
+
 
     
 }]);
