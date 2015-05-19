@@ -9,7 +9,7 @@
 <!-- Prvi -->
 <div class="row" style="margin: 20px;">
 	<div class="col-md-6">
-		<div class="panel panel-danger">
+		<div class="panel panel-info">
 			<div class="panel-heading">{{'NUMBER_OF_SIGN_UPS' | translate}}</div>
 			<div class="row">
 				<div class="col-md-4" style="margin: 20px;">
@@ -36,7 +36,7 @@
 					</form>
 				</div>
 				<div class="col-md-4">
-					<canvas id="signedUpUsersChart" width="400" height="400"></canvas></div>
+					<canvas id="signedUpUsersChart" width="300" height="400"></canvas></div>
 				</div>
 			</div>
 		</div>
@@ -50,12 +50,6 @@
 				<div class="col-md-4" style="margin: 20px;">
 					<form class="form-register" ng-submit="drawAdsLocation()">
 						<div class="col-xs-8">
-							<div class="form-group">
-								<label>Location id: </label><br>
-
-								<input class="form-control input-sm" type="text" ng-model="ads_locations.location_id">
-
-							</div>
 						</div>
 						<div class="col-xs-8">
 							<div class="form-group">
@@ -67,7 +61,7 @@
 				</div>
 
 				<div class="col-md-4">
-					<canvas id="adsLocationChart" width="400" height="400"></canvas>
+					<canvas id="adsLocationChart" width="300" height="400"></canvas>
 				</div>
 			</div>
 		</div>
@@ -77,7 +71,7 @@
 <!-- Treći -->
 <div class="row" style="margin: 20px;">
 	<div class="col-md-6">
-		<div class="panel panel-danger">
+		<div class="panel panel-success">
 			<div class="panel-heading">Number of registrations</div>
 			<div class="row">
 				<div class="col-md-4" style="margin: 20px;">
@@ -102,7 +96,7 @@
 					</form>
 				</div>
 				<div class="col-md-4">
-					<canvas id="registrationsChart" width="400" height="400"></canvas></div>
+					<canvas id="registrationsChart" width="300" height="400"></canvas></div>
 				</div>
 			</div>
 		</div>
@@ -110,7 +104,7 @@
 
 <!-- Četvrti -->
 		<div class="col-md-6">
-			<div class="panel panel-danger">
+			<div class="panel panel-warning">
 				<div class="panel-heading">Ads/Location</div>
 
 				<div class="row">
@@ -136,78 +130,37 @@
 				</div>
 
 				<div class="col-md-4">
-					<canvas id="adsLocationChart" width="400" height="400"></canvas>
+					<canvas id="adsLocationChart" width="300" height="400"></canvas>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- Treći -->
+<!-- Peti -->
 <div class="row" style="margin: 20px;">
 	<div class="col-md-6">
-		<div class="panel panel-danger">
-			<div class="panel-heading">Number of registrations</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">Ads/Categories</div>
 			<div class="row">
 				<div class="col-md-4" style="margin: 20px;">
-					<form class="form-register" ng-submit="drawRegistrations()">
+					<form class="form-register" ng-submit="drawBarChart()">
 						<div class="col-xs-8">
 							<div class="form-group">
-								<label>From: </label><br>
-
-								<select class="form-control input-sm"  ng-model="registrations.fromR_m" ng-options="k as v for (k , v) in months" ></select>
-								<input class="form-control input-sm" type="text" ng-model="registrations.fromR_y">
+							
 							</div>
 						</div>
 						<div class="col-xs-8">
 							<div class="form-group">
-								<label>To: </label><br>
-
-								<select class="form-control input-sm"  ng-model="registrations.toR_m"  ng-options="k as v for (k , v) in months"></select>
-								<input class="form-control input-sm" type="text" ng-model="registrations.toR_y"><br><br>
 								<button class="btn btn-lg btn-primary btn-block btn-xs">{{'DRAW' | translate}}</button><br>
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="col-md-4">
-					<canvas id="registrationsChart" width="400" height="400"></canvas></div>
+					<canvas id="categoriesChart" width="300" height="400"></canvas></div>
 				</div>
 			</div>
 		</div>
 
-
-<!-- Četvrti -->
-		<div class="col-md-6">
-			<div class="panel panel-danger">
-				<div class="panel-heading">Ads/Location</div>
-
-				<div class="row">
-				<div class="col-md-4" style="margin: 20px;">
-					<form class="form-register" ng-submit="drawAdsLocation()">
-						<div class="col-xs-8">
-							<div class="form-group">
-								<label>Location id: </label><br>
-
-								<input class="form-control input-sm" type="text" ng-model="ads_locations.location_id">
-
-							</div>
-						</div>
-						<div class="col-xs-8">
-							<div class="form-group">
-								
-								<button class="btn btn-lg btn-primary btn-block btn-xs">{{'DRAW' | translate}}</button><br>
-								<alert type="danger" ng-show="alertSignedUpUsers.period.visible">{{'ERROR_FROM_GT_TO' | translate}}</alert>
-								<alert type="danger" ng-show="alertSignedUpUsers.number.visible">{{'ERROR_NUM_NOT_TEXT' | translate}}</alert>
-							</div>
-						</div>
-					</form>
-				</div>
-
-				<div class="col-md-4">
-					<canvas id="adsLocationChart" width="400" height="400"></canvas>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 
