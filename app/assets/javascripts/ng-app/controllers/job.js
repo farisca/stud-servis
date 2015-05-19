@@ -30,16 +30,18 @@ app.controller('JobsController', ['$http','$scope','$location', function ($http,
         
         res.success(function(data, status, headers, config) {
         	       if (data.error=="OK") {
-					$scope.successMsg="Success while saving a new job!";
-					console.log(this.successMsg);
-				    $location.path('/potvrdaOUnesenomOglasu');
-				//	$scope.podaci=data;
+					$scope.successMsg="Success while saving a new job!"
+					console.log(this.successMsg)
+				    $location.path('/potvrdaOUnesenomOglasu')
+        	       }
+        	       else{
+        	       	$scope.errorMsg="Error while saving a new job!"
+					console.log(this.errorMsg)
         	       }
 				
 				}).error(function(){
-					
-					$scope.errorMsg="Error while saving a new job!";
-					console.log(this.errorMsg);
+					$scope.errorMsg="Error while saving a new job!"
+					console.log(this.errorMsg)
 				});
 				
 		}
