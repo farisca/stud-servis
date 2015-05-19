@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post "add_company", on: :collection
     get "find_company", on: :collection
     post "update", on: :collection
+    get "download_logo", on: :collection
   end
 
   resources :sessions do
