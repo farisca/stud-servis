@@ -28,3 +28,7 @@ Location.create([{city: 'Banja Luka'}])
 @cp.name = 'Authority Partners'
 @cp.location = @lc
 @cp.save
+
+@ct = Category.new
+@ct.name = "IT"
+@ct.save
