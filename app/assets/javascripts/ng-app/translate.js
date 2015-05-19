@@ -68,7 +68,10 @@ app.config(['$translateProvider', function ($translateProvider) {
     'STATISTICS': 'Statistics',
     'CATEGORIES': 'Categories',
     'ADMIN': 'Administration',
-    'NUMBER_OF_SIGN_UPS': 'Number of sign ups'
+    'NUMBER_OF_SIGN_UPS': 'Number of sign ups',
+    'ERROR_FROM_GT_TO': 'End before beginning!',
+    'ERROR_NUM_NOT_TEXT': 'Year in format YYYY!',
+    'DRAW': 'Draw'
   });
  
   $translateProvider.translations('bs', {
@@ -140,7 +143,10 @@ app.config(['$translateProvider', function ($translateProvider) {
     'STATISTICS': 'Statistike',
     'CATEGORIES': 'Kategorije',
     'ADMIN': 'Administracija',
-    'NUMBER_OF_SIGN_UPS': 'Broj registriranih korisnika'
+    'NUMBER_OF_SIGN_UPS': 'Broj registriranih korisnika',
+    'ERROR_FROM_GT_TO': 'Kraj prije početka!',
+    'ERROR_NUM_NOT_TEXT': 'Godina u obliku YYYY!',
+    'DRAW': 'Iscrtaj'
   });
  
   $translateProvider.preferredLanguage('en');

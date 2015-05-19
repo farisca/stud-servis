@@ -28,7 +28,9 @@
 
 								<select class="form-control input-sm"  ng-model="signedUpUsers.to_m"  ng-options="k as v for (k , v) in months"></select>
 								<input class="form-control input-sm" type="text" ng-model="signedUpUsers.to_y"><br><br>
-								<button class="btn btn-lg btn-primary btn-block btn-xs">Draw</button>
+								<button class="btn btn-lg btn-primary btn-block btn-xs">{{'DRAW' | translate}}</button><br>
+								<alert type="danger" ng-show="alertSignedUpUsers.period.visible">{{'ERROR_FROM_GT_TO' | translate}}</alert>
+								<alert type="danger" ng-show="alertSignedUpUsers.number.visible">{{'ERROR_NUM_NOT_TEXT' | translate}}</alert>
 							</div>
 						</div>
 					</form>

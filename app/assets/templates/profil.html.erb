@@ -50,7 +50,7 @@
           <p id="fajl" ng-model="label"></p>
           <button ng-disabled="savebutton.disabled" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'SAVE' | translate }}
           </button>
-
+ 
           <br>
 
           <div ng-show="register.isError()" class="alert alert-danger" role="alert">
@@ -112,6 +112,7 @@
     <span class="sr-only">Greška:</span>
     {{register.errorMsg}}
   </div>
+
 
           <info-message></info-message>
 

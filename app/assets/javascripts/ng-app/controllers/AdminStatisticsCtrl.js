@@ -1,17 +1,54 @@
-app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken',  function($scope, $http, $window, $location, AuthToken, $translate) {
+app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location', 'AuthToken', '$translate', function($scope, $http, $window, $location, AuthToken, $translate) {
     // Referenciranje chartova
 	var signedUpUsersChart = document.getElementById("signedUpUsersChart").getContext("2d");
-    $scope.months = {"01" : "JANUARY", "02" : "FEBRUARY", "03" : "MARCH", "04": "APRIL", "05": "MAY", "06": "JUNE", "07": "JULY", "08": "AUGUST", "09": "SEPTEMBER", "10": "OCTOBER", "11": "NOVEMBER", "12": "DECEMBER"};
+
+    // Neka pocetna inicijalizacija
+    if ($translate.use() === 'en') {
+        $scope.months = {"01" : "January", "02" : "February", "03" : "March", "04": "April", "05": "May", "06": "June", "07": "July", "08": "August", "09": "September", "10": "October", "11": "November", "12": "December"};
+    }
+    else {
+        console.log(translate.use());
+        $scope.months = {"01" : "Januar", "02" : "Februar", "03" : "Mart", "04": "April", "05": "May", "06": "Juni", "07": "Juli", "08": "August", "09": "Septembar", "10": "Oktobar", "11": "Novembar", "12": "Decembar"};
+    }
     $scope.signedUpUsers = {};
     $scope.signedUpUsers.from_m = "JANUARY";
+    $scope.alertSignedUpUsers = {};
+    $scope.alertSignedUpUsers.period = {};
+    $scope.alertSignedUpUsers.period.visible = false;
+    $scope.alertSignedUpUsers.number = {};
+    $scope.alertSignedUpUsers.number.visible = false;
+
+    // Provjeri da li je pocetni datum prije krajnjeg
+    $scope.checkPeriod = function(from_m, from_y, to_m, to_y) {
+        if (from_y > to_y || (from_y == to_y && from_m > to_m)) {
+            $scope.alertSignedUpUsers.period.visible = true;
+            return false;
+        }
+        return true;
+    }
+
+    // Provjerava da li je unesena godina broj
+    $scope.checkYear = function(year) {
+        if (isNaN(parseFloat(year)) || !/^\d{4}$/.test(year)) {
+            $scope.alertSignedUpUsers.number.visible = true;
+            return false;
+        }
+        return true;
+    }
 
     // Funkcija koja poziva servis i crta broj registriranih korisnika po mjesecima
     $scope.drawSignedUpUsers = function() {
+        $scope.alertSignedUpUsers.period.visible = false;
+        $scope.alertSignedUpUsers.number.visible = false;
+
         // Ocitaj od kad do kad je potrebno prikazati podatke
         var from_m = $scope.signedUpUsers.from_m;
         var from_y = $scope.signedUpUsers.from_y;
         var to_m = $scope.signedUpUsers.to_m;
         var to_y = $scope.signedUpUsers.to_y;
+
+        if (!$scope.checkYear(from_y) || !$scope.checkYear(to_y)) return;
+        if (!$scope.checkPeriod(from_m, from_y, to_m, to_y)) return;
 
         // Pozovi servis kojem se prosljedjuju datumi i koji vraca broj registriranih korisnika
         $http.get('/users/get_signedupusers?from_y=' + from_y + '&from_m='+from_m+'&to_y='+to_y+'&to_m='+to_m).success(function(data, status, headers, config) {
