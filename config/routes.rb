@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "get_all_companies", on: :collection
     get "bann_company", on: :collection
     get "unbann_company", on: :collection
+    get "promote_company", on: :collection
   end
 
   resources :sessions do

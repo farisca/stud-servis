@@ -33,10 +33,18 @@ class CompaniesController < ApplicationController
       @element["phone"] = company.phone
       @element["email"] = company.user.email
       @element["bann"] = company.user.banned
+      @element["promoted"] = company.promoted
       array.push(@element)
     end
 
     render json: {companies: array}
+  end
+
+  def promote_company
+    @company = Company.find_by(user_id: params[:company_id])
+    @company.promoted = !@company.promoted
+    @company.save
+    return render json: {status: @company}
   end
 
   def bann_company

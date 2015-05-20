@@ -13,13 +13,14 @@
     <table align="center" class="table table-striped table-hover ">
     <thead>
     	<tr>
-	    	<th> Naziv </th>
+	    	<th> {{'NAME' | translate}} </th>
 	    	<th> Lokacija </th>
 	    	<th> Opis </th>
 	    	<th> Web </th>
 	    	<th> Phone </th>
 	    	<th> Email </th>
 	    	<th> BAN - status </th>
+	    	<th> {{'PROMOTED' | translate}} </th>
 	    	<th> </th>
 	    	<th> </th>
 	    </tr>
@@ -32,9 +33,10 @@
 	    	<td class="companies_phone">  {{kompanija.phone}}</td>
 	    	<td class="companies_email">  {{kompanija.email}}</td>
 	    	<td class="students_bann">  {{kompanija.bann}}</td>
+	    	<td > {{kompanija.promoted}} </td>
 	    	<td><input ng-click="acc.bannCompany(kompanija.id)" class="btn btn-default" style="width: 90px; background-color:#990000;" value="BAN"></td>
 	    	<td><input ng-click="acc.unbannCompany(kompanija.id)" class="btn btn-default" style="width: 90px; background-color:#339900;" value="UNBAN"></td>
-	    	<td><input ng-click="acc.unbannCompany(kompanija.id)" class="btn btn-default" style="width: 100px; background-color:gray;" value="PROMOTE"></td>
+	    	<td><input ng-click="acc.promoteCompany(kompanija.id)" class="btn btn-default" style="width: 100px; background-color:gray;" value="{{kompanija.promoted ? 'UNPROMOTE' : 'PROMOTE'}}"></td>
 	    	<td> {{kompanija.id}}</td>
 	    </tr>
 

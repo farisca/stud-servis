@@ -40,22 +40,17 @@ angular.module('aplikacija')
 
     }
 
-    var init = function () {
-        
-        result = $http({ url: '/companies/get_all_companies', 
-            method: "GET",
-        });
-        
-        result.success(function(data, status, headers, config) {
-
-            var brojKompanija = data.companies.length
-
-            for (i=0; i<brojKompanija; i++) {
-                var kompan = data.companies[i]; 
-                $scope.kompanije.push(kompan);
-            }
+    $scope.loadCompanies = function() {
+        $http.get('/companies/get_all_companies').success(function(data, status, headers, config) {
+            $scope.kompanije = data.companies;
         });
     }
-    init();
+    $scope.loadCompanies();
+
+    this.promoteCompany = function(company_id) {
+        $http.get('/companies/promote_company?company_id=' + company_id).success(function(data, status, headers, config) {
+            $scope.loadCompanies();
+        });
+    }
 }]);
 
