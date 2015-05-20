@@ -18,7 +18,8 @@ angular.module('aplikacija')
                     // spasi notifikaciju
                     
                     tekst = "Student se prijavio na oglas " ;
-                    NotificationService.new_notification(tekst, $scope.company_user_id);
+                    console.log(tekst, $scope.company_user_id, job_id);
+                    NotificationService.new_notification(tekst, $scope.company_user_id, job_id);
                     alert("Uspješno ste prijavljeni na ovaj oglas.");
                     $location.path(path);
                 });

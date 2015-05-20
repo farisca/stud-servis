@@ -7,14 +7,14 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 			return (stranica===this.trenutnaStranica);
 		}
 
-		this.checkNotifications = function() {
+		$scope.checkNotifications = function() {
 			if(AuthToken.get() != "" && AuthToken.tipKorisnika() == 1) {
 				$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
 		        	$scope.new_notifications = " (" + data.new + ")";
 		        });
 			}
 		}
-		this.checkNotifications();
+		$scope.checkNotifications();
 
 		this.isCurrentLanguage = function(lng) {
 		    if ($translate.use() === lng) {
@@ -23,6 +23,13 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 		      return 0;
 		    }
 		}
+
+		// Osluskuj promjene lokacije i provjeri notifikacije
+		$scope.$watch(function() { return $location.path(); }, function(newLoc, oldLoc){
+		   console.log(newLoc, oldLoc);
+		   $scope.checkNotifications();
+		});
+
 
 		this.isVidljiv = function(stranica) {
 			if(stranica == "prijava" && AuthToken.get() == "") return true;
@@ -58,7 +65,7 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 
 		this.setTrenutna = function(stranica) {
 			this.trenutnaStranica=stranica;
-			this.checkNotifications();
+			$scope.checkNotifications();
 		}
 
 		

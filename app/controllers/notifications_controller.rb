@@ -17,6 +17,9 @@ class NotificationsController < ApplicationController
 
   def get_all_notifications
     @my_notifications = Notification.where(:user_id => current_user.id).all
+    @my_notifications.each do |notification|
+        notification.text = notification.text + ' "' + Job.find_by(id: notification.job_id).name + '".'
+    end
     return render json: {notifications: @my_notifications}
   end
 
@@ -25,6 +28,7 @@ class NotificationsController < ApplicationController
     @notification.text = params[:text]
     @notification.user_id = params[:user]
     @notification.viewed = false
+    @notification.job_id = params[:job_id]
     @notification.save
     return render json: {status: "OK"}
   end

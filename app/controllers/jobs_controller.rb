@@ -58,7 +58,7 @@ class JobsController < ApplicationController
     duration = job.duration
     id = job.id
     user_id = job.company.user_id
-    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id, logo: "#{Rails.root}/" + job.company.logo}  
+    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id, logo: "#{Rails.root}/" + job.company.logo.to_s}  
   end
 
   def get_ordered_jobs
