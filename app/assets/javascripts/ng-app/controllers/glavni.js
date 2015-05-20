@@ -2,21 +2,22 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 		this.trenutnaStranica="home";
 		this.prijavljen={};
         var obj;
-
-        if(AuthToken.get() != "" && AuthToken.tipKorisnika() == 1) {
-			$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
-	        	$scope.new_notifications = " (" + data.new + ")";
-	        });
-		}
         
 		this.isTrenutna = function(stranica) {
 			return (stranica===this.trenutnaStranica);
 		}
 
+		this.checkNotifications = function() {
+			if(AuthToken.get() != "" && AuthToken.tipKorisnika() == 1) {
+				$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
+		        	$scope.new_notifications = " (" + data.new + ")";
+		        });
+			}
+		}
+		this.checkNotifications();
+
 		this.isCurrentLanguage = function(lng) {
-			
 		    if ($translate.use() === lng) {
-		    	console.log($translate.use());
 		      return 1;
 		    } else {
 		      return 0;
@@ -24,7 +25,6 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 		}
 
 		this.isVidljiv = function(stranica) {
-			console.log("Tip korisnika: " + AuthToken.tipKorisnika());
 			if(stranica == "prijava" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaStudenta" && AuthToken.get() == "") return true;
 			if(stranica == "registracijaKompanije" && AuthToken.get() == "") return true;
@@ -58,12 +58,10 @@ app.controller("glavniController", ['$http', '$location', '$window', 'AuthToken'
 
 		this.setTrenutna = function(stranica) {
 			this.trenutnaStranica=stranica;
-			if(AuthToken.get() != "" && AuthToken.tipKorisnika() == 1) {
-				$http.get('/notifications/get_new_notifications').success(function(data, status, headers, config) {
-		        	$scope.new_notifications = " (" + data.new + ")";
-		        });
-			}
+			this.checkNotifications();
 		}
+
+		
 
 		this.isPrijavljen = function() {
 			obj = this.prijavljen;

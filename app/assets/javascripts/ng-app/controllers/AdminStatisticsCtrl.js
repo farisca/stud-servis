@@ -113,15 +113,16 @@ app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location'
 
     
     $scope.drawRegistrations = function() {
+
         $scope.alertRegistrations.period.visible = false;
         $scope.alertRegistrations.number.visible = false;
 
         // Ocitaj od kad do kad je potrebno prikazati podatke
-        var fromR_m = $scope.signedUpUsers.fromR_m;
-        var fromR_y = $scope.signedUpUsers.fromR_y;
-        var toR_m = $scope.signedUpUsers.toR_m;
-        var toR_y = $scope.signedUpUsers.toR_y;
-
+        var fromR_m = $scope.registrations.fromR_m;
+        var fromR_y = $scope.registrations.fromR_y;
+        var toR_m = $scope.registrations.toR_m;
+        var toR_y = $scope.registrations.toR_y;
+        console.log("Drawing registrations...");
         if (!$scope.checkYearRegistrations(fromR_y) || !$scope.checkYear(toR_y)) return;
         if (!$scope.checkPeriodRegistrations(fromR_m, fromR_y, toR_m, toR_y)) return;
 
@@ -130,8 +131,8 @@ app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location'
             var response = data;
             var labels = [];
             // Kreiranje labela u grafiku -> svi mjeseci izmedju zadanih u formatu M - YYYY 
-            for(year = from_y; year <= to_y; year++) {
-                for (month = (year == from_y ? from_m : 1); month <= (year == to_y ? to_m : 12); month++) {
+            for(year = fromR_y; year <= toR_y; year++) {
+                for (month = (year == fromR_y ? fromR_m : 1); month <= (year == toR_y ? toR_m : 12); month++) {
                     labels.push(month + " - " + year);
                 }
             }

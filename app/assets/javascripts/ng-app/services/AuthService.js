@@ -13,32 +13,23 @@ angular.module('aplikacija').factory("AuthService", function($http, $q, $rootSco
         //odmah rolu spasi za logovanog usera u AuthToken
 
         //nakaci token
-        var config = {headers:  {
-                'Authorization': 'Bearer ' + resp.auth_token
-            }
-        };
+        var config = {headers:  {'Authorization': 'Bearer ' + resp.auth_token} };
 
         $http.get('/users/get_role', config).success(function(data, status, headers, config) {
-          console.log("Tip korisnika: " + data.rola);
+          console.log("Tip korisnika prvi put: " + data.rola);
           AuthToken.setTipKorisnika(data.rola);
-          
-        });
-        
-        //prikaz razlicitog home pagea u zavisnoti od role
-        if(AuthToken.tipKorisnika()==0)
-        {
-          $location.path('/home');
-          console.log('student');
-        }
-        else if (AuthToken.tipKorisnika()==2)
-         { $location.path('/admin'); //treba izmjeniti u home page
+           //prikaz razlicitog home pagea u zavisnoti od role
+          if(AuthToken.tipKorisnika()==0) {
+            $location.path('/home');
+            console.log('student');
+          } else if (AuthToken.tipKorisnika()==2) { 
+            $location.path('/admin'); //treba izmjeniti u home page
             console.log('administrator');
-         }
-        else
-           {$location.path('/home');
-              console.log('kompanija');
-           }
-           
+          } else {
+            $location.path('/home');
+            console.log('kompanija');
+          }
+        });
         d.resolve(resp.user);
       }).error(function(resp) {
         if (resp.error == "banned")
