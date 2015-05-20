@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150519121112) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -32,10 +29,11 @@ ActiveRecord::Schema.define(version: 20150519121112) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.boolean  "promoted"
+    t.string   "logo"
   end
 
-  add_index "companies", ["location_id"], name: "index_companies_on_location_id", using: :btree
-  add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
+  add_index "companies", ["location_id"], name: "index_companies_on_location_id"
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id"
 
   create_table "jobs", force: :cascade do |t|
     t.integer  "category_id"
@@ -48,6 +46,10 @@ ActiveRecord::Schema.define(version: 20150519121112) do
     t.string   "name"
     t.date     "finish_at"
   end
+
+  add_index "jobs", ["category_id"], name: "index_jobs_on_category_id"
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id"
+  add_index "jobs", ["location_id"], name: "index_jobs_on_location_id"
 
   create_table "locations", force: :cascade do |t|
     t.string   "city"
@@ -63,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150519121112) do
     t.integer  "user_id"
   end
 
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "registrations", force: :cascade do |t|
     t.integer  "job_id"
@@ -74,8 +76,8 @@ ActiveRecord::Schema.define(version: 20150519121112) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "registrations", ["job_id"], name: "index_registrations_on_job_id", using: :btree
-  add_index "registrations", ["student_id"], name: "index_registrations_on_student_id", using: :btree
+  add_index "registrations", ["job_id"], name: "index_registrations_on_job_id"
+  add_index "registrations", ["student_id"], name: "index_registrations_on_student_id"
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -89,6 +91,9 @@ ActiveRecord::Schema.define(version: 20150519121112) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "students", ["location_id"], name: "index_students_on_location_id"
+  add_index "students", ["user_id"], name: "index_students_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
@@ -100,9 +105,4 @@ ActiveRecord::Schema.define(version: 20150519121112) do
     t.boolean  "banned"
   end
 
-  add_foreign_key "companies", "locations"
-  add_foreign_key "companies", "users"
-  add_foreign_key "notifications", "users"
-  add_foreign_key "registrations", "jobs"
-  add_foreign_key "registrations", "students"
 end

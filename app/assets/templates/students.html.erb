@@ -1,10 +1,18 @@
-<br><br>
-<div class="container" style="position:relative; top:20px; right: 150px; width:400px;">
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="admin/locations">{{'LOCATION' | translate}}s</a></li>
+  <li role="presentation"><a href="admin/categories">{{'CATEGORIES' | translate}}</a></li>
+  <li role="presentation" class="active"><a href="admin/students">{{'STUDENTS' | translate}}</a></li>
+  <li role="presentation"><a href="admin/companies">{{'COMPANIES' | translate}}</a></li>
+  <li role="presentation"><a href="admin/statistics">{{'STATISTICS' | translate}}</a></li>
+</ul>
+
+<div class="container" style="position:relative; top:30px;">
   
   <form class="form-choosen-ad ad_forma" ng-controller="AdminStudentsCtrl as asc" ng-submit="asc.ban()">
     
-    <table border="1" style="padding:10px;">
-    	<tr style="padding:10px;">
+    <table align="center" class="table table-striped table-hover ">
+     <thead>
+     	 <tr>
 	    	<th> Ime </th>
 	    	<th> Prezime </th>
 	    	<th> Lokacija </th>
@@ -14,7 +22,8 @@
 	    	<th> BAN - status </th>
 	    	<th> </th>
 	    	<th> </th>
-	    </tr>
+	    	 </tr>
+	    </thead>
 	    <tr ng-repeat="student in studenti" style="padding:10px;">
 	    	<td class="students_name" ng-model="asc.student.name"> {{student.name}} </td>
 	    	<td class="students_surname"> {{student.surname}} </td>

@@ -77,7 +77,8 @@ app.config(['$translateProvider', function ($translateProvider) {
    'CREATE_LOCATION': 'Create location',
    'CREATE_CATEGORY': 'Create category',
     'ADD_NEW_CATEGORY' : 'Add new category',
-    'AD_CATEGORY' : 'Add category'
+    'AD_CATEGORY' : 'Add category',
+    'FORGOT_PASSWORD' : 'Forgot password?'
   });
  
   $translateProvider.translations('bs', {
@@ -158,7 +159,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CREATE_LOCATION': 'Kreiraj lokaciju',
     'CREATE_CATEGORY': 'Kreiraj kategoriju',
     'ADD_NEW_CATEGORY' : 'Dodajte novu kategoriju',
-    'AD_CATEGORY' : 'Kreiraj kategoriju'
+    'AD_CATEGORY' : 'Kreiraj kategoriju',
+     'FORGOT_PASSWORD' : 'Zaboravili ste sifru?'
   });
  
   $translateProvider.preferredLanguage('en');

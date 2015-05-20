@@ -18,15 +18,13 @@
         <br>
         <div ng-show="loc.isSuccess()" class="alert alert-success" role="alert">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-          {{loc.successMsg}}
+            <span class="sr-only">Greška:</span>
+          {{loc.getSuccess()}}
         </div>
         <div ng-show="loc.isError()" class="alert alert-danger" role="alert">
-          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-          <span class="sr-only">Greška:</span>
-              {{loc.errorMsg}}
-        </div>
-
-        
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  {{loc.getError()}}
+</div>
 
     </form>
     <br><br><br><br>

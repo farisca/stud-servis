@@ -99,6 +99,16 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def get_registrations_time
+    q = Registration.all.order("DATE_TRUNC('month', created_at)").group("DATE_TRUNC('month', created_at)").count
+    registration_hash_array = q.collect{|registration| {:created => registration[0].to_date.to_s, :amount => registration[1]}}
+    g = registration_hash_array.group_by {|v| Date.parse(v[:created][0,7] + '-01') }.sort
+    h = Hash[g]
+    range = Date.new(params[:fromR_y].to_f,params[:fromR_m].to_f)..Date.new(params[:toR_y].to_f,params[:toR_m].to_f)
+    return render json: range.to_a.map {|d| Date.new(d.year,d.month,1)}.uniq.map {|d| h[d] && h[d].reduce(0) {|sum,h| sum + h[:amount]} || 0 }
+    
+  end
+
 
   private
     def registration_params

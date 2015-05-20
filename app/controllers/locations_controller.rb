@@ -10,16 +10,18 @@ class LocationsController < ApplicationController
   end
   # POST /locations
   # POST /locations.json
-  def create
-    @location = Location.new(location_params)
-
-    respond_to do |format|
-      if @location.save
-        format.json { render json: @location }
-      else
-        format.json { render json: @location.errors, status: :unprocessable_entity }
-      end
-    end
+  def add_location
+    
+     u = Location.find_by(city: params["city"])
+    if !u.nil?
+      return render json: { error: "Location already exists!" } 
+    else
+      
+    location = Location.new
+    location.city=params["city"]
+    location.save
+    return render json: { error: "OK" }
+  end
   end
 
   # PATCH/PUT /locations/1
