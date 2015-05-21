@@ -68,17 +68,33 @@ class CompaniesController < ApplicationController
   end
 
   def add_company
-    @co = Company.new
-    
-    is_added = @co.create_company(params["name"], params["street"], params["email"], params["city"], params["password"], params["password_confirmation"])
-    
-    if is_added == nil
-      return render json: { error: is_added }
-    else 
-      SignUpNotifier.registrated(is_added).deliver
-
-      return render json: { error: "OK" }
+    u = User.find_by(email: params[:email])
+    if !u.nil?
+      status = "Korisnik već postoji"
+      return render json: { status: "user_exists" }
+    else
+      user = User.new
+      user.email = params[:email]
+      user.password = params[:password]
+      user.password_confirmation = params[:password_confirmation]
+      user.role=1; #Company role is one
+      user.banned=false;
+      if user.save
+        location = Location.find_by(city: params[:city])
+        company = Company.new
+        company.location = location
+        company.name = params[:name]
+        company.promoted = false
+        company.user_id = user.id
+        if company.save
+          SignUpNotifier.registrated(user).deliver
+          return render json: { status: "ok" }
+        else 
+          return render json: { status: "error" }
+        end
+      end
     end
+
   end
 
   def update

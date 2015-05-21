@@ -1,26 +1,41 @@
 angular.module('aplikacija')
-    .controller('registerCompanyController', ['$http', '$location', function ($http, $location) {
-    	this.podaci={};
-    	this.errorMsg="";
-    	this.successMsg="";
+    .controller('registerCompanyController', ['$http', '$location', '$scope',  function ($http, $location, $scope) {
+    	$scope.podaci={};
+    	$scope.errorMsg="";
+    	$scope.infoMsg="";
+        $scope.savebutton = {};
+        $scope.savebutton.disabled = false;
 
-    	this.isError=function() {
-    		return (!(this.errorMsg===""));
+    	$scope.isError=function() {
+    		return (!($scope.errorMsg===""));
     	}
-    	this.isSuccess=function() {
-    		return (!(this.successMsg===""));
+    	$scope.isSuccess=function() {
+    		return (!($scope.successMsg===""));
     	}
-    	this.posalji= function() {
-    		this.errorMsg="";
-    		if (this.podaci.password.length < 5) this.errorMsg = "Password mora biti barem 5 karaktera dug!"
-    		else if (this.podaci.password != this.podaci.password_confirmation) this.errorMsg ="Password i potvrda passworda se razlikuju!";
-            else if (grecaptcha.getResponse() == "") this.errorMsg = "Morate potvrditi da niste robot!";
+    	$scope.posalji= function() {
+            $scope.savebutton.disabled = true;
+            $scope.infoMsg = "Spašavam podatke...";
+    		$scope.errorMsg="";
+    		if ($scope.podaci.password.length < 5) $scope.errorMsg = "Password mora biti barem 5 karaktera dug!"
+    		else if ($scope.podaci.password != $scope.podaci.password_confirmation) $scope.errorMsg ="Password i potvrda passworda se razlikuju!";
+            else if (grecaptcha.getResponse() == "") $scope.errorMsg = "Morate potvrditi da niste robot!";
     		
-    		if (!(this.isError())) {
-    			res = $http.post('/companies/add_company', this.podaci);
+    		if (!($scope.isError())) {
+    			res = $http.post('/companies/add_company', $scope.podaci);
 				res.success(function(data, status, headers, config) {
-					if (status==200) $location.path('/potvrdaORegistraciji')
-					else this.errorMsg=data;
+					if (status==200) {
+                        if(data.status == "user_exists") {
+                            $scope.errorMsg = "Korisnik postoji";
+                            $scope.savebutton.disabled = false;
+                            $scope.infoMsg = "";
+                        } else if (data.status == "error") {
+                            $scope.savebutton.disabled = false;
+                            $scope.infoMsg = "";
+                            $scope.errorMsg = "Greska";
+                        } else {
+                            $location.path('/potvrdaORegistraciji')
+                        }
+                    }
 				});
     		}
     	}

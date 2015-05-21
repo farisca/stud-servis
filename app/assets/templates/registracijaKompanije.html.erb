@@ -1,57 +1,49 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <br><br>
-<h2 align="center"> <%= I18n.t('register_company') %> </h2>
+<h2 align="center">{{'REGISTER_COMPANY' | translate}}</h2>
 <div class="container" style="position:relative; top:50px; width:400px;">
         
-    <form class="form-register" ng-controller="registerCompanyController as registerCompany" ng-submit="registerCompany.posalji()">
+    <form class="form-register" ng-submit="posalji()">
             
-        <p> <%= I18n.t('name') %> </p>
+        <p>{{'NAME' | translate}}</p>
         <label for="inputName" class="sr-only"><%= I18n.t('name') %></label>
-        <input type="text" ng-model="registerCompany.podaci.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
+        <input type="text" ng-model="podaci.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
 
-        <p> <%= I18n.t('street') %> </p>
+        <p>{{'STREET' | translate}}</p>
         <label for="inputLocation" class="sr-only"><%= I18n.t('street') %></label>
-        <input type="text" ng-model="registerCompany.podaci.street" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
+        <input type="text" ng-model="podaci.street" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
 
         <div ng-controller="LocationController">
-        <p><%= I18n.t('city')%></p>
+        <p>{{'CITY' | translate}}</p>
         <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
-        <select class="form-control" id="select" ng-model="registerCompany.podaci.location" ng-init="registerCompany.podaci.location='Sarajevo'">
+        <select class="form-control" id="select" ng-model="podaci.location" ng-init="podaci.location='Sarajevo'">
         <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
         {{location.city}}</option>
         </select>
         <br/><br/>
         </div>
         
-        <p> <%= I18n.t('email') %> </p>
-        <label for="inputEmail" class="sr-only"><%= I18n.t('email') %></label>
-        <input type="email" ng-model="registerCompany.podaci.email" id="inputEmail" class="form-control" placeholder="" required autofocus><br>
+        <p>E-mail</p>
+        <label for="inputEmail" class="sr-only">E-mail</label>
+        <input type="email" ng-model="podaci.email" id="inputEmail" class="form-control" placeholder="" required autofocus><br>
 
-        <p> <%= I18n.t('password') %> </p>
+        <p>{{'PASSWORD' | translate}}</p>
         <label for="inputPassword" class="sr-only"><%= I18n.t('password') %></label>
-        <input type="password" ng-model="registerCompany.podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
+        <input type="password" ng-model="podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
 
-        <p> <%= I18n.t('confirmation') %> </p>
+        <p>{{'PASSWORD_CONFIRMATION' | translate}}</p>
         <label for="inputPasswordConfirmation" class="sr-only"><%= I18n.t('confirmation') %></label>
-        <input type="password" ng-model="registerCompany.podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
+        <input type="password" ng-model="podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
 
         <div ng-model="register.grecaptcha" class="g-recaptcha" data-sitekey="6LdCOgYTAAAAAPYxkwGNL9UKIIj9dwP2VvsaL43t"></div>
         <br>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_company_button') %></button>
+        <button ng-model="savebutton" class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_company_button') %></button>
 
         <br>
 
-                <div ng-show="register.isError()" class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Greška:</span>
-  {{register.errorMsg}}
-</div>
-
-        <div ng-show="register.isSuccess()" class="alert alert-success" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  {{register.successMsg}}
-</div>
+        <error-message></error-message>
+        <info-message></info-message>
     </form>
     <br><br><br><br>
 </div>
