@@ -20,6 +20,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def get_student_by_id
+    @student = Student.find_by(id: params[:id])
+    return render json: {student: @student}
+  end
+
   def add_student
     
     u = User.find_by(email: params["email"])

@@ -106,6 +106,10 @@ var app = angular
             when('/editAd', {
                 templateUrl: 'editAd.html',
                 controller: 'editAdController'
+            }).
+            when('/viewprofile/:tip', {
+                templateUrl: 'profilbox.html',
+                controller: 'profilBoxCtrl'
             });
         $locationProvider.html5Mode(true);
     }]);

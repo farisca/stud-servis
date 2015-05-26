@@ -108,6 +108,20 @@ class JobsController < ApplicationController
     return render json: {data: array}
   end
  
+  def get_jobs_per_companies
+    @companies = Company.all
+    
+    array = []
+ 
+    @companies.each do |company|
+      @element = Hash.new
+      @element["company"] = company.name
+      @element["number"] = Job.where(company_id: company.id).all.length
+      array.push(@element)
+    end
+
+    return render json: {data: array}
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

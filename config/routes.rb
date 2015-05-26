@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get "get_jobs_at_location", on: :collection
     get "get_jobs_per_locations", on: :collection
     get "get_jobs_per_categories", on: :collection
+    get "get_jobs_per_companies", on: :collection
   end
 
   resources :companies do
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
     get "get_all_students", on: :collection
     get "bann_student", on: :collection
     get "unbann_student", on: :collection
+    get "get_student_by_id", on: :collection
   end
 
   post 'auth' => 'auth#authenticate'

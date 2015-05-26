@@ -4,6 +4,7 @@ app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location'
     var adsLocationChart = document.getElementById("adsLocationChart").getContext("2d");
     var registrationsChart = document.getElementById("registrationsChart").getContext("2d");
     var categoriesChart = document.getElementById("categoriesChart").getContext("2d");
+    var adsPerCompaniesChart = document.getElementById("adsCompaniesChart").getContext("2d");
 
     // Neka pocetna inicijalizacija
     if ($translate.use() === 'en') {
@@ -242,6 +243,53 @@ app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location'
                 legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
             }
             new Chart(categoriesChart).Bar(adsCategoriesData, options);
+        }); 
+    }
+
+    $scope.drawAdsPerCompany = function() {
+        // Pozovi servis kojem se prosljedjuju datumi i koji vraca broj registriranih korisnika
+        $http.get('/jobs/get_jobs_per_companies').success(function(data, status, headers, config) {
+            var labels = [];
+            var numbers = [];
+
+            for(var i = 0; i < data.data.length; i++) {
+                labels.push(data.data[i].company);
+                numbers.push(data.data[i].number);
+            }
+
+            console.log("Labele: " + labels);
+            console.log("Podaci: " + numbers);
+
+            var adsPerCompaniesData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Sign ups",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(100,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        scaleShowLabels : true,
+                        data: numbers
+                    }
+                ]
+            };
+            var options = {
+                scaleBeginAtZero : true,
+                scaleShowGridLines : true,
+                scaleGridLineColor : "rgba(0,0,0,.05)",
+                scaleGridLineWidth : 1,
+                scaleShowHorizontalLines: true,
+                scaleShowVerticalLines: true,
+                barShowStroke : true,
+                barStrokeWidth : 2,
+                barValueSpacing : 5,
+                barDatasetSpacing : 1,
+                legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+            }
+            new Chart(adsPerCompaniesChart).Bar(adsPerCompaniesData, options);
         }); 
     }
     
