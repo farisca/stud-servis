@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_current_user, :authenticate_request
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+ # before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
@@ -76,6 +76,36 @@ class JobsController < ApplicationController
     @number = @jobs.length
 
     render json: {number: @number}
+  end
+
+  def get_jobs_per_locations
+    @locations = Location.all
+    
+    array = []
+ 
+    @locations.each do |location|
+      @element = Hash.new
+      @element["location"] = location.city
+      @element["number"] = Job.where(location_id: location.id).all.length
+      array.push(@element)
+    end
+
+    return render json: {data: array}
+  end
+
+  def get_jobs_per_categories
+    @categories = Category.all
+    
+    array = []
+ 
+    @categories.each do |category|
+      @element = Hash.new
+      @element["category"] = category.name
+      @element["number"] = Job.where(category_id: category.id).all.length
+      array.push(@element)
+    end
+
+    return render json: {data: array}
   end
  
 

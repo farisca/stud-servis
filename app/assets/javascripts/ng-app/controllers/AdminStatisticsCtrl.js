@@ -164,143 +164,85 @@ app.controller("AdminStatisticsCtrl", ['$scope', '$http', '$window', '$location'
     $scope.ads_locations.locations = 1;
     //$scope.ads_locations.location_id 
 
-    //Funkcija koja crta grafig broj prijavljanih oglasa po odabranoj lokaciji
     $scope.drawAdsLocation = function() {
-        var data = {
-    labels: ["Mostar", "Sarajevo", "Zenica", "Tuzla", "Neum", "Bihac", "Jajce"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 90, 81, 56, 55, 40]
-        }
-    ]
-};
-var options=
-    {
-    //Boolean - Whether to show lines for each scale point
-    scaleShowLine : true,
+        // Pozovi servis kojem se prosljedjuju datumi i koji vraca broj registriranih korisnika
+        $http.get('/jobs/get_jobs_per_locations').success(function(data, status, headers, config) {
+            var labels = [];
+            var numbers = [];
 
-    //Boolean - Whether we show the angle lines out of the radar
-    angleShowLineOut : true,
+            for(var i = 0; i < data.data.length; i++) {
+                labels.push(data.data[i].location);
+                numbers.push(data.data[i].number);
+            }
 
-    //Boolean - Whether to show labels on the scale
-    scaleShowLabels : false,
+            console.log("Labele: " + labels);
+            console.log("Podaci: " + numbers);
 
-    // Boolean - Whether the scale should begin at zero
-    scaleBeginAtZero : true,
-
-    //String - Colour of the angle line
-    angleLineColor : "rgba(0,0,0,.1)",
-
-    //Number - Pixel width of the angle line
-    angleLineWidth : 1,
-
-    //String - Point label font declaration
-    pointLabelFontFamily : "'Arial'",
-
-    //String - Point label font weight
-    pointLabelFontStyle : "normal",
-
-    //Number - Point label font size in pixels
-    pointLabelFontSize : 10,
-
-    //String - Point label font colour
-    pointLabelFontColor : "#666",
-
-    //Boolean - Whether to show a dot for each point
-    pointDot : true,
-
-    //Number - Radius of each point dot in pixels
-    pointDotRadius : 3,
-
-    //Number - Pixel width of point dot stroke
-    pointDotStrokeWidth : 1,
-
-    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-    pointHitDetectionRadius : 20,
-
-    //Boolean - Whether to show a stroke for datasets
-    datasetStroke : true,
-
-    //Number - Pixel width of dataset stroke
-    datasetStrokeWidth : 2,
-
-    //Boolean - Whether to fill the dataset with a colour
-    datasetFill : true,
-
-    //String - A legend template
-    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-}
-
-        
-new Chart(adsLocationChart).Radar(data, options);  
+            var adsLocationsData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Sign ups",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(100,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        scaleShowLabels : true,
+                        data: numbers
+                    }
+                ]
+            };
+            new Chart(adsLocationChart).Radar(adsLocationsData);
+        }); 
     }
 
+    $scope.drawBarChart= function(){
+        // Pozovi servis kojem se prosljedjuju datumi i koji vraca broj registriranih korisnika
+        $http.get('/jobs/get_jobs_per_categories').success(function(data, status, headers, config) {
+            var labels = [];
+            var numbers = [];
 
-$scope.drawBarChart= function(){
-    
-    var data = {
-    labels: ["IT", "Medicine", "Farmacy", "Economy", "Psihology", "Cosmetics", "Consulting"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: [32, 15, 34, 4, 16, 33, 11]
-        }
-    ]
-};
+            for(var i = 0; i < data.data.length; i++) {
+                labels.push(data.data[i].category);
+                numbers.push(data.data[i].number);
+            }
 
-var options={
-    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-    scaleBeginAtZero : true,
+            console.log("Labele: " + labels);
+            console.log("Podaci: " + numbers);
 
-    //Boolean - Whether grid lines are shown across the chart
-    scaleShowGridLines : true,
-
-    //String - Colour of the grid lines
-    scaleGridLineColor : "rgba(0,0,0,.05)",
-
-    //Number - Width of the grid lines
-    scaleGridLineWidth : 1,
-
-    //Boolean - Whether to show horizontal lines (except X axis)
-    scaleShowHorizontalLines: true,
-
-    //Boolean - Whether to show vertical lines (except Y axis)
-    scaleShowVerticalLines: true,
-
-    //Boolean - If there is a stroke on each bar
-    barShowStroke : true,
-
-    //Number - Pixel width of the bar stroke
-    barStrokeWidth : 2,
-
-    //Number - Spacing between each of the X value sets
-    barValueSpacing : 5,
-
-    //Number - Spacing between data sets within X values
-    barDatasetSpacing : 1,
-
-    //String - A legend template
-    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-}
-
-
- new Chart(categoriesChart).Bar(data, options);
-}
+            var adsCategoriesData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Sign ups",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(100,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        scaleShowLabels : true,
+                        data: numbers
+                    }
+                ]
+            };
+            var options = {
+                scaleBeginAtZero : true,
+                scaleShowGridLines : true,
+                scaleGridLineColor : "rgba(0,0,0,.05)",
+                scaleGridLineWidth : 1,
+                scaleShowHorizontalLines: true,
+                scaleShowVerticalLines: true,
+                barShowStroke : true,
+                barStrokeWidth : 2,
+                barValueSpacing : 5,
+                barDatasetSpacing : 1,
+                legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+            }
+            new Chart(categoriesChart).Bar(adsCategoriesData, options);
+        }); 
+    }
     
 }]);
-
-
-

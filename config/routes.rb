@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get "get_job", on: :collection
     get "get_ordered_jobs", on: :collection
     get "get_jobs_at_location", on: :collection
+    get "get_jobs_per_locations", on: :collection
+    get "get_jobs_per_categories", on: :collection
   end
 
   resources :companies do

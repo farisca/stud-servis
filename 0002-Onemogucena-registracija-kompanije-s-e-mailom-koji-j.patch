@@ -1,0 +1,298 @@
+From 0a2b4aa237e3c763cab15f365d289faede199acc Mon Sep 17 00:00:00 2001
+From: Aida Hasovic <ahasovic1@etf.unsa.ba>
+Date: Thu, 21 May 2015 23:19:23 +0200
+Subject: [PATCH 2/2] Onemogucena registracija kompanije s e-mailom koji je u
+ bazi
+
+---
+ .../ng-app/controllers/registracijaKompanije.js    | 49 +++++++++++++-------
+ app/assets/javascripts/ng-app/translate.js         |  6 +++
+ .../templates/registracijaKompanije.html.erb       | 44 ++++++++----------
+ app/controllers/companies_controller.rb            | 36 +++++++++++----
+ app/models/company.rb                              | 53 ++++++++++++----------
+ 5 files changed, 111 insertions(+), 77 deletions(-)
+
+diff --git a/app/assets/javascripts/ng-app/controllers/registracijaKompanije.js b/app/assets/javascripts/ng-app/controllers/registracijaKompanije.js
+index 4b6437e..5e567a6 100644
+--- a/app/assets/javascripts/ng-app/controllers/registracijaKompanije.js
++++ b/app/assets/javascripts/ng-app/controllers/registracijaKompanije.js
+@@ -1,26 +1,41 @@
+ angular.module('aplikacija')
+-    .controller('registerCompanyController', ['$http', '$location', function ($http, $location) {
+-    	this.podaci={};
+-    	this.errorMsg="";
+-    	this.successMsg="";
++    .controller('registerCompanyController', ['$http', '$location', '$scope',  function ($http, $location, $scope) {
++    	$scope.podaci={};
++    	$scope.errorMsg="";
++    	$scope.infoMsg="";
++        $scope.savebutton = {};
++        $scope.savebutton.disabled = false;
+ 
+-    	this.isError=function() {
+-    		return (!(this.errorMsg===""));
++    	$scope.isError=function() {
++    		return (!($scope.errorMsg===""));
+     	}
+-    	this.isSuccess=function() {
+-    		return (!(this.successMsg===""));
++    	$scope.isSuccess=function() {
++    		return (!($scope.successMsg===""));
+     	}
+-    	this.posalji= function() {
+-    		this.errorMsg="";
+-    		if (this.podaci.password.length < 5) this.errorMsg = "Password mora biti barem 5 karaktera dug!"
+-    		else if (this.podaci.password != this.podaci.password_confirmation) this.errorMsg ="Password i potvrda passworda se razlikuju!";
+-            else if (grecaptcha.getResponse() == "") this.errorMsg = "Morate potvrditi da niste robot!";
++    	$scope.posalji= function() {
++            $scope.savebutton.disabled = true;
++            $scope.infoMsg = "Spašavam podatke...";
++    		$scope.errorMsg="";
++    		if ($scope.podaci.password.length < 5) $scope.errorMsg = "Password mora biti barem 5 karaktera dug!"
++    		else if ($scope.podaci.password != $scope.podaci.password_confirmation) $scope.errorMsg ="Password i potvrda passworda se razlikuju!";
++            else if (grecaptcha.getResponse() == "") $scope.errorMsg = "Morate potvrditi da niste robot!";
+     		
+-    		if (!(this.isError())) {
+-    			res = $http.post('/companies/add_company', this.podaci);
++    		if (!($scope.isError())) {
++    			res = $http.post('/companies/add_company', $scope.podaci);
+ 				res.success(function(data, status, headers, config) {
+-					if (status==200) $location.path('/potvrdaORegistraciji')
+-					else this.errorMsg=data;
++					if (status==200) {
++                        if(data.status == "user_exists") {
++                            $scope.errorMsg = "Korisnik postoji";
++                            $scope.savebutton.disabled = false;
++                            $scope.infoMsg = "";
++                        } else if (data.status == "error") {
++                            $scope.savebutton.disabled = false;
++                            $scope.infoMsg = "";
++                            $scope.errorMsg = "Greska";
++                        } else {
++                            $location.path('/potvrdaORegistraciji')
++                        }
++                    }
+ 				});
+     		}
+     	}
+diff --git a/app/assets/javascripts/ng-app/translate.js b/app/assets/javascripts/ng-app/translate.js
+index a7cb78e..0d38072 100644
+--- a/app/assets/javascripts/ng-app/translate.js
++++ b/app/assets/javascripts/ng-app/translate.js
+@@ -43,6 +43,9 @@ app.config(['$translateProvider', function ($translateProvider) {
+     'AD_DURATION': 'Duration',
+     'AD_BUTTON': 'Create ad',
+     'CATEGORY': 'Category',
++    'NAME': 'Name',
++    'STREET': 'Street',
++    'PASSWORD_CONFIRMATION': 'Password confirmation',
+     'LOCATION': 'Location',
+     'AD_NAME': 'Job title',
+     'CONFIRMATION_AD': 'New ad successufully added!',
+@@ -156,6 +159,9 @@ app.config(['$translateProvider', function ($translateProvider) {
+     'ERROR_FROM_GT_TO': 'Kraj prije početka!',
+     'ERROR_NUM_NOT_TEXT': 'Godina u obliku YYYY!',
+     'DRAW': 'Iscrtaj',
++    'NAME': 'Naziv',
++    'STREET': 'Ulica',
++    'PASSWORD_CONFIRMATION': 'Potvrda šifre',
+     'NOTIFICATION': 'Notifikacija',
+     'DATE': 'Datum',
+     'ADD_NEW_LOCATION' : 'Dodajte novu lokaciju',
+diff --git a/app/assets/templates/registracijaKompanije.html.erb b/app/assets/templates/registracijaKompanije.html.erb
+index e631a25..3407d65 100644
+--- a/app/assets/templates/registracijaKompanije.html.erb
++++ b/app/assets/templates/registracijaKompanije.html.erb
+@@ -1,57 +1,49 @@
+ <script src='https://www.google.com/recaptcha/api.js'></script>
+ <br><br>
+-<h2 align="center"> <%= I18n.t('register_company') %> </h2>
++<h2 align="center">{{'REGISTER_COMPANY' | translate}}</h2>
+ <div class="container" style="position:relative; top:50px; width:400px;">
+         
+-    <form class="form-register" ng-controller="registerCompanyController as registerCompany" ng-submit="registerCompany.posalji()">
++    <form class="form-register" ng-submit="posalji()">
+             
+-        <p> <%= I18n.t('name') %> </p>
++        <p>{{'NAME' | translate}}</p>
+         <label for="inputName" class="sr-only"><%= I18n.t('name') %></label>
+-        <input type="text" ng-model="registerCompany.podaci.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
++        <input type="text" ng-model="podaci.name" id="inputName" class="form-control" placeholder="" required autofocus><br>
+ 
+-        <p> <%= I18n.t('street') %> </p>
++        <p>{{'STREET' | translate}}</p>
+         <label for="inputLocation" class="sr-only"><%= I18n.t('street') %></label>
+-        <input type="text" ng-model="registerCompany.podaci.street" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
++        <input type="text" ng-model="podaci.street" id="inputLocation" class="form-control" placeholder="" required autofocus><br>
+ 
+         <div ng-controller="LocationController">
+-        <p><%= I18n.t('city')%></p>
++        <p>{{'CITY' | translate}}</p>
+         <label for="inputLocation" class="sr-only"><%= I18n.t('city') %></label>
+-        <select class="form-control" id="select" ng-model="registerCompany.podaci.location" ng-init="registerCompany.podaci.location='Sarajevo'">
++        <select class="form-control" id="select" ng-model="podaci.location" ng-init="podaci.location='Sarajevo'">
+         <option ng-repeat="location in podaci" ng-selected="{{location.id==1}}" value="{{location.city}}">
+         {{location.city}}</option>
+         </select>
+         <br/><br/>
+         </div>
+         
+-        <p> <%= I18n.t('email') %> </p>
+-        <label for="inputEmail" class="sr-only"><%= I18n.t('email') %></label>
+-        <input type="email" ng-model="registerCompany.podaci.email" id="inputEmail" class="form-control" placeholder="" required autofocus><br>
++        <p>E-mail</p>
++        <label for="inputEmail" class="sr-only">E-mail</label>
++        <input type="email" ng-model="podaci.email" id="inputEmail" class="form-control" placeholder="" required autofocus><br>
+ 
+-        <p> <%= I18n.t('password') %> </p>
++        <p>{{'PASSWORD' | translate}}</p>
+         <label for="inputPassword" class="sr-only"><%= I18n.t('password') %></label>
+-        <input type="password" ng-model="registerCompany.podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
++        <input type="password" ng-model="podaci.password" id="inputPassword" class="form-control" placeholder="" required autofocus><br>
+ 
+-        <p> <%= I18n.t('confirmation') %> </p>
++        <p>{{'PASSWORD_CONFIRMATION' | translate}}</p>
+         <label for="inputPasswordConfirmation" class="sr-only"><%= I18n.t('confirmation') %></label>
+-        <input type="password" ng-model="registerCompany.podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
++        <input type="password" ng-model="podaci.password_confirmation" id="inputPasswordConfirmation" class="form-control" placeholder="" required autofocus><br><br>
+ 
+         <div ng-model="register.grecaptcha" class="g-recaptcha" data-sitekey="6LdCOgYTAAAAAPYxkwGNL9UKIIj9dwP2VvsaL43t"></div>
+         <br>
+ 
+-        <button class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_company_button') %></button>
++        <button ng-model="savebutton" class="btn btn-lg btn-primary btn-block" type="submit"><%= I18n.t('register_company_button') %></button>
+ 
+         <br>
+ 
+-                <div ng-show="register.isError()" class="alert alert-danger" role="alert">
+-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+-  <span class="sr-only">Greška:</span>
+-  {{register.errorMsg}}
+-</div>
+-
+-        <div ng-show="register.isSuccess()" class="alert alert-success" role="alert">
+-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+-  {{register.successMsg}}
+-</div>
++        <error-message></error-message>
++        <info-message></info-message>
+     </form>
+     <br><br><br><br>
+ </div>
+\ No newline at end of file
+diff --git a/app/controllers/companies_controller.rb b/app/controllers/companies_controller.rb
+index f7f1b0e..cc451b8 100644
+--- a/app/controllers/companies_controller.rb
++++ b/app/controllers/companies_controller.rb
+@@ -68,17 +68,33 @@ class CompaniesController < ApplicationController
+   end
+ 
+   def add_company
+-    @co = Company.new
+-    
+-    is_added = @co.create_company(params["name"], params["street"], params["email"], params["city"], params["password"], params["password_confirmation"])
+-    
+-    if is_added == nil
+-      return render json: { error: is_added }
+-    else 
+-      SignUpNotifier.registrated(is_added).deliver
+-
+-      return render json: { error: "OK" }
++    u = User.find_by(email: params[:email])
++    if !u.nil?
++      status = "Korisnik već postoji"
++      return render json: { status: "user_exists" }
++    else
++      user = User.new
++      user.email = params[:email]
++      user.password = params[:password]
++      user.password_confirmation = params[:password_confirmation]
++      user.role=1; #Company role is one
++      user.banned=false;
++      if user.save
++        location = Location.find_by(city: params[:city])
++        company = Company.new
++        company.location = location
++        company.name = params[:name]
++        company.promoted = false
++        company.user_id = user.id
++        if company.save
++          SignUpNotifier.registrated(user).deliver
++          return render json: { status: "ok" }
++        else 
++          return render json: { status: "error" }
++        end
++      end
+     end
++
+   end
+ 
+   def update
+diff --git a/app/models/company.rb b/app/models/company.rb
+index a0d8fa2..020451f 100644
+--- a/app/models/company.rb
++++ b/app/models/company.rb
+@@ -3,31 +3,36 @@ class Company < ActiveRecord::Base
+   belongs_to :location
+ 
+    def create_company(name, street, email, city, password, password_confirmation)
+-    
+-    user = User.new
+-    
+-    user.email = email
+-    user.password = password
+-    user.password_confirmation = password_confirmation
+-    user.role=1; #Company role is one
+-    user.banned=false;
+-    if user.save
++    u = User.find_by(email: email)
++    if !u.nil?
++      status = "Korisnik već postoji"
++      return false, status
++    else
++      user = User.new
+       
+-    	location = Location.new
+-    	
+-    	location.city = city
+-    	if location.save
+-	      student = Company.new
+-	      student.name = name
+-        student.promoted = false
+-	      student.user_id = user.id
+-	      if student.save
+-          
+-	        return user
+-	      else 
+-	        return nil
+-	      end
+-	  end
++      user.email = email
++      user.password = password
++      user.password_confirmation = password_confirmation
++      user.role=1; #Company role is one
++      user.banned=false;
++      if user.save
++        
++      	location = Location.new
++      	
++      	location.city = city
++      	if location.save
++  	      student = Company.new
++  	      student.name = name
++          student.promoted = false
++  	      student.user_id = user.id
++  	      if student.save
++            
++  	        return user, status
++  	      else 
++  	        return nil
++  	      end
++  	  end
++      end
+     end
+   end
+ 
+-- 
+2.1.0
+

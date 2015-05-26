@@ -1,0 +1,119 @@
+From 6f15ba94bf3236067b93d19c4da99e07a7c5a329 Mon Sep 17 00:00:00 2001
+From: Faris Cakaric <fcakaric1@etf.unsa.ba>
+Date: Wed, 20 May 2015 11:12:21 +0200
+Subject: [PATCH 1/2] Uljepsan kod
+
+---
+ .../ng-app/controllers/AdminCompaniesCtrl.js        | 21 ++++++++-------------
+ app/assets/templates/companies.html.erb             |  6 ++++--
+ app/controllers/companies_controller.rb             |  8 ++++++++
+ config/routes.rb                                    |  1 +
+ 4 files changed, 21 insertions(+), 15 deletions(-)
+
+diff --git a/app/assets/javascripts/ng-app/controllers/AdminCompaniesCtrl.js b/app/assets/javascripts/ng-app/controllers/AdminCompaniesCtrl.js
+index 66ebafa..0cae719 100644
+--- a/app/assets/javascripts/ng-app/controllers/AdminCompaniesCtrl.js
++++ b/app/assets/javascripts/ng-app/controllers/AdminCompaniesCtrl.js
+@@ -40,22 +40,17 @@ angular.module('aplikacija')
+ 
+     }
+ 
+-    var init = function () {
+-        
+-        result = $http({ url: '/companies/get_all_companies', 
+-            method: "GET",
++    $scope.loadCompanies = function() {
++        $http.get('/companies/get_all_companies').success(function(data, status, headers, config) {
++            $scope.kompanije = data.companies;
+         });
+-        
+-        result.success(function(data, status, headers, config) {
+-
+-            var brojKompanija = data.companies.length
++    }
++    $scope.loadCompanies();
+ 
+-            for (i=0; i<brojKompanija; i++) {
+-                var kompan = data.companies[i]; 
+-                $scope.kompanije.push(kompan);
+-            }
++    this.promoteCompany = function(company_id) {
++        $http.get('/companies/promote_company?company_id=' + company_id).success(function(data, status, headers, config) {
++            $scope.loadCompanies();
+         });
+     }
+-    init();
+ }]);
+ 
+diff --git a/app/assets/templates/companies.html.erb b/app/assets/templates/companies.html.erb
+index 78858cd..158a70c 100644
+--- a/app/assets/templates/companies.html.erb
++++ b/app/assets/templates/companies.html.erb
+@@ -13,13 +13,14 @@
+     <table align="center" class="table table-striped table-hover ">
+     <thead>
+     	<tr>
+-	    	<th> Naziv </th>
++	    	<th> {{'NAME' | translate}} </th>
+ 	    	<th> Lokacija </th>
+ 	    	<th> Opis </th>
+ 	    	<th> Web </th>
+ 	    	<th> Phone </th>
+ 	    	<th> Email </th>
+ 	    	<th> BAN - status </th>
++	    	<th> {{'PROMOTED' | translate}} </th>
+ 	    	<th> </th>
+ 	    	<th> </th>
+ 	    </tr>
+@@ -32,9 +33,10 @@
+ 	    	<td class="companies_phone">  {{kompanija.phone}}</td>
+ 	    	<td class="companies_email">  {{kompanija.email}}</td>
+ 	    	<td class="students_bann">  {{kompanija.bann}}</td>
++	    	<td > {{kompanija.promoted}} </td>
+ 	    	<td><input ng-click="acc.bannCompany(kompanija.id)" class="btn btn-default" style="width: 90px; background-color:#990000;" value="BAN"></td>
+ 	    	<td><input ng-click="acc.unbannCompany(kompanija.id)" class="btn btn-default" style="width: 90px; background-color:#339900;" value="UNBAN"></td>
+-	    	<td><input ng-click="acc.unbannCompany(kompanija.id)" class="btn btn-default" style="width: 100px; background-color:gray;" value="PROMOTE"></td>
++	    	<td><input ng-click="acc.promoteCompany(kompanija.id)" class="btn btn-default" style="width: 100px; background-color:gray;" value="{{kompanija.promoted ? 'UNPROMOTE' : 'PROMOTE'}}"></td>
+ 	    	<td> {{kompanija.id}}</td>
+ 	    </tr>
+ 
+diff --git a/app/controllers/companies_controller.rb b/app/controllers/companies_controller.rb
+index 29e8f13..f7f1b0e 100644
+--- a/app/controllers/companies_controller.rb
++++ b/app/controllers/companies_controller.rb
+@@ -33,12 +33,20 @@ class CompaniesController < ApplicationController
+       @element["phone"] = company.phone
+       @element["email"] = company.user.email
+       @element["bann"] = company.user.banned
++      @element["promoted"] = company.promoted
+       array.push(@element)
+     end
+ 
+     render json: {companies: array}
+   end
+ 
++  def promote_company
++    @company = Company.find_by(user_id: params[:company_id])
++    @company.promoted = !@company.promoted
++    @company.save
++    return render json: {status: @company}
++  end
++
+   def bann_company
+     id_company = params[:id_company]
+     @user = User.find_by(id: id_company)
+diff --git a/config/routes.rb b/config/routes.rb
+index 1df25f0..4637142 100644
+--- a/config/routes.rb
++++ b/config/routes.rb
+@@ -19,6 +19,7 @@ Rails.application.routes.draw do
+     get "get_all_companies", on: :collection
+     get "bann_company", on: :collection
+     get "unbann_company", on: :collection
++    get "promote_company", on: :collection
+   end
+ 
+   resources :sessions do
+-- 
+2.1.0
+
