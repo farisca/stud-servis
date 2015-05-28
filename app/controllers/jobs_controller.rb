@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_current_user, :authenticate_request
+  #before_action :set_current_user, :authenticate_request
  # before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
@@ -67,6 +67,18 @@ class JobsController < ApplicationController
       job.logo = job.logo.to_s
     end
     render json: {jobs: @jobs, number: @jobs.length}
+  end
+
+  def get_jobs_search
+    @jobs =  Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, jobs.description, companies.promoted as promoted, locations.city, companies.logo as logo').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').limit(params["count"]).order("companies.promoted DESC, jobs.created_at DESC")
+    filtered_jobs = []
+    @jobs.each do |job|
+      job.logo = job.logo.to_s
+      if job.name.to_str.downcase.include?(params[:word]) or (!job.description.nil? and job.description.to_str.downcase.include?(params[:word]))
+        filtered_jobs.push(job)
+      end
+    end
+    render json: {jobs: filtered_jobs, number: filtered_jobs.length}
   end
 
   def get_jobs_at_location

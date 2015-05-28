@@ -1,17 +1,14 @@
-
-<br><br><br><br>
-<br><br><br><br>
-
-<div style="position:absolute; left:115px; top:80px;" class="btn-group">
+<div style="position:absolute; left:115px;" class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     {{'CATEGORY' | translate}} <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
+    <ul class="dropdown-menu" role="menu">
     <li><a href="#">Action</a></li>
   </ul>
+  </button>
+  
 </div>
 
-<div style="position:absolute; left:250px; top:80px;" class="btn-group">
+<div style="position:absolute; left:250px;" class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     {{'LOCATION' | translate}} <span class="caret"></span>
   </button>
@@ -20,33 +17,18 @@
   </ul>
 </div>
 
-<form style="position:absolute; left:837px; top:80px;" class="form-search" method="get" id="s" role='search'>
+<form style="position:absolute; left:837px;" class="form-search" id="s">
        <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{'SEARCH' | translate}}..." name="srch-term" id="srch-term">
+            <input type="text" class="form-control" ng-model="word" placeholder="{{'SEARCH' | translate}}..." name="srch-term" id="srch-term">
             <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn btn-default" ng-click="search()"><i class="glyphicon glyphicon-search"></i></button>
             </div>
         </div>
 </form>
-
-<table  style="position:absolute; left:100px; top:130px;" ng-controller='HomeController'>
-	<tr>
-		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(0,3)">
-			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran="{{oglas.promoted}}" logo="{{oglas.logo}}"> </oglas-box>
-
-		</td>
-	</tr>
-	<tr>
-		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(3,3)">
-			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran={{oglas.promoted}}> </oglas-box>
-		</td>
-	</tr>
-	<tr>
-		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(6,3)">
-			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran={{oglas.promoted}}> </oglas-box>
-		</td>
-	</tr>
-</table>
-
-
-
+<br><br>
+<div class="row" style="position:absolute; top: 170px; left:100px;width: 100%;">
+    <div class="col-md-4" ng-repeat-start="oglas in oglasi">
+        <oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran="{{oglas.promoted}}" logo="{{oglas.logo}}"> </oglas-box>
+    </div>
+    <div ng-repeat-end=""></div>
+</div>
