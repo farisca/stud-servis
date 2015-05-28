@@ -1,21 +1,15 @@
 class JobsController < ApplicationController
-  #before_action :set_current_user, :authenticate_request
- # before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user, :authenticate_request
 
-  # GET /jobs
-  # GET /jobs.json
+  ##################################################################################################################
+  # MOSTLY GETTERS AND SETTERS
+  ##################################################################################################################
+  # Dohvati sve poslove
+  # TODO: Preimenovati u get_all_jobs, u skladu s naming konvencijom
   def getAllJobs
    render json: Job.all
   end
 
-  # GET /jobs/1
-  # GET /jobs/1.json
-  def show
-    render json: @job
-  end
-
-  # POST /jobs
-  # POST /jobs.json
   def add_job
     @job = Job.new
 
@@ -28,8 +22,7 @@ class JobsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /jobs/1
-  # PATCH/PUT /jobs/1.json
+  # Da li se koristi?
   def update
     respond_to do |format|
       if @job.update(job_params)
@@ -40,8 +33,7 @@ class JobsController < ApplicationController
     end
   end
 
-  # DELETE /jobs/1
-  # DELETE /jobs/1.json
+  # Ooo, da li se ovo koristi!?
   def destroy
     @job.destroy
     respond_to do |format|
@@ -49,6 +41,7 @@ class JobsController < ApplicationController
     end
   end
 
+  # Dohvaca oglas na osnovu proslijedjenog id-ja
   def get_job
     job = Job.find(params["id"])
     category = job.category.name
@@ -61,6 +54,7 @@ class JobsController < ApplicationController
     render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id, logo: "#{Rails.root}/" + job.company.logo.to_s}  
   end
 
+  # Dohvaca posljednjih 9 oglasa
   def get_ordered_jobs
     @jobs =  Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, companies.promoted as promoted, locations.city, companies.logo as logo').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').limit(params["count"]).order("companies.promoted DESC, jobs.created_at DESC")
     @jobs.each do |job|
@@ -69,6 +63,7 @@ class JobsController < ApplicationController
     render json: {jobs: @jobs, number: @jobs.length}
   end
 
+  # Pretraga oglasa na osnovu kljucne rijeci
   def get_jobs_search
     @jobs =  Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, jobs.description, companies.promoted as promoted, locations.city, companies.logo as logo').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').limit(params["count"]).order("companies.promoted DESC, jobs.created_at DESC")
     filtered_jobs = []
@@ -81,15 +76,24 @@ class JobsController < ApplicationController
     render json: {jobs: filtered_jobs, number: filtered_jobs.length}
   end
 
-  def get_jobs_at_location
-    location_id = params[:location_id]
-    @number = 0
-    @jobs = Job.where(location_id: location_id).all
-    @number = @jobs.length
-
-    render json: {number: @number}
+  # Filtriranje oglasa na osnovu lokacije ili kategorije
+  def get_jobs_location_category_search
+    if !params[:location_id].nil?
+      @jobs = Job.where(location_id: params[:location_id]).all
+    else
+      @jobs = Job.all
+    end
+    if !params[:category_id].nil?
+      @jobs = @jobs.where(category_id: params[:category_id]).all
+    end
+    return render json: {jobs: @jobs, number: @jobs.length}
   end
 
+
+  ##################################################################################################################
+  # STATISTICS
+  ##################################################################################################################
+  # Vraca broj poslova po lokacijama
   def get_jobs_per_locations
     @locations = Location.all
     
@@ -105,6 +109,7 @@ class JobsController < ApplicationController
     return render json: {data: array}
   end
 
+  # Vraca broj poslova po kategorijama
   def get_jobs_per_categories
     @categories = Category.all
     
@@ -120,6 +125,7 @@ class JobsController < ApplicationController
     return render json: {data: array}
   end
  
+  # Vraca broj poslova po kompanijama
   def get_jobs_per_companies
     @companies = Company.all
     
@@ -135,6 +141,9 @@ class JobsController < ApplicationController
     return render json: {data: array}
   end
 
+  ##################################################################################################################
+  # PRIVATE
+  ##################################################################################################################
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job

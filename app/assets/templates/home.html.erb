@@ -1,20 +1,15 @@
 <div style="position:absolute; left:115px;" class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    {{'CATEGORY' | translate}} <span class="caret"></span>
-    <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-  </ul>
-  </button>
-  
+  <select class="btn btn-default" ng-model="lokacija" ng-change="filterByLocationOrCategory()" >
+  <option value="-1">Sve</option>
+  <option ng-repeat="location in locations" value="{{location.id}}">{{location.city}}</option>
+  </select>
 </div>
 
 <div style="position:absolute; left:250px;" class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    {{'LOCATION' | translate}} <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-  </ul>
+  <select class="btn btn-default" ng-model="kategorija" ng-change="filterByLocationOrCategory()">
+    <option value="-1">Sve</option>
+    <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+  </select>
 </div>
 
 <form style="position:absolute; left:837px;" class="form-search" id="s">
