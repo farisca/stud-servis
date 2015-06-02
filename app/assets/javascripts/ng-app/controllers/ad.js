@@ -3,6 +3,7 @@ angular.module('aplikacija')
         this.kategorija="";
         var res;
         var prijava;
+        var edit;
     
         var url = $location.path();
         var job_id = url.replace("/oglas/","");
@@ -47,6 +48,30 @@ angular.module('aplikacija')
             });
         }
 
+        $scope.editThisAd = function() {
+            var nova_kategorija = $scope.novaKategorija;
+            var nova_lokacija = $scope.novaLokacija;
+            var novi_opis = $('.noviOpis').val();
+            var novo_trajanje = $('.novoTrajanje').val();
+           
+            edit = $http({ url: '/jobs/update_job', 
+                        method: "PUT",
+                        params: {job_id: job_id, category: nova_kategorija, location: nova_lokacija, description: novi_opis, duration: novo_trajanje}
+                });
+            edit.success(function(data, status, headers, config) {
+                //alert(data.status);
+                //alert(data.trajanje);
+                $scope.data = data;
+                $('.kategorija').html(data.category);
+                $('.kompanija').html(data.company);
+                $('.opis').html(data.description);
+                $('.lokacija').html(data.location);
+                //$('.trajanje').html(data.duration);
+                $('.edtitForma').hide();
+            });
+              
+        }
+
         this.prijavi = function() {
 
             if (rola == 0) {
@@ -81,16 +106,23 @@ angular.module('aplikacija')
             }
         }
 
+
+
         $('.oglas_edit').click(function() {
-            $('.forma_izmjena').show();
-            $('.editAd_button').show();
+            $('.edtitForma').show();
+            
         });
+
+
+
+        
 
         var user;
         var rola;
     	var init = function () {
             $('.forma_izmjena').hide();
-            $('.editAd_button').hide();
+            $('.edtitForma').hide();
+            // $('.editAd_button').hide();
 
             user = $http({ url: '/users/get_role', 
                     method: "GET",
@@ -120,12 +152,25 @@ angular.module('aplikacija')
                 $('.trajanje').html(data.duration);
 
                 var help = $("edit-Ad").html();
-               
+
+                $http.get('/locations/getAllLocations').success(function(data, status, headers, config) {
+                   $scope.all_locations = data;
+                 });
+
+                $http.get('/categories/getAllCategories').success(function(data, status, headers, config) {
+                    $scope.all_categories = data;
+                });
+                       
+                $scope.novaKategorija = data.c_id;
+                $scope.novaLokacija = data.l_id;
+
                 $scope.ad_kategorija = data.category;
                 $scope.ad_kompanija = data.company;
                 $scope.ad_opsi = data.description;
                 $scope.ad_lokacija = data.location;
                 $scope.trajanje = data.duration;
+
+
                 // Ne dirati ovo, treba mi za slanje notifikacije!!!!!
                 $scope.company_user_id = data.company_user_id;
                 var path = 'oglas/'+data.id;

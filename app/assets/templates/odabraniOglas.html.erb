@@ -12,16 +12,62 @@
           
       <input ng-show="isVisible('apply')" ng-click="apply()" class="btn btn-default oglass_button"  value="Apply">
       <input ng-show="isVisible('showApplications')" ng-click="showApplications()"  class="btn btn-default" value="Show applications">
-      <input type="button" class="btn btn-default oglas_edit"  value="{{ 'AD_EDIT_BUTTON' | translate }}" > 
+      <!--<input ng-show="isVisible('showEditAd')" ng-click="showEditAd()"  class="btn btn-default" value="{{ 'AD_EDIT_BUTTON' | translate }}">-->
+      <input type="button" class="btn btn-default oglas_edit"  value="{{ 'AD_EDIT_BUTTON' | translate }}">
 
+
+      <div class="edtitForma">
       <form>
-        <edit-Ad class="forma_izmjena" kategorija="Test" kompanija="Test" lokacija="Test" opis="Test" trajanje="Test"></edit-Ad>
-        <input type="button" name="editAd_button" value="Spasi izmjene" class="btn btn-default editAd_button">
+        <div style="position:relative; top:50px; width:400px;">
+
+          <form>
+            <label>Kategorija</label><br>
+
+            <select ng-model="novaKategorija" ng-change="editAdThisCategory()" >
+                
+                <option ng-repeat="category in all_categories" value="{{category.id}}">{{category.name}}</option>
+            </select><br>
+
+            <!--<input type="text" class="dir_kategorija" name="kategorija" value={{ad_kategorija}}><br>-->
+            <!--<label>Kompanija</label><br>
+            <input type="text" name="kompanija" value={{ad_kompanija}}><br>-->
+            <label>Opis</label><br>
+            <input type="text" name="opis" value={{ad_opsi}} class="noviOpis"><br>
+            <label>Lokacija</label><br>
+
+            <select value={{ad_lokacija}} ng-model="novaLokacija" ng-change="editAdThisLocation()" >
+                <option ng-repeat="location in all_locations" value="{{location.id}}">{{location.city}}</option>
+            </select><br>
+            
+            <!--<label>Trajanje</label><br>
+            <input type="text" name="trajanje" value={{trajanje}} class='novoTrajanje'><br>-->
+            <br>
+            <input ng-click="editThisAd()" type="submit" name="editAd_button" value="Spasi izmjene" class="btn btn-default editAd_button">
+          </form><br><br><br><br>
+
+        </div>
+
+
+        <!-- <edit-Ad class="forma_izmjena" kategorija="Test" kompanija="Test" lokacija="Test" opis="Test" trajanje="Test"></edit-Ad> -->
+        
       </form>
+      </div>
       
     </div>
   </div>
 </div>
+
+<div class="row" ng-show="showEditAdVisible">
+  <div class="col-md-6 col-centered">
+    <div class="panel panel-info" style="padding: 20px;">
+      <div class="panel-heading" style="margin-bottom: 10px;">Izmejna oglasa</div>
+      
+
+
+    </div>
+  </div>
+</div>
+
 
 <div class="row" ng-show="showApplicationsVisible">
   <div class="col-md-6 col-centered">
