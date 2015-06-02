@@ -89,7 +89,7 @@ var app = angular
             }).
             when('/oglas/:id', {
                 templateUrl: 'odabraniOglas.html',
-                controller: 'ChoosenAd'
+                controller: 'ChosenAd'
             }).
             when('/home', {
                 templateUrl: 'home.html',

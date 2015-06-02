@@ -43,6 +43,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'AD_DURATION': 'Duration',
     'AD_BUTTON': 'Create ad',
     'CATEGORY': 'Category',
+    'STUDENTS_APPLICATIONS': 'The following students applied',
     'NAME': 'Name',
     'STREET': 'Street',
     'PASSWORD_CONFIRMATION': 'Password confirmation',
@@ -178,6 +179,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CREATE_CATEGORY': 'Kreiraj kategoriju',
     'ADD_NEW_CATEGORY' : 'Dodajte novu kategoriju',
     'AD_CATEGORY' : 'Kreiraj kategoriju',
+    'STUDENTS_APPLICATIONS': 'Prijavili su se sljedeći studenti',
      'FORGOT_PASSWORD' : 'Zaboravili ste sifru?'
   });
  

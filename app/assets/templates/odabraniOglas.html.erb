@@ -1,36 +1,50 @@
-<br><br>
-<h2> {{ 'MY_AD_SHOW' | translate }} </h2>
-<div class="container" style="position:relative; top:50px; width:400px;">
-  <form class="form-choosen-ad ad_forma" ng-controller="ChoosenAd as ad" ng-submit="ad.prijavi()" action="">
-    <span> {{ 'AD_CATEGORY_SHOW' | translate }}: </span> <span class="kategorija"> </span> <br>
-    <span> {{ 'AD_COMPANY_SHOW' | translate }}: </span> <span class="kompanija"> </span> <br>
-    <span> {{ 'AD_DESCRIPTION_SHOW' | translate }}: </span> <span class="opis"> </span> <br>
-    <span> {{ 'AD_LOCATION_SHOW' | translate }}: </span> <span class="lokacija"> </span> <br>
-    <span> {{ 'AD_DURATION_SHOW' | translate }}: </span> <span class="trajanje"> </span> <br>
-    <br>
+<div class="row">
+  <div class="col-md-6 col-centered">
+    <div class="panel panel-info" style="padding: 20px;">
+      <div class="panel-heading" style="margin-bottom: 10px;">{{'AD' | translate}}</div>
     
-    <input ng-click="ad.prijavi()" class="btn btn-default oglass_button" style="width: 300px;" value=""> <br><br>
-    <input type="button" class="btn btn-default oglas_edit" style="width: 300px;" value="{{ 'AD_EDIT_BUTTON' | translate }}" > 
-
-  </form>
-
-  <form>
-    <edit-Ad class="forma_izmjena" kategorija="Test" kompanija="Test" lokacija="Test" opis="Test" trajanje="Test"></edit-Ad>
-    <input type="button" name="editAd_button" value="Spasi izmjene" class="btn btn-default editAd_button">
+      <b>{{ 'AD_CATEGORY_SHOW' | translate }}:</b> {{data.category}}<br>
+      <b>{{ 'AD_COMPANY_SHOW' | translate }}:</b> {{data.company}}<br>
+      <b>{{ 'AD_DESCRIPTION_SHOW' | translate }}:</b> {{data.description}}<br>
+      <b>{{ 'AD_LOCATION_SHOW' | translate }}:</b> {{data.location}}<br>
+      <b>{{ 'AD_DURATION_SHOW' | translate }}:</b> {{data.duration}}<br>
       <br>
-  </form>
+          
+      <input ng-show="isVisible('apply')" ng-click="apply()" class="btn btn-default oglass_button"  value="Apply">
+      <input ng-show="isVisible('showApplications')" ng-click="showApplications()"  class="btn btn-default" value="Show applications">
+      <input type="button" class="btn btn-default oglas_edit"  value="{{ 'AD_EDIT_BUTTON' | translate }}" > 
 
-
-  <!-- <div ng-controller='ChoosenAd'>
-  	<edit-Ad class="forma_izmjena" kategorija="{{ad_kategorija}}" kompanija="{{ad_kompanija}}" lokacija="{{ad_lokacija}}" opis="{{ad_opis}}" trajanje="{{ad_trajanje}}"></edit-Ad>
-  	<input type="button" name="editAd_button" value="Spasi izmjene" class="btn btn-default editAd_button">
-  	<br>
-  </div> -->
-
-  </form>
-  	<p class="svi_studenti"></p>
-  </form>
-
-<br><br>
+      <form>
+        <edit-Ad class="forma_izmjena" kategorija="Test" kompanija="Test" lokacija="Test" opis="Test" trajanje="Test"></edit-Ad>
+        <input type="button" name="editAd_button" value="Spasi izmjene" class="btn btn-default editAd_button">
+      </form>
+      
+    </div>
+  </div>
 </div>
 
+<div class="row" ng-show="showApplicationsVisible">
+  <div class="col-md-6 col-centered">
+    <div class="panel panel-info" style="padding: 20px;">
+      <div class="panel-heading" style="margin-bottom: 10px;">{{'STUDENTS_APPLICATIONS' | translate}}</div>
+      <table class="table-striped">
+        <tr ng-repeat="student in students">
+          <td><a ng-click="showStudentsProfile(student.id)">{{student.name}} {{student.surname}}</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row" ng-show="showStudentsProfileVisible">
+  <div class="col-md-6 col-centered">
+    <div class="panel panel-info" style="padding: 20px;">
+      <div class="panel-heading" style="margin-bottom: 10px;">{{'STUDENTS_PROFILE' | translate}}</div>
+      <b>{{ 'STUDENT_NAME' | translate }}:</b> {{studentsProfile.student.name}}<br>
+      <b>{{ 'STUDENT_SURNAME' | translate }}:</b> {{studentsProfile.student.surname}}<br>
+      <b>{{ 'UNIVERSITY' | translate }}:</b> {{studentsProfile.student.university}}<br>
+      <b>{{ 'FACULTY' | translate }}:</b> {{studentsProfile.student.faculty}}<br>
+      <a class="btn btn-default" target="_self" href="/students/download_cv?id={{studentsProfile.student.cv}}" download>{{ 'CV' | translate }}</a>
+    </div>
+  </div>
+</div>
