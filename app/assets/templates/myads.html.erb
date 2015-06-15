@@ -3,12 +3,9 @@
   <li role="presentation" class="active"><a href="myads">My ads</a></li>
 </ul>
 
-<h2 align="center"> {{ 'MY_ADS2' | translate }} PROBA2</h2>
-
-<table>
-	<tr>
-		<td style="padding: 15px;" ng-repeat="oglas in oglasi.slice(0,3)">
-			<oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}"> </oglas-box>
-		</td>
-	</tr>
-</table>
+<div class="row" style="position:absolute; top: 170px; left:100px;width: 100%;">
+    <div class="col-md-4" ng-repeat-start="oglas in oglasi">
+        <oglas-box naziv-posla="{{oglas.name}}" kompanija="{{oglas.company_name}}" lokacija="{{oglas.city}}" id-oglasa="{{oglas.id}}" kraj="{{oglas.duration}}" promoviran="{{oglas.promoted}}" logo="{{oglas.logo}}"> </oglas-box>
+    </div>
+    <div ng-repeat-end=""></div>
+</div>

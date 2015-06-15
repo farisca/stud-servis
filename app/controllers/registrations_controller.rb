@@ -79,7 +79,7 @@ class RegistrationsController < ApplicationController
     
     if params["role"] == "1"
       @all_jobs = Job.where(company_id: Company.find_by(user_id: current_user.id).id).all
-      @jobs = @all_jobs.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, locations.city, jobs.created_at')
+      @jobs = @all_jobs.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, locations.city, jobs.created_at, companies.logo')
           .joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id')
           .joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id')
       return render json: { jobs: @jobs, number: @jobs.length }
@@ -88,7 +88,7 @@ class RegistrationsController < ApplicationController
 
       @jobs = []
       @all_registrations.each do |registration|
-        @all_jobs = Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, locations.city, registrations.created_at')
+        @all_jobs = Job.select('companies.name as company_name, jobs.name as name, jobs.duration, jobs.id, locations.city, registrations.created_at, companies.logo')
           .joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id')
           .joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id')
           .joins('LEFT OUTER JOIN registrations ON registrations.job_id = jobs.id')
