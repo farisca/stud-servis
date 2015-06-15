@@ -5,15 +5,17 @@
 
   <form>
     <label>Kategorija</label><br>
-    <input type="text" class="dir_kategorija" name="kategorija" value="{{kategorija}}"><br>
-    <label>Kompanija</label><br>
-    <input type="text" name="kompanija" value="{{kompanija}}"><br>
+    <input type="text" class="dir_kategorija" name="kategorija" value={{ad_kategorija}}><br>
+    <!--<label>Kompanija</label><br>
+    <input type="text" name="kompanija" value={{ad_kompanija}}><br>-->
     <label>Opis</label><br>
-    <input type="text" name="opis" value="{{opis}}"><br>
+    <input type="text" name="opis" value={{ad_opsi}}><br>
     <label>Lokacija</label><br>
-    <input type="text" name="lokacija" value="{{lokacija}}"><br>
+    <option ng-repeat="location in all_locations" value="{{location.id}}">{{location.city}}</option>
+    
+    <!--<input type="text" name="lokacija" value={{ad_lokacija}}><br>-->
     <label>Trajanje</label><br>
-    <input type="text" name="trajanje" value="{{trajanje}}"><br>
+    <input type="text" name="trajanje" value={{trajanje}}><br>
     <br><br>
   </form>
 

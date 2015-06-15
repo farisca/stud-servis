@@ -33,6 +33,24 @@ class JobsController < ApplicationController
     end
   end
 
+  def update_job
+    job_id = params[:job_id]
+    job = Job.find_by(id: job_id)
+
+    job.location_id = params[:location]
+    job.category_id = params[:category]
+    job.description = params[:description]
+    job.duration = 'azra'
+    #job.duration = params[:duration]
+
+    if job.save!
+      status = 'ok'
+    else
+      status = 'not'
+    end
+    render json: { status: status, company: job.company.name, category: job.category.name, location: job.location.city, description: job.description, duration: job.duration }
+  end 
+
   # Ooo, da li se ovo koristi!?
   def destroy
     @job.destroy
@@ -51,7 +69,9 @@ class JobsController < ApplicationController
     duration = job.duration
     id = job.id
     user_id = job.company.user_id
-    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id, logo: "#{Rails.root}/" + job.company.logo.to_s}  
+    c_id = job.category_id
+    l_id = job.location_id
+    render json: { category: category, company: company, description: description, location: location, duration: duration, id: id, company_user_id: user_id, logo: "#{Rails.root}/" + job.company.logo.to_s, l_id: l_id, c_id: c_id}  
   end
 
   # Dohvaca posljednjih 9 oglasa

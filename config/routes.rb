@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "get_jobs_per_companies", on: :collection
     get "get_jobs_search", on: :collection
     get "get_jobs_location_category_search", on: :collection
+    put "update_job", on: :collection
   end
 
   resources :companies do
