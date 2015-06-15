@@ -14,7 +14,7 @@ angular.module('aplikacija')
         $scope.studentsProfile = {};
 
         // Funkcija za prikaz buttona u ovisnosti od role korisnika - prijava na oglas ili prikat prijava
-        $scope.isVisible = function(part) {
+        $scope.isVisible = function(part, company) {
             if(part == "apply" && AuthToken.tipKorisnika() == 0) return true;
             if(part == 'showApplications' && AuthToken.tipKorisnika() == 1) return true;
             return false;

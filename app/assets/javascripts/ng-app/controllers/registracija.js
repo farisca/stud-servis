@@ -27,13 +27,13 @@ angular.module('aplikacija')
     			res = $http.post('/students/add_student', this.podaci);
 
 				res.success(function(data, status, headers, config) {
-					if (data.error!="Korisnik već postoji") {
-                        $location.path('potvrdaORegistraciji');
+                    if (status==200) {
+                        if(data.error == "Korisnik već postoji!") {
+                            $scope.errorMsg = "Korisnik postoji";
+                        } else {
+                            $location.path('/potvrdaORegistraciji')
+                        }
                     }
-                    else if(data.error=="Korisnik već postoji")
-                        $scope.errorMsg = "Korisnik već postoji!";
-                    
-					else $scope.errorMsg=data.error;
 				});
     		}
     	}

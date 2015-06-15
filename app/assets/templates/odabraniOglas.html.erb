@@ -10,8 +10,8 @@
       <b>{{ 'AD_DURATION_SHOW' | translate }}:</b> {{data.duration}}<br>
       <br>
           
-      <input ng-show="isVisible('apply')" ng-click="apply()" class="btn btn-default oglass_button"  value="Apply">
-      <input ng-show="isVisible('showApplications')" ng-click="showApplications()"  class="btn btn-default" value="Show applications">
+      <input ng-show="isVisible('apply', null)" ng-click="apply()" class="btn btn-default oglass_button"  value="Apply">
+      <input ng-show="isVisible('showApplications', data.company)" ng-click="showApplications()"  class="btn btn-default" value="Show applications">
       <!--<input ng-show="isVisible('showEditAd')" ng-click="showEditAd()"  class="btn btn-default" value="{{ 'AD_EDIT_BUTTON' | translate }}">-->
       <input type="button" class="btn btn-default oglas_edit"  value="{{ 'AD_EDIT_BUTTON' | translate }}">
 
