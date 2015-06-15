@@ -98,10 +98,10 @@ class JobsController < ApplicationController
 
   # Filtriranje oglasa na osnovu lokacije ili kategorije
   def get_jobs_location_category_search
-    if !params[:location_id].nil?
-      @jobs = Job.where(location_id: params[:location_id]).all
+    if !params[:location_id].nil?    
+      @jobs =  Job.select('companies.name as company_name, companies.location_id, jobs.name as name, jobs.category_id, jobs.duration, jobs.id, jobs.description, companies.promoted as promoted, locations.city, companies.logo as logo').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').where(location_id: params["location_id"]).order("companies.promoted DESC, jobs.created_at DESC")
     else
-      @jobs = Job.all
+      @jobs =  Job.select('companies.name as company_name, companies.location_id, jobs.name as name, jobs.category_id, jobs.duration, jobs.id, jobs.description, companies.promoted as promoted, locations.city, companies.logo as logo').joins('LEFT OUTER JOIN companies ON companies.id = jobs.company_id').joins('LEFT OUTER JOIN locations ON locations.id = jobs.location_id').order("companies.promoted DESC, jobs.created_at DESC")
     end
     if !params[:category_id].nil?
       @jobs = @jobs.where(category_id: params[:category_id]).all
