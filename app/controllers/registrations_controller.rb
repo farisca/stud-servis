@@ -49,10 +49,11 @@ class RegistrationsController < ApplicationController
     active = params[:active]
     
     student = @current_user
-    render json: { status: student }
+
     @registration = Registration.new
     @registration.job_id = job
     @registration.student_id = student.id
+    @registration.time = nil
     @registration.active = active
 
     if @registration.save!
